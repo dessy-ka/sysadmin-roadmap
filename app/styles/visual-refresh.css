@@ -1,0 +1,496 @@
+/* -------------------------------------------------------------------------- */
+/* Visual refresh 0.2.0 — calmer surfaces, clearer hierarchy, larger type      */
+/* -------------------------------------------------------------------------- */
+:root {
+  --bg: #f7f9fc;
+  --surface: #ffffff;
+  --surface-2: #f0f4f8;
+  --text: #182638;
+  --muted: #56677b;
+  --muted-2: #748397;
+  --border: #e2e8ef;
+  --accent: #315f91;
+  --accent-soft: #eaf1f8;
+  --green: #168663;
+  --shadow: 0 12px 34px rgba(25, 43, 64, .065);
+  --header: rgba(255, 255, 255, .94);
+}
+.dark {
+  --bg: #0d1420;
+  --surface: #131e2c;
+  --surface-2: #192638;
+  --text: #edf3f9;
+  --muted: #b0bdcc;
+  --muted-2: #8798ad;
+  --border: #29384a;
+  --accent: #8ab5e2;
+  --accent-soft: #1d344b;
+  --green: #58c6a0;
+  --shadow: 0 16px 42px rgba(0, 0, 0, .2);
+  --header: rgba(13, 20, 32, .94);
+}
+
+html { scroll-padding-top: 104px; }
+body {
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -.008em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.container { width: min(1240px, calc(100% - 64px)); }
+
+/* Navigation */
+.site-header { box-shadow: 0 1px 0 rgba(20, 35, 52, .025); }
+.header-inner { height: 82px; gap: 30px; }
+.brand { gap: 12px; }
+.brand-mark { width: 40px; height: 40px; border-radius: 12px; }
+.brand-name { font-size: 17px; letter-spacing: .055em; }
+.desktop-nav { gap: clamp(15px, 1.8vw, 25px); }
+.desktop-nav a { font-size: 13px; font-weight: 700; }
+.header-cta { padding: 11px 15px; border-radius: 10px; font-size: 13px; }
+.icon-button { width: 42px; height: 42px; border-radius: 12px; }
+.mobile-nav a { padding-block: 15px; font-size: 15px; }
+
+/* Shared typography and page rhythm */
+.eyebrow, .hero-kicker { font-size: 11px; letter-spacing: .12em; }
+.button { min-height: 50px; padding-inline: 20px; border-radius: 11px; font-size: 14px; }
+.button-primary { box-shadow: 0 7px 18px rgba(49, 95, 145, .16); }
+.button-primary:hover { box-shadow: 0 10px 24px rgba(49, 95, 145, .2); }
+.text-link { font-size: 14px; }
+.inner-page { padding-top: 44px; padding-bottom: 104px; }
+.breadcrumbs { margin-bottom: 24px; font-size: 13px; }
+.inner-page h1 { font-size: clamp(42px, 5.1vw, 64px); line-height: 1.1; letter-spacing: -.052em; }
+.inner-page h2 { letter-spacing: -.035em; }
+.inner-page p { font-size: 15px; line-height: 1.8; }
+.inner-page li { font-size: 14px; line-height: 1.75; }
+.inner-page :is(small, label) { font-size: 12px; }
+.inner-page :is(button, input, select, textarea) { font-size: 14px; }
+.inner-page :is(td, th) { font-size: 13px; line-height: 1.65; }
+.inner-page :is(.eyebrow, .breadcrumbs, .roadmap-stage-meta, .stage-detail-meta, .technology-detail-meta, .career-hero-meta) { letter-spacing: .045em; }
+.inner-page :is(.eyebrow, .roadmap-stage-meta, .stage-detail-meta, .technology-detail-meta, .career-hero-meta) { font-size: 11px; }
+.inner-page :is(.progress-storage-note, .resource-directory-top, .resource-stage-tags a, .technology-card-category, .technology-level, .career-panel-top, .certification-track-label, .certification-level) { font-size: 10px; }
+.inner-page :is(.roadmap-index-hero p, .resources-hero > p, .stage-detail-copy > p, .schedule-hero-copy > p, .technology-hero-copy > p, .technology-detail-copy > p, .career-hero-copy > p) { font-size: 16px; line-height: 1.85; }
+.inner-page :is(.roadmap-controls input, .resource-select select, .technology-level-select select, .topic-search input) { min-height: 46px; font-size: 14px; }
+
+/* Homepage hero and sections */
+.hero-section { padding-top: 104px; }
+.hero-layout { min-height: 510px; gap: 64px; }
+.hero-copy { max-width: 620px; }
+.hero-copy h1 { max-width: 650px; margin-top: 26px; font-size: clamp(48px, 5.5vw, 72px); line-height: 1.08; }
+.hero-copy > p { max-width: 590px; font-size: 18px; line-height: 1.8; }
+.hero-actions { gap: 14px; margin-top: 34px; }
+.hero-note { font-size: 13px; }
+.network-visual { min-height: 430px; border-radius: 24px; box-shadow: var(--shadow); }
+.visual-topline { font-size: 11px; }
+.visual-foot { font-size: 10px; }
+.infra-node { width: 124px; min-height: 90px; border-radius: 14px; }
+.infra-node span { font-size: 12px; }
+.infra-node small { font-size: 10px; }
+.node-cloud { left: calc(50% - 62px); }
+.node-monitor { left: calc(50% - 62px); }
+.infra-core { width: 184px; min-height: 116px; border-radius: 16px; }
+.infra-core strong { font-size: 12px; }
+.infra-core > span { font-size: 10px; }
+.core-status { font-size: 9px; }
+.hero-bottom { font-size: 11px; }
+.stats-grid > div { padding: 25px 24px; }
+.stats-grid strong { font-size: 29px; }
+.stats-grid div > span { font-size: 14px; }
+.section { padding: 112px 0; }
+.section-heading { max-width: 720px; margin-bottom: 48px; }
+.section-heading h2 { font-size: clamp(32px, 3.6vw, 46px); }
+.section-heading p { font-size: 16px; line-height: 1.85; }
+.about-grid { gap: 76px; }
+.about-detail { padding: 30px; border-radius: 18px; box-shadow: var(--shadow); }
+.about-detail > p { font-size: 16px; }
+.about-points { gap: 15px; }
+.about-points div { font-size: 14px; }
+.about-points svg { width: 18px; height: 18px; }
+.roadmap-intro { font-size: 11px; }
+.roadmap-grid { gap: 18px; }
+.stage-card, .discipline-card, .resource-card, .project-card { border-radius: 17px; }
+.stage-card { padding: 24px; min-height: 330px; }
+.stage-number { font-size: 12px; }
+.stage-level { font-size: 11px; }
+.stage-icon, .discipline-icon, .project-icon { width: 44px; height: 44px; border-radius: 12px; }
+.stage-card h3, .discipline-card h3, .project-card h3, .resource-card h3 { font-size: 19px; line-height: 1.35; }
+.stage-card p, .discipline-card p, .project-card p, .resource-card p { font-size: 14px; line-height: 1.75; }
+.stage-topics { gap: 7px; }
+.stage-topics span, .tag-row span { padding: 6px 9px; border-radius: 7px; font-size: 11px; }
+.stage-link { padding-top: 20px; font-size: 13px; }
+.roadmap-footnote, .schedule-note { padding: 18px 20px; border-radius: 13px; font-size: 14px; }
+.roadmap-footnote span, .schedule-note p { font-size: 14px; line-height: 1.75; }
+.discipline-grid, .resource-grid, .project-grid { gap: 18px; }
+.discipline-card, .resource-card, .project-card { padding: 23px; }
+.resource-card-top, .resource-type, .project-level, .project-footer { font-size: 11px; }
+.resource-open { font-size: 13px; }
+.technology-home-cta, .career-home-cta { padding: 24px; border-radius: 16px; }
+.technology-home-cta strong, .career-home-cta strong { font-size: 17px; }
+.technology-home-cta p, .career-home-cta p { font-size: 14px; line-height: 1.75; }
+.tool-group { padding: 18px 0; }
+.tool-group > span { font-size: 12px; }
+.tool-pill { padding: 8px 11px; font-size: 12px; }
+.month-row { min-height: 90px; }
+.month-number { font-size: 12px; }
+.month-copy strong { font-size: 16px; }
+.month-copy p { font-size: 14px; }
+.career-step { padding: 20px 8px; }
+.career-step > span { font-size: 13px; }
+.career-step h3 { font-size: 18px; }
+.career-step p { font-size: 14px; }
+.closing-section { padding: 100px 0; }
+.closing-inner h2 { font-size: clamp(38px, 4.6vw, 58px); }
+.closing-inner > p { font-size: 16px; line-height: 1.8; }
+
+/* Roadmap, topic detail and resource directory */
+.roadmap-index-hero { grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; padding: 42px 0 54px; }
+.roadmap-index-hero h1, .resources-hero h1 { font-size: clamp(44px, 5vw, 66px); }
+.overall-progress-card { padding: 25px; border-radius: 18px; }
+.overall-progress-card > span { font-size: 11px; }
+.overall-progress-card > strong { font-size: 54px; }
+.overall-progress-card small { font-size: 13px; }
+.roadmap-controls, .resource-controls, .technology-controls { gap: 14px; margin-top: 28px; }
+.roadmap-search, .technology-search { min-height: 50px; border-radius: 12px; }
+.level-filters button, .technology-category-filters button, .career-track-filters button, .interview-category-filters button { min-height: 40px; padding-inline: 13px; border-radius: 9px; font-size: 12px; }
+.roadmap-stage-list { gap: 14px; }
+.roadmap-stage-row { grid-template-columns: 38px 52px minmax(0, 1fr) 112px 42px; gap: 18px; padding: 22px; border-radius: 16px; }
+.roadmap-stage-number { font-size: 13px; }
+.roadmap-stage-icon { width: 48px; height: 48px; border-radius: 13px; }
+.roadmap-stage-meta { font-size: 11px; }
+.roadmap-stage-content h2 { font-size: 21px; }
+.roadmap-stage-content > p { font-size: 14px; }
+.roadmap-stage-topics span { padding: 6px 8px; font-size: 11px; }
+.roadmap-stage-progress strong { font-size: 20px; }
+.roadmap-stage-progress small { font-size: 11px; }
+.roadmap-stage-open { width: 40px; height: 40px; }
+.roadmap-index-note { margin-top: 28px; padding: 20px; border-radius: 14px; }
+.roadmap-index-note p { font-size: 14px; }
+.stage-detail-hero { gap: 52px; padding: 40px 0 50px; }
+.stage-detail-copy h1 { font-size: clamp(42px, 4.8vw, 62px); }
+.stage-detail-meta { gap: 20px; }
+.stage-detail-meta span { font-size: 11px; }
+.stage-detail-grid { gap: 28px; padding-top: 40px; }
+.detail-section, .stage-sidebar-card { padding: 25px; border-radius: 16px; }
+.detail-section h2 { font-size: 25px; }
+.detail-section-heading p { font-size: 14px; }
+.topic-expand { padding: 17px; }
+.topic-title-copy strong { font-size: 15px; }
+.topic-title-copy small { font-size: 12px; }
+.topic-expanded { padding-top: 16px; padding-bottom: 18px; }
+.topic-expanded ul, .topic-expanded p { font-size: 14px; line-height: 1.8; }
+.topic-search { min-height: 46px; }
+.topic-search input { font-size: 14px; }
+.related-resource-list strong, .certification-item strong { font-size: 13px; }
+.related-resource-list small, .certification-item p, .certification-card > small, .next-stage-card > p { font-size: 12px; line-height: 1.7; }
+.sidebar-all-link, .previous-stage-link { font-size: 13px; }
+.button-full { font-size: 13px; }
+.resources-hero { padding: 42px 0 48px; }
+.resource-library-stats { gap: 48px; }
+.resource-library-stats strong { font-size: 26px; }
+.resource-library-stats span { font-size: 11px; }
+.resource-select { border-radius: 11px; }
+.resource-select select { font-size: 14px; }
+.resource-results-bar { font-size: 12px; }
+.resource-directory-grid { gap: 16px; }
+.resource-directory-card { min-height: 300px; padding: 22px; border-radius: 16px; }
+.resource-directory-top { font-size: 11px; }
+.resource-directory-card h2 { font-size: 19px; }
+.resource-directory-card > p { font-size: 14px; line-height: 1.75; }
+.resource-start { padding: 13px; border-radius: 10px; }
+.resource-start strong { font-size: 12px; }
+.resource-start span { font-size: 13px; }
+.resource-stage-tags a { padding: 6px 8px; font-size: 10px; }
+.resource-directory-link { font-size: 13px; }
+.resource-disclaimer strong { font-size: 13px; }
+
+/* Study schedule */
+.schedule-hero { gap: 46px; padding: 42px 0 54px; }
+.schedule-hero-copy h1 { font-size: clamp(44px, 5.2vw, 66px); }
+.schedule-hero-copy > p { font-size: 16px; }
+.schedule-flex-note { font-size: 13px; }
+.schedule-progress-card { padding: 28px; border-radius: 18px; }
+.schedule-progress-top { font-size: 11px; }
+.schedule-progress-bottom { font-size: 12px; }
+.schedule-hours-scale { font-size: 11px; }
+.schedule-pace-estimate { font-size: 13px; }
+.schedule-local-note { font-size: 11px; }
+.schedule-metrics { border-radius: 16px; }
+.schedule-metrics > div { padding: 22px; }
+.schedule-metrics > div > span { font-size: 11px; }
+.schedule-metrics strong { font-size: 15px; }
+.schedule-metrics small { font-size: 12px; }
+.schedule-section-heading h2, .schedule-week-heading h2 { font-size: clamp(27px, 3.2vw, 38px); }
+.schedule-section-heading p, .schedule-week-heading > div:first-child > p { font-size: 14px; }
+.schedule-filter button { padding: 9px 12px; font-size: 12px; }
+.schedule-month-grid { gap: 14px; }
+.schedule-month-card { min-height: 165px; padding: 19px; border-radius: 14px; }
+.schedule-month-card :is(strong, b) { font-size: 16px; }
+.schedule-month-card :is(span, p, small) { font-size: 13px; }
+.schedule-week-card, .schedule-task-card { border-radius: 14px; }
+.schedule-task-card { padding: 18px; }
+.schedule-task-card :is(p, li) { font-size: 14px; }
+.schedule-task-card :is(small, label) { font-size: 12px; }
+
+/* Technology directory and detail pages */
+.technology-hero { gap: 44px; padding: 42px 0 50px; }
+.technology-hero-copy h1 { font-size: clamp(44px, 5.1vw, 66px); }
+.technology-hero-copy > p { font-size: 16px; }
+.technology-hero-stats strong { font-size: 28px; }
+.technology-hero-stats span { font-size: 11px; }
+.technology-total { font-size: 11px; }
+.technology-level-select { border-radius: 11px; }
+.technology-level-select span { font-size: 10px; }
+.technology-level-select select { font-size: 14px; }
+.technology-category-filters { gap: 8px; margin: 16px 0 22px; }
+.technology-card-grid { gap: 16px; }
+.technology-card { min-height: 300px; padding: 22px; border-radius: 16px; }
+.technology-card-category, .technology-level { font-size: 10px; }
+.technology-card h3 { font-size: 19px; }
+.technology-card > p { font-size: 14px; line-height: 1.75; }
+.technology-card-concepts { gap: 7px; }
+.technology-card-concepts span { padding: 6px 8px; font-size: 11px; }
+.technology-card-bottom { font-size: 13px; }
+.technology-guidance-note { gap: 34px; margin-top: 50px; padding: 25px; border-radius: 16px; }
+.technology-guidance-note h3 { font-size: 19px; }
+.technology-guidance-note > p { font-size: 14px; }
+.technology-bottom-links a { font-size: 13px; }
+.technology-detail-hero { gap: 42px; padding: 40px 0 50px; }
+.technology-detail-copy h1 { font-size: clamp(42px, 4.8vw, 62px); }
+.technology-detail-copy > p { font-size: 16px; }
+.technology-detail-meta span { font-size: 11px; }
+.technology-detail-sidecard { padding: 25px; border-radius: 16px; }
+.technology-detail-sidecard h2 { font-size: 20px; }
+.technology-detail-sidecard > p { font-size: 14px; }
+.technology-sidecard-footer { font-size: 10px; }
+.technology-detail-layout { gap: 24px; padding-top: 36px; }
+.technology-info-card, .technology-detail-section, .technology-sidebar-card { padding: 24px; border-radius: 15px; }
+.technology-info-card h2 { font-size: 20px; }
+.technology-info-card p, .technology-detail-section-heading p, .technology-concept-grid p, .technology-start-steps p, .technology-lab-requirements p, .technology-practice-list p, .technology-safety-card p { font-size: 14px; line-height: 1.8; }
+.technology-detail-section-heading h2, .technology-practices-section h2 { font-size: 24px; }
+.technology-concept-grid { gap: 10px; }
+.technology-concept-grid > div { padding: 14px; border-radius: 10px; }
+.technology-concept-grid span, .technology-start-steps li > span { font-size: 11px; }
+.technology-lab-requirements { padding: 16px; border-radius: 11px; }
+.technology-lab-requirements strong { font-size: 13px; }
+.technology-labs-grid { gap: 12px; }
+.technology-labs-grid article { padding: 17px; border-radius: 11px; }
+.technology-labs-grid article > span { font-size: 10px; }
+.technology-labs-grid h3 { font-size: 16px; }
+.technology-labs-grid p { font-size: 13px; }
+.technology-official-links small { font-size: 10px; }
+.technology-official-links strong { font-size: 13px; }
+.technology-library-links > span { font-size: 10px; }
+.technology-library-links a, .technology-sidebar-all, .technology-detail-pagination > a { font-size: 12px; }
+.technology-sidebar-card h3 { font-size: 17px; }
+.technology-stage-links small, .technology-detail-pagination small { font-size: 10px; }
+.technology-stage-links strong, .technology-detail-pagination strong { font-size: 13px; }
+.technology-related-tags span { font-size: 11px; }
+.technology-home-cta { padding: 24px; border-radius: 16px; }
+
+/* Career centre */
+.career-hero { gap: 40px; }
+.career-hero-copy h1 { font-size: clamp(44px, 5vw, 64px); }
+.career-hero-copy > p { font-size: 16px; }
+.career-hero-meta { gap: 18px; font-size: 11px; }
+.career-panel-top { font-size: 11px; }
+.career-panel-stats strong { font-size: 30px; }
+.career-panel-stats span { font-size: 10px; }
+.career-panel-flow > div > span { font-size: 11px; }
+.career-panel-flow strong { font-size: 14px; }
+.career-panel-flow small { font-size: 12px; }
+.career-section-nav a { padding: 11px 14px; font-size: 12px; }
+.career-section-heading p { font-size: 14px; }
+.career-section-count strong { font-size: 30px; }
+.career-section-count span { font-size: 10px; }
+.certification-guidance strong { font-size: 14px; }
+.certification-guidance p { font-size: 13px; }
+.career-results-count { font-size: 11px; }
+.career-track-filters button, .interview-category-filters button { min-height: 40px; font-size: 12px; }
+.career-track-filters button span { font-size: 11px; }
+.certification-compare-bar strong { font-size: 14px; }
+.certification-compare-bar span { font-size: 12px; }
+.career-text-button { font-size: 12px; }
+.certification-compare-actions .button { min-height: 42px; font-size: 12px; }
+.comparison-heading h3 { font-size: 19px; }
+.comparison-table th, .comparison-table td { padding: 14px; font-size: 12px; }
+.comparison-table thead th { font-size: 13px; }
+.certification-track-label, .certification-level { font-size: 10px; }
+.certification-card h3 { font-size: 18px; }
+.certification-provider { font-size: 12px; }
+.certification-exam-code span, .certification-best-for > span, .certification-stage-links > span { font-size: 10px; }
+.certification-exam-code strong { font-size: 13px; }
+.certification-summary { font-size: 13px; line-height: 1.75; }
+.certification-best-for p { font-size: 12px; }
+.certification-expand-button, .certification-select { font-size: 12px; }
+.certification-exam-note strong, .certification-detail-block > strong, .certification-objectives > strong, .certification-proof > strong { font-size: 12px; }
+.certification-exam-note p, .certification-detail-block p, .certification-objectives p { font-size: 12px; line-height: 1.75; }
+.certification-objectives > div > span { font-size: 12px; }
+.certification-objectives > div > span b { font-size: 11px; }
+.certification-proof p { font-size: 12px; }
+.portfolio-intro strong { font-size: 14px; }
+.portfolio-intro p { font-size: 13px; }
+.portfolio-grid { gap: 14px; }
+.portfolio-card { padding: 19px; border-radius: 13px; }
+.portfolio-card > span { font-size: 10px; }
+.portfolio-card h3 { font-size: 17px; }
+.portfolio-card > p { font-size: 13px; }
+.portfolio-card li { font-size: 12px; }
+.interview-method-card { padding: 18px; border-radius: 12px; }
+.interview-method-card strong { font-size: 14px; }
+.interview-method-card p { font-size: 13px; }
+.interview-question-list { gap: 10px; }
+.interview-question-card { border-radius: 12px; }
+.interview-question-trigger { padding: 18px; }
+.interview-question-number { font-size: 11px; }
+.interview-question-meta { font-size: 10px; }
+.interview-question-copy > strong { font-size: 14px; }
+.interview-answer-framework { gap: 13px; padding: 0 20px 20px 66px; }
+.interview-why { padding: 13px; }
+.interview-why strong, .answer-framework-title, .interview-follow-up span { font-size: 10px; }
+.interview-why p, .interview-answer-framework li, .interview-follow-up p { font-size: 13px; line-height: 1.75; }
+.career-closing-note { padding: 26px; border-radius: 16px; }
+.career-closing-note h2 { font-size: 24px; }
+.career-closing-note p { font-size: 14px; }
+.career-closing-note a { font-size: 13px; }
+
+/* Footer and common interaction surfaces */
+.site-footer { border-top: 1px solid var(--border); }
+.footer-main { padding-block: 58px; }
+.footer-brand-block > p { max-width: 360px; font-size: 14px; line-height: 1.8; }
+.footer-links { gap: 64px; }
+.footer-links > div { gap: 13px; }
+.footer-heading { font-size: 12px; }
+.footer-links a { font-size: 13px; }
+.footer-bottom { padding-block: 20px; font-size: 12px; }
+
+@media (max-width: 1100px) {
+  .container { width: min(100% - 48px, 1240px); }
+  .desktop-nav { gap: 14px; }
+  .desktop-nav a { font-size: 12px; }
+  .header-cta { display: none; }
+}
+@media (max-width: 700px) {
+  .container { width: min(100% - 36px, 560px); }
+  .header-inner { height: 70px; }
+  .hero-section { padding-top: 68px; }
+  .hero-layout { gap: 30px; }
+  .hero-copy h1 { font-size: clamp(42px, 10.5vw, 56px); }
+  .hero-copy > p { font-size: 16px; line-height: 1.75; }
+  .hero-note { font-size: 12px; }
+  .network-visual { min-height: 350px; border-radius: 19px; }
+  .infra-node { width: 104px; min-height: 78px; }
+  .infra-node span { font-size: 11px; }
+  .infra-node small { font-size: 9px; }
+  .node-cloud, .node-monitor { left: calc(50% - 52px); }
+  .infra-core { width: 156px; min-height: 105px; }
+  .infra-core strong { font-size: 11px; }
+  .infra-core > span { font-size: 9px; }
+  .core-status { font-size: 8px; }
+  .hero-bottom { align-items: flex-start; font-size: 9px; }
+  .stats-grid div > span { font-size: 12px; }
+  .section { padding: 76px 0; }
+  .section-heading { margin-bottom: 32px; }
+  .section-heading h2 { font-size: clamp(29px, 7vw, 38px); }
+  .section-heading p { font-size: 15px; }
+  .about-grid, .tools-layout { gap: 28px; }
+  .about-detail { padding: 22px; }
+  .about-detail > p { font-size: 15px; }
+  .about-points div { font-size: 13px; }
+  .roadmap-grid { grid-template-columns: 1fr; }
+  .stage-card { min-height: 0; padding: 22px; }
+  .stage-card h3, .discipline-card h3, .project-card h3, .resource-card h3 { font-size: 18px; }
+  .stage-card p, .discipline-card p, .project-card p, .resource-card p { font-size: 14px; }
+  .discipline-grid, .resource-grid, .project-grid { grid-template-columns: 1fr; }
+  .discipline-card, .resource-card, .project-card { min-height: 0; padding: 21px; }
+  .tool-group { grid-template-columns: 1fr; gap: 10px; }
+  .tool-pill { font-size: 11px; }
+  .career-step { grid-template-columns: 30px minmax(0, 1fr) 18px; gap: 10px; }
+  .career-step h3 { font-size: 16px; }
+  .career-step p { font-size: 13px; }
+  .closing-inner h2 { font-size: clamp(34px, 9vw, 46px); }
+  .closing-inner > p { font-size: 15px; }
+  .inner-page { padding-top: 28px; padding-bottom: 76px; }
+  .inner-page h1 { font-size: clamp(38px, 10vw, 52px); }
+  .inner-page p { font-size: 14px; }
+  .inner-page :is(small, label) { font-size: 12px; }
+  .roadmap-index-hero, .stage-detail-hero, .technology-hero, .technology-detail-hero, .career-hero, .schedule-hero { grid-template-columns: 1fr; gap: 24px; padding: 22px 0 32px; }
+  .roadmap-index-hero h1, .resources-hero h1, .stage-detail-copy h1, .technology-hero-copy h1, .technology-detail-copy h1, .career-hero-copy h1, .schedule-hero-copy h1 { font-size: clamp(38px, 9.5vw, 52px); }
+  .roadmap-index-hero p, .resources-hero > p, .stage-detail-copy > p, .technology-hero-copy > p, .technology-detail-copy > p, .career-hero-copy > p, .schedule-hero-copy > p { font-size: 15px; }
+  .roadmap-controls, .resource-controls, .technology-controls { flex-direction: column; align-items: stretch; padding: 16px 0; }
+  .level-filters { justify-content: flex-start; overflow-x: auto; }
+  .level-filters button { flex: 0 0 auto; }
+  .roadmap-stage-row { grid-template-columns: 28px 42px minmax(0, 1fr) 34px; gap: 11px; padding: 16px; }
+  .roadmap-stage-content h2 { font-size: 17px; }
+  .roadmap-stage-content > p { font-size: 13px; }
+  .roadmap-stage-topics span { font-size: 10px; }
+  .roadmap-stage-progress { display: none; }
+  .stage-detail-grid, .technology-detail-layout { grid-template-columns: 1fr; gap: 18px; padding-top: 24px; }
+  .stage-sidebar { position: static; grid-row: 1; margin-bottom: 4px; }
+  .detail-section, .technology-info-card, .technology-detail-section, .technology-sidebar-card { padding: 19px; }
+  .detail-section h2, .technology-detail-section-heading h2, .technology-practices-section h2 { font-size: 21px; }
+  .topic-expand { grid-template-columns: 24px minmax(0, 1fr) 20px; gap: 9px; padding: 14px 11px; }
+  .topic-title-copy strong { font-size: 14px; }
+  .topic-title-copy small { font-size: 11px; }
+  .topic-expanded { padding-left: 43px; padding-right: 13px; }
+  .topic-expanded ul, .topic-expanded p { font-size: 13px; }
+  .resource-library-stats { gap: 24px; }
+  .resource-library-stats span { font-size: 10px; }
+  .resource-directory-grid, .technology-card-grid { grid-template-columns: 1fr; }
+  .resource-directory-card { min-height: 0; padding: 19px; }
+  .resource-directory-card h2, .technology-card h3 { font-size: 18px; }
+  .resource-directory-card > p, .technology-card > p { font-size: 14px; }
+  .schedule-hero { padding-top: 20px; }
+  .schedule-progress-card { padding: 22px; }
+  .schedule-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 44px; }
+  .schedule-metrics > div { padding: 15px; }
+  .schedule-metrics > div:nth-child(2) { border-right: 0; }
+  .schedule-metrics > div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .schedule-section-heading { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .schedule-month-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .schedule-month-card { min-height: 145px; padding: 14px; }
+  .technology-info-grid, .technology-concept-grid, .technology-labs-grid { grid-template-columns: 1fr; }
+  .technology-guidance-note { grid-template-columns: 1fr; gap: 14px; padding: 19px; }
+  .career-section-nav { top: 70px; }
+  .career-section-nav a { font-size: 11px; }
+  .career-section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .certification-grid, .career-path-grid, .portfolio-grid { grid-template-columns: 1fr; }
+  .certification-toolbar, .interview-controls { align-items: stretch; flex-direction: column; gap: 10px; }
+  .certification-card h3, .certification-summary, .career-path-summary { min-height: 0; }
+  .comparison-heading h3 { font-size: 17px; }
+  .comparison-table { min-width: 620px; }
+  .comparison-table th, .comparison-table td { font-size: 12px; }
+  .portfolio-intro { grid-template-columns: 1fr; gap: 10px; }
+  .interview-question-trigger { grid-template-columns: 26px minmax(0, 1fr) 18px; gap: 9px; padding: 14px; }
+  .interview-question-copy > strong { font-size: 13px; }
+  .interview-answer-framework { padding: 0 14px 16px 48px; }
+  .career-closing-note { grid-template-columns: 1fr; gap: 13px; margin-top: 44px; padding: 20px; }
+  .career-closing-note h2 { font-size: 21px; }
+  .career-closing-note p { font-size: 13px; }
+  .footer-main { gap: 30px; padding-block: 42px; }
+  .footer-links { gap: 30px; }
+  .footer-links a { font-size: 12px; }
+}
+@media (max-width: 420px) {
+  .container { width: calc(100% - 30px); }
+  .hero-copy h1 { font-size: 40px; }
+  .network-visual { min-height: 315px; }
+  .infra-node { width: 90px; min-height: 70px; }
+  .infra-node span { font-size: 10px; }
+  .infra-node small { font-size: 8px; }
+  .node-cloud, .node-monitor { left: calc(50% - 45px); }
+  .node-network { left: 2%; }
+  .node-identity { right: 2%; }
+  .infra-core { width: 142px; min-height: 98px; }
+  .infra-core strong { font-size: 10px; }
+  .infra-core > span { font-size: 8px; }
+  .core-status { font-size: 7px; }
+  .hero-bottom { font-size: 8px; }
+  .schedule-month-grid { grid-template-columns: 1fr; }
+  .schedule-metrics > div { grid-template-columns: 22px 1fr; padding: 13px 10px; }
+  .schedule-metrics strong { font-size: 13px; }
+  .schedule-metrics small { font-size: 11px; }
+  .career-panel-stats strong { font-size: 24px; }
+  .certification-compare-actions { align-items: stretch; flex-direction: column; }
+  .certification-compare-actions .button { width: 100%; }
+}

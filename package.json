@@ -1,0 +1,35 @@
+{
+  "name": "sysadmin-roadmap",
+  "version": "0.2.3",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "qa": "node scripts/qa-check.cjs",
+    "check": "pnpm run qa && pnpm run typecheck && pnpm run lint",
+    "audit": "pnpm audit --audit-level=moderate"
+  },
+  "dependencies": {
+    "framer-motion": "14.9.0",
+    "lucide-react": "1.62.0",
+    "next": "16.4.3",
+    "next-themes": "0.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "eslint": "10.14.0",
+    "eslint-config-next": "16.4.3",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "packageManager": "pnpm@12.16.1"
+}

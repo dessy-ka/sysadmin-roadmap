@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+build/
+.env*
+.DS_Store
+*.log
+
+# Keep the safe environment template in version control
+!.env.example
+*.tsbuildinfo
+
+# pnpm is the project package manager; do not commit competing lockfiles.
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
+pnpm-debug.log*
