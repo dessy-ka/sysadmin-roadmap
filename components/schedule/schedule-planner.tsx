@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, BookOpen, CalendarDays, Check, CheckCircle2, Clock3, ExternalLink, Flag, Gauge, RotateCcw, Target } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, BookOpen, Check, CheckCircle2, Clock3, ExternalLink, Flag, Gauge, RotateCcw, Target } from "lucide-react";
 import { studySchedule } from "@/data/schedule";
 import { resources } from "@/data/resources";
 import { getStageBySlug } from "@/data/roadmap";
@@ -29,9 +29,13 @@ export function SchedulePlanner() {
         if (stored && typeof stored === "object") {
           if (stored.completed && typeof stored.completed === "object" && !Array.isArray(stored.completed)) {
             const validEntries = Object.entries(stored.completed).filter(([id, value]) => validTaskIds.has(id) && value === true);
+            // Restore browser-only progress after hydration to avoid markup mismatch.
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setCompleted(Object.fromEntries(validEntries));
           }
-          if (typeof stored.weeklyHours === "number" && stored.weeklyHours >= 2 && stored.weeklyHours <= 20) setWeeklyHours(stored.weeklyHours);
+          if (typeof stored.weeklyHours === "number" && stored.weeklyHours >= 2 && stored.weeklyHours <= 20) {
+            setWeeklyHours(stored.weeklyHours);
+          }
         }
       }
     } catch {
@@ -89,7 +93,7 @@ export function SchedulePlanner() {
 
         <motion.section className="schedule-hero" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <div className="schedule-hero-copy">
-            <span className="eyebrow"><CalendarDays size={13} /> THE 12-MONTH STUDY PLAN</span>
+            
             <h1>Build your SysAdmin skills, <span>one week at a time.</span></h1>
             <p>A practical sequence that takes you from IT fundamentals to advanced infrastructure engineering. Each week combines focused learning, hands-on work and a tangible outcome you can add to your technical portfolio.</p>
             <div className="schedule-hero-actions"><a className="button button-primary" href="#month-plan">Explore the schedule <ArrowDownRight size={16} /></a><Link className="button button-secondary" href="/roadmap">View complete roadmap <ArrowUpRight size={15} /></Link></div>
@@ -118,7 +122,7 @@ export function SchedulePlanner() {
 
         <section className="schedule-month-section" id="month-plan">
           <div className="schedule-section-heading">
-            <div><span className="eyebrow">01 / THE LEARNING TIMELINE</span><h2>Choose your month.</h2><p>Explore the monthly focus areas and select a month to open its weekly plan.</p></div>
+            <div><h2>Choose your month.</h2><p>Explore the monthly focus areas and select a month to open its weekly plan.</p></div>
             <div className="schedule-filter" aria-label="Filter months">{["All months", "Not started", "In progress", "Completed"].map((item) => <button type="button" key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>{item}</button>)}</div>
           </div>
           <div className="schedule-month-grid">
@@ -143,7 +147,7 @@ export function SchedulePlanner() {
 
         <section className="schedule-week-section" aria-labelledby="week-plan-title">
           <div className="schedule-week-heading">
-            <div><span className="eyebrow">02 / WEEK-BY-WEEK PLAN</span><h2 id="week-plan-title">Month {String(currentMonth.number).padStart(2, "0")}: {currentMonth.title}</h2><p>{currentMonth.summary}</p></div>
+            <div><h2 id="week-plan-title">Month {String(currentMonth.number).padStart(2, "0")}: {currentMonth.title}</h2><p>{currentMonth.summary}</p></div>
             <div className="schedule-month-completion"><strong>{Math.round((monthDone / monthTotal) * 100)}%</strong><span>MONTH COMPLETE</span><div><i style={{ width: `${(monthDone / monthTotal) * 100}%` }} /></div></div>
           </div>
           <div className="schedule-stage-reference"><span><Flag size={15} /> {currentMonth.stageLabel}</span>{selectedStage && <Link href={`/roadmap/${currentMonth.stageSlug}`}>Explore this roadmap stage <ArrowUpRight size={14} /></Link>}</div>

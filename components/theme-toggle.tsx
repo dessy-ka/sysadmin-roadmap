@@ -5,6 +5,8 @@ import { Moon, Sun } from "lucide-react";
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  // Avoid rendering theme-dependent UI before hydration has completed.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
   if (!mounted) return <button className="icon-button" aria-label="Colour theme" disabled><Sun size={17} /></button>;
   const dark = theme === "dark";

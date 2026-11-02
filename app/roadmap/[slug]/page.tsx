@@ -14,9 +14,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const stage = getStageBySlug(slug);
-  if (!stage) return { title: "Roadmap stage not found | SysAdmin Roadmap" };
+  if (!stage) return { title: "SYSADMIN. | Roadmap Stage Not Found" };
   return {
-    title: `${stage.title} | SysAdmin Roadmap`,
+    title: `SYSADMIN. | ${stage.title}`,
     description: stage.summary
   };
 }

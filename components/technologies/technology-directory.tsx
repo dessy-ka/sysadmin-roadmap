@@ -46,7 +46,7 @@ export function TechnologyDirectory() {
 
         <section className="technology-index-hero">
           <div className="technology-hero-copy">
-            <span className="eyebrow">THE SYSADMIN TOOLKIT / FIELD GUIDE</span>
+            
             <h1>Know the tools.<br /><span>Understand the infrastructure.</span></h1>
             <p>Explore the platforms and technologies used to operate real IT environments. Each guide connects the tool to its purpose, infrastructure role, key concepts, practical labs and official documentation.</p>
             <div className="technology-hero-stats">
@@ -56,7 +56,7 @@ export function TechnologyDirectory() {
             </div>
           </div>
           <div className="technology-hero-panel">
-            <div className="technology-panel-top"><span><i /> INFRASTRUCTURE STACK</span><span>SYS / TOOLKIT</span></div>
+            
             <div className="technology-stack">
               <div><span className="stack-index">01</span><div><strong>Compute & operating systems</strong><small>Linux · Windows Server · Virtualisation</small></div><Server size={18} /></div>
               <div><span className="stack-index">02</span><div><strong>Network & identity</strong><small>TCP/IP · DNS · Active Directory</small></div><Network size={18} /></div>
@@ -70,7 +70,7 @@ export function TechnologyDirectory() {
 
         <section className="technology-directory-section" aria-labelledby="technology-directory-title">
           <div className="technology-section-heading">
-            <div><span className="eyebrow">REFERENCE LIBRARY / 01</span><h2 id="technology-directory-title">Explore the technology directory.</h2><p>Search by product, discipline or capability. Open a guide for practical context and a path into the official documentation.</p></div>
+            <div><h2 id="technology-directory-title">Explore the technology directory.</h2><p>Search by product, discipline or capability. Open a guide for practical context and a path into the official documentation.</p></div>
             <span className="technology-total"><strong>{filteredTechnologies.length.toString().padStart(2, "0")}</strong> / {technologies.length} GUIDES</span>
           </div>
 
@@ -99,7 +99,7 @@ export function TechnologyDirectory() {
           </div> : <div className="topic-empty">No technology guides match those filters. Try a different keyword or category.</div>}
         </section>
 
-        <section className="technology-guidance-note"><div><span className="eyebrow">A NOTE ON LEARNING</span><h3>Understand the job before memorising the tool.</h3></div><p>Start with the infrastructure problem—identity, connectivity, compute, storage, automation or availability. Then learn the tool that solves it. Use an isolated lab, follow the vendor documentation and practise recovery as well as deployment.</p></section>
+        <section className="technology-guidance-note"><div><h3>Understand the job before memorising the tool.</h3></div><p>Start with the infrastructure problem—identity, connectivity, compute, storage, automation or availability. Then learn the tool that solves it. Use an isolated lab, follow the vendor documentation and practise recovery as well as deployment.</p></section>
         <div className="technology-bottom-links"><Link href="/roadmap">Explore the complete roadmap <ArrowRight size={15} /></Link><Link href="/resources">Browse all learning resources <ArrowRight size={15} /></Link><Link href="/schedule">Open the 12-month schedule <ArrowRight size={15} /></Link></div>
       </div>
     </main>

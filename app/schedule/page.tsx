@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "12-Month SysAdmin Study Schedule | SysAdmin Roadmap",
+  title: "SYSADMIN. | Schedule",
   description: "An interactive 12-month System Administration study schedule with weekly topics, practical tasks, milestones and curated resources."
 };
 

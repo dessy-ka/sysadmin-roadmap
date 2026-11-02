@@ -84,21 +84,21 @@ export function CareerCenter() {
 
         <section className="career-hero">
           <div className="career-hero-copy">
-            <span className="eyebrow">CAREER DEVELOPMENT / PROFESSIONAL PRACTICE</span>
+            
             <h1>Turn technical skills into a <span>career direction.</span></h1>
             <p>Compare certifications, understand the skills employers expect at each stage, and practise explaining how you solve real infrastructure problems. Use credentials to support your experience—not replace it.</p>
             <div className="career-hero-actions">
               <a className="button button-primary" href="#certifications">Compare certifications <ArrowRight size={16} /></a>
               <a className="button button-secondary" href="#interview-prep">Practise interview questions <ArrowDown size={15} /></a>
             </div>
-            <div className="career-hero-meta"><span><i /> UPDATED 01 NOV 2026</span><span>VENDOR LINKS INCLUDED</span><span>PORTFOLIO-LED GUIDANCE</span></div>
+            
           </div>
           <aside className="career-hero-panel">
-            <div className="career-panel-top"><span><i /> CAREER SYSTEM / OVERVIEW</span><span>SYS / 02</span></div>
+            
             <div className="career-panel-stats">
-              <div><strong>{certifications.length.toString().padStart(2, "0")}</strong><span>CERTIFICATION PATHS</span></div>
-              <div><strong>{careerPaths.length.toString().padStart(2, "0")}</strong><span>CAREER DIRECTIONS</span></div>
-              <div><strong>{interviewQuestions.length.toString().padStart(2, "0")}</strong><span>INTERVIEW PROMPTS</span></div>
+              <div><strong>{certifications.length.toString().padStart(2, "0")}</strong><span>CERTIFICATION<br />PATHS</span></div>
+              <div><strong>{careerPaths.length.toString().padStart(2, "0")}</strong><span>CAREER<br />DIRECTIONS</span></div>
+              <div><strong>{interviewQuestions.length.toString().padStart(2, "0")}</strong><span>INTERVIEW<br />PROMPTS</span></div>
             </div>
             <div className="career-panel-flow">
               <div><span>01</span><strong>Build fundamentals</strong><small>Systems · networking · security</small></div>
@@ -118,7 +118,7 @@ export function CareerCenter() {
 
         <section id="certifications" className="career-content-section" aria-labelledby="certification-heading">
           <div className="career-section-heading">
-            <div><span className="eyebrow">01 / CERTIFICATION DIRECTORY</span><h2 id="certification-heading">Choose a credential that supports your direction.</h2><p>Compare the purpose and exam focus of recognised infrastructure certifications. Select up to three to view them side by side.</p></div>
+            <div><h2 id="certification-heading">Choose a credential that supports your direction.</h2><p>Compare the purpose and exam focus of recognised infrastructure certifications. Select up to three to view them side by side.</p></div>
             <div className="career-section-count"><strong>{certifications.length.toString().padStart(2, "0")}</strong><span>REFERENCE PATHS</span></div>
           </div>
 
@@ -144,7 +144,7 @@ export function CareerCenter() {
           </div>
 
           {showComparison && selectedCertifications.length >= 2 && <div className="certification-comparison" aria-label="Certification comparison">
-            <div className="comparison-heading"><div><span className="eyebrow">SIDE-BY-SIDE VIEW</span><h3>Compare your selected paths.</h3></div><button type="button" className="icon-button" aria-label="Close comparison" onClick={() => setShowComparison(false)}><X size={17} /></button></div>
+            <div className="comparison-heading"><div><h3>Compare your selected paths.</h3></div><button type="button" className="icon-button" aria-label="Close comparison" onClick={() => setShowComparison(false)}><X size={17} /></button></div>
             <div className="comparison-table-wrap"><table className="comparison-table"><thead><tr><th>Comparison</th>{selectedCertifications.map((certification) => <th key={certification.id}>{certification.name}</th>)}</tr></thead><tbody>
               <tr><th>Provider</th>{selectedCertifications.map((certification) => <td key={certification.id}>{certification.provider}</td>)}</tr>
               <tr><th>Track</th>{selectedCertifications.map((certification) => <td key={certification.id}>{certification.track}</td>)}</tr>
@@ -187,7 +187,7 @@ export function CareerCenter() {
 
         <section id="career-paths" className="career-content-section career-paths-section" aria-labelledby="career-paths-heading">
           <div className="career-section-heading">
-            <div><span className="eyebrow">02 / ROLE PROGRESSION</span><h2 id="career-paths-heading">Choose a direction, then build depth.</h2><p>There is no single ladder into infrastructure work. These are common progressions; actual job titles and responsibilities vary by organisation.</p></div>
+            <div><h2 id="career-paths-heading">Choose a direction, then build depth.</h2><p>There is no single ladder into infrastructure work. These are common progressions; actual job titles and responsibilities vary by organisation.</p></div>
             <div className="career-section-count"><strong>{careerPaths.length.toString().padStart(2, "0")}</strong><span>CAREER DIRECTIONS</span></div>
           </div>
           <div className="career-path-grid">
@@ -203,7 +203,7 @@ export function CareerCenter() {
 
         <section id="portfolio" className="career-content-section portfolio-section" aria-labelledby="portfolio-heading">
           <div className="career-section-heading">
-            <div><span className="eyebrow">03 / PROOF OF CAPABILITY</span><h2 id="portfolio-heading">Make your experience visible.</h2><p>A small, well-documented lab can give an interviewer better evidence than a long list of tools on a CV.</p></div>
+            <div><h2 id="portfolio-heading">Make your experience visible.</h2><p>A small, well-documented lab can give an interviewer better evidence than a long list of tools on a CV.</p></div>
           </div>
           <div className="portfolio-intro"><div><ShieldCheck size={21} /><strong>Show the outcome, not just the screenshot.</strong></div><p>For every project, explain the problem, design choices, configuration, test results, failure handling and what you would improve. Remove passwords, public IPs, personal data and other sensitive details before sharing.</p></div>
           <div className="portfolio-grid">{portfolioProjects.map((project, index) => <article className="portfolio-card" key={project.title}><span>PROJECT {String(index + 1).padStart(2, "0")}</span><h3>{project.title}</h3><p>{project.focus}</p><ul>{project.evidence.map((item) => <li key={item}><CheckCircle2 size={14} />{item}</li>)}</ul></article>)}</div>
@@ -211,7 +211,7 @@ export function CareerCenter() {
 
         <section id="interview-prep" className="career-content-section interview-section" aria-labelledby="interview-heading">
           <div className="career-section-heading">
-            <div><span className="eyebrow">04 / TECHNICAL INTERVIEW PRACTICE</span><h2 id="interview-heading">Practise explaining how you think.</h2><p>These are original practice prompts, not leaked or reproduced employer questions. Expand each one for an answer framework and a useful follow-up.</p></div>
+            <div><h2 id="interview-heading">Practise explaining how you think.</h2><p>These are original practice prompts, not leaked or reproduced employer questions. Expand each one for an answer framework and a useful follow-up.</p></div>
             <div className="career-section-count"><strong>{interviewQuestions.length.toString().padStart(2, "0")}</strong><span>PRACTICE QUESTIONS</span></div>
           </div>
           <div className="interview-method-card"><div className="interview-method-icon"><BookOpen size={19} /></div><div><strong>A reliable structure for scenario questions</strong><p><b>Clarify</b> the impact → <b>Gather</b> evidence → <b>Isolate</b> the fault → <b>Change</b> safely → <b>Verify</b> recovery → <b>Document</b> what happened.</p></div></div>
@@ -238,7 +238,7 @@ export function CareerCenter() {
 
         <section className="career-closing-note">
           <div className="career-closing-icon"><Server size={23} /></div>
-          <div><span className="eyebrow">YOUR NEXT STEP</span><h2>Build one skill. Prove it. Then move forward.</h2><p>Use the roadmap to identify your next technical gap, follow the schedule to practise consistently, and document each lab as evidence of your growing capability.</p><div><Link href="/roadmap">Open the technical roadmap <ArrowRight size={14} /></Link><Link href="/schedule">Continue with the 12-month schedule <ArrowRight size={14} /></Link><Link href="/technologies">Explore the technology guides <ArrowRight size={14} /></Link></div></div>
+          <div><h2>Build one skill. Prove it. Then move forward.</h2><p>Use the roadmap to identify your next technical gap, follow the schedule to practise consistently, and document each lab as evidence of your growing capability.</p><div><Link href="/roadmap">Open the technical roadmap <ArrowRight size={14} /></Link><Link href="/schedule">Continue with the 12-month schedule <ArrowRight size={14} /></Link><Link href="/technologies">Explore the technology guides <ArrowRight size={14} /></Link></div></div>
         </section>
       </div>
     </main>

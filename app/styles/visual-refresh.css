@@ -44,7 +44,8 @@ body {
 .site-header { box-shadow: 0 1px 0 rgba(20, 35, 52, .025); }
 .header-inner { height: 82px; gap: 30px; }
 .brand { gap: 12px; }
-.brand-mark { width: 40px; height: 40px; border-radius: 12px; }
+.brand-mark { width: 44px; height: 44px; border-radius: 0; background: transparent; box-shadow: none; }
+.brand-mark img { display: block; width: 44px; height: 44px; object-fit: contain; }
 .brand-name { font-size: 17px; letter-spacing: .055em; }
 .desktop-nav { gap: clamp(15px, 1.8vw, 25px); }
 .desktop-nav a { font-size: 13px; font-weight: 700; }
@@ -53,7 +54,7 @@ body {
 .mobile-nav a { padding-block: 15px; font-size: 15px; }
 
 /* Shared typography and page rhythm */
-.eyebrow, .hero-kicker { font-size: 11px; letter-spacing: .12em; }
+.eyebrow, .hero-kicker { font-size: 12px; letter-spacing: .12em; }
 .button { min-height: 50px; padding-inline: 20px; border-radius: 11px; font-size: 14px; }
 .button-primary { box-shadow: 0 7px 18px rgba(49, 95, 145, .16); }
 .button-primary:hover { box-shadow: 0 10px 24px rgba(49, 95, 145, .2); }
@@ -68,8 +69,8 @@ body {
 .inner-page :is(button, input, select, textarea) { font-size: 14px; }
 .inner-page :is(td, th) { font-size: 13px; line-height: 1.65; }
 .inner-page :is(.eyebrow, .breadcrumbs, .roadmap-stage-meta, .stage-detail-meta, .technology-detail-meta, .career-hero-meta) { letter-spacing: .045em; }
-.inner-page :is(.eyebrow, .roadmap-stage-meta, .stage-detail-meta, .technology-detail-meta, .career-hero-meta) { font-size: 11px; }
-.inner-page :is(.progress-storage-note, .resource-directory-top, .resource-stage-tags a, .technology-card-category, .technology-level, .career-panel-top, .certification-track-label, .certification-level) { font-size: 10px; }
+.inner-page :is(.eyebrow, .roadmap-stage-meta, .stage-detail-meta, .technology-detail-meta, .career-hero-meta) { font-size: 12px; }
+.inner-page :is(.progress-storage-note, .resource-directory-top, .resource-stage-tags a, .technology-card-category, .technology-level, .career-panel-top, .certification-track-label, .certification-level) { font-size: 12px; }
 .inner-page :is(.roadmap-index-hero p, .resources-hero > p, .stage-detail-copy > p, .schedule-hero-copy > p, .technology-hero-copy > p, .technology-detail-copy > p, .career-hero-copy > p) { font-size: 16px; line-height: 1.85; }
 .inner-page :is(.roadmap-controls input, .resource-select select, .technology-level-select select, .topic-search input) { min-height: 46px; font-size: 14px; }
 
@@ -82,18 +83,18 @@ body {
 .hero-actions { gap: 14px; margin-top: 34px; }
 .hero-note { font-size: 13px; }
 .network-visual { min-height: 430px; border-radius: 24px; box-shadow: var(--shadow); }
-.visual-topline { font-size: 11px; }
-.visual-foot { font-size: 10px; }
+.visual-topline { font-size: 12px; }
+.visual-foot { font-size: 12px; }
 .infra-node { width: 124px; min-height: 90px; border-radius: 14px; }
 .infra-node span { font-size: 12px; }
-.infra-node small { font-size: 10px; }
+.infra-node small { font-size: 12px; }
 .node-cloud { left: calc(50% - 62px); }
 .node-monitor { left: calc(50% - 62px); }
 .infra-core { width: 184px; min-height: 116px; border-radius: 16px; }
 .infra-core strong { font-size: 12px; }
-.infra-core > span { font-size: 10px; }
-.core-status { font-size: 9px; }
-.hero-bottom { font-size: 11px; }
+.infra-core > span { font-size: 12px; }
+.core-status { font-size: 12px; }
+.hero-bottom { font-size: 12px; }
 .stats-grid > div { padding: 25px 24px; }
 .stats-grid strong { font-size: 29px; }
 .stats-grid div > span { font-size: 14px; }
@@ -107,23 +108,23 @@ body {
 .about-points { gap: 15px; }
 .about-points div { font-size: 14px; }
 .about-points svg { width: 18px; height: 18px; }
-.roadmap-intro { font-size: 11px; }
+.roadmap-intro { font-size: 12px; }
 .roadmap-grid { gap: 18px; }
 .stage-card, .discipline-card, .resource-card, .project-card { border-radius: 17px; }
 .stage-card { padding: 24px; min-height: 330px; }
 .stage-number { font-size: 12px; }
-.stage-level { font-size: 11px; }
+.stage-level { font-size: 12px; }
 .stage-icon, .discipline-icon, .project-icon { width: 44px; height: 44px; border-radius: 12px; }
 .stage-card h3, .discipline-card h3, .project-card h3, .resource-card h3 { font-size: 19px; line-height: 1.35; }
 .stage-card p, .discipline-card p, .project-card p, .resource-card p { font-size: 14px; line-height: 1.75; }
 .stage-topics { gap: 7px; }
-.stage-topics span, .tag-row span { padding: 6px 9px; border-radius: 7px; font-size: 11px; }
+.stage-topics span, .tag-row span { padding: 6px 9px; border-radius: 7px; font-size: 12px; }
 .stage-link { padding-top: 20px; font-size: 13px; }
 .roadmap-footnote, .schedule-note { padding: 18px 20px; border-radius: 13px; font-size: 14px; }
 .roadmap-footnote span, .schedule-note p { font-size: 14px; line-height: 1.75; }
 .discipline-grid, .resource-grid, .project-grid { gap: 18px; }
 .discipline-card, .resource-card, .project-card { padding: 23px; }
-.resource-card-top, .resource-type, .project-level, .project-footer { font-size: 11px; }
+.resource-card-top, .resource-type, .project-level, .project-footer { font-size: 12px; }
 .resource-open { font-size: 13px; }
 .technology-home-cta, .career-home-cta { padding: 24px; border-radius: 16px; }
 .technology-home-cta strong, .career-home-cta strong { font-size: 17px; }
@@ -147,7 +148,7 @@ body {
 .roadmap-index-hero { grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; padding: 42px 0 54px; }
 .roadmap-index-hero h1, .resources-hero h1 { font-size: clamp(44px, 5vw, 66px); }
 .overall-progress-card { padding: 25px; border-radius: 18px; }
-.overall-progress-card > span { font-size: 11px; }
+.overall-progress-card > span { font-size: 12px; }
 .overall-progress-card > strong { font-size: 54px; }
 .overall-progress-card small { font-size: 13px; }
 .roadmap-controls, .resource-controls, .technology-controls { gap: 14px; margin-top: 28px; }
@@ -157,19 +158,19 @@ body {
 .roadmap-stage-row { grid-template-columns: 38px 52px minmax(0, 1fr) 112px 42px; gap: 18px; padding: 22px; border-radius: 16px; }
 .roadmap-stage-number { font-size: 13px; }
 .roadmap-stage-icon { width: 48px; height: 48px; border-radius: 13px; }
-.roadmap-stage-meta { font-size: 11px; }
+.roadmap-stage-meta { font-size: 12px; }
 .roadmap-stage-content h2 { font-size: 21px; }
 .roadmap-stage-content > p { font-size: 14px; }
-.roadmap-stage-topics span { padding: 6px 8px; font-size: 11px; }
+.roadmap-stage-topics span { padding: 6px 8px; font-size: 12px; }
 .roadmap-stage-progress strong { font-size: 20px; }
-.roadmap-stage-progress small { font-size: 11px; }
+.roadmap-stage-progress small { font-size: 12px; }
 .roadmap-stage-open { width: 40px; height: 40px; }
 .roadmap-index-note { margin-top: 28px; padding: 20px; border-radius: 14px; }
 .roadmap-index-note p { font-size: 14px; }
 .stage-detail-hero { gap: 52px; padding: 40px 0 50px; }
 .stage-detail-copy h1 { font-size: clamp(42px, 4.8vw, 62px); }
 .stage-detail-meta { gap: 20px; }
-.stage-detail-meta span { font-size: 11px; }
+.stage-detail-meta span { font-size: 12px; }
 .stage-detail-grid { gap: 28px; padding-top: 40px; }
 .detail-section, .stage-sidebar-card { padding: 25px; border-radius: 16px; }
 .detail-section h2 { font-size: 25px; }
@@ -188,19 +189,19 @@ body {
 .resources-hero { padding: 42px 0 48px; }
 .resource-library-stats { gap: 48px; }
 .resource-library-stats strong { font-size: 26px; }
-.resource-library-stats span { font-size: 11px; }
+.resource-library-stats span { font-size: 12px; }
 .resource-select { border-radius: 11px; }
 .resource-select select { font-size: 14px; }
 .resource-results-bar { font-size: 12px; }
 .resource-directory-grid { gap: 16px; }
 .resource-directory-card { min-height: 300px; padding: 22px; border-radius: 16px; }
-.resource-directory-top { font-size: 11px; }
+.resource-directory-top { font-size: 12px; }
 .resource-directory-card h2 { font-size: 19px; }
 .resource-directory-card > p { font-size: 14px; line-height: 1.75; }
 .resource-start { padding: 13px; border-radius: 10px; }
 .resource-start strong { font-size: 12px; }
 .resource-start span { font-size: 13px; }
-.resource-stage-tags a { padding: 6px 8px; font-size: 10px; }
+.resource-stage-tags a { padding: 6px 8px; font-size: 12px; }
 .resource-directory-link { font-size: 13px; }
 .resource-disclaimer strong { font-size: 13px; }
 
@@ -210,14 +211,14 @@ body {
 .schedule-hero-copy > p { font-size: 16px; }
 .schedule-flex-note { font-size: 13px; }
 .schedule-progress-card { padding: 28px; border-radius: 18px; }
-.schedule-progress-top { font-size: 11px; }
+.schedule-progress-top { font-size: 12px; }
 .schedule-progress-bottom { font-size: 12px; }
-.schedule-hours-scale { font-size: 11px; }
+.schedule-hours-scale { font-size: 12px; }
 .schedule-pace-estimate { font-size: 13px; }
-.schedule-local-note { font-size: 11px; }
+.schedule-local-note { font-size: 12px; }
 .schedule-metrics { border-radius: 16px; }
 .schedule-metrics > div { padding: 22px; }
-.schedule-metrics > div > span { font-size: 11px; }
+.schedule-metrics > div > span { font-size: 12px; }
 .schedule-metrics strong { font-size: 15px; }
 .schedule-metrics small { font-size: 12px; }
 .schedule-section-heading h2, .schedule-week-heading h2 { font-size: clamp(27px, 3.2vw, 38px); }
@@ -237,19 +238,19 @@ body {
 .technology-hero-copy h1 { font-size: clamp(44px, 5.1vw, 66px); }
 .technology-hero-copy > p { font-size: 16px; }
 .technology-hero-stats strong { font-size: 28px; }
-.technology-hero-stats span { font-size: 11px; }
-.technology-total { font-size: 11px; }
+.technology-hero-stats span { font-size: 12px; }
+.technology-total { font-size: 12px; }
 .technology-level-select { border-radius: 11px; }
-.technology-level-select span { font-size: 10px; }
+.technology-level-select span { font-size: 12px; }
 .technology-level-select select { font-size: 14px; }
 .technology-category-filters { gap: 8px; margin: 16px 0 22px; }
 .technology-card-grid { gap: 16px; }
 .technology-card { min-height: 300px; padding: 22px; border-radius: 16px; }
-.technology-card-category, .technology-level { font-size: 10px; }
+.technology-card-category, .technology-level { font-size: 12px; }
 .technology-card h3 { font-size: 19px; }
 .technology-card > p { font-size: 14px; line-height: 1.75; }
 .technology-card-concepts { gap: 7px; }
-.technology-card-concepts span { padding: 6px 8px; font-size: 11px; }
+.technology-card-concepts span { padding: 6px 8px; font-size: 12px; }
 .technology-card-bottom { font-size: 13px; }
 .technology-guidance-note { gap: 34px; margin-top: 50px; padding: 25px; border-radius: 16px; }
 .technology-guidance-note h3 { font-size: 19px; }
@@ -258,11 +259,11 @@ body {
 .technology-detail-hero { gap: 42px; padding: 40px 0 50px; }
 .technology-detail-copy h1 { font-size: clamp(42px, 4.8vw, 62px); }
 .technology-detail-copy > p { font-size: 16px; }
-.technology-detail-meta span { font-size: 11px; }
+.technology-detail-meta span { font-size: 12px; }
 .technology-detail-sidecard { padding: 25px; border-radius: 16px; }
 .technology-detail-sidecard h2 { font-size: 20px; }
 .technology-detail-sidecard > p { font-size: 14px; }
-.technology-sidecard-footer { font-size: 10px; }
+.technology-sidecard-footer { font-size: 12px; }
 .technology-detail-layout { gap: 24px; padding-top: 36px; }
 .technology-info-card, .technology-detail-section, .technology-sidebar-card { padding: 24px; border-radius: 15px; }
 .technology-info-card h2 { font-size: 20px; }
@@ -270,44 +271,44 @@ body {
 .technology-detail-section-heading h2, .technology-practices-section h2 { font-size: 24px; }
 .technology-concept-grid { gap: 10px; }
 .technology-concept-grid > div { padding: 14px; border-radius: 10px; }
-.technology-concept-grid span, .technology-start-steps li > span { font-size: 11px; }
+.technology-concept-grid span, .technology-start-steps li > span { font-size: 12px; }
 .technology-lab-requirements { padding: 16px; border-radius: 11px; }
 .technology-lab-requirements strong { font-size: 13px; }
 .technology-labs-grid { gap: 12px; }
 .technology-labs-grid article { padding: 17px; border-radius: 11px; }
-.technology-labs-grid article > span { font-size: 10px; }
+.technology-labs-grid article > span { font-size: 12px; }
 .technology-labs-grid h3 { font-size: 16px; }
 .technology-labs-grid p { font-size: 13px; }
-.technology-official-links small { font-size: 10px; }
+.technology-official-links small { font-size: 12px; }
 .technology-official-links strong { font-size: 13px; }
-.technology-library-links > span { font-size: 10px; }
+.technology-library-links > span { font-size: 12px; }
 .technology-library-links a, .technology-sidebar-all, .technology-detail-pagination > a { font-size: 12px; }
 .technology-sidebar-card h3 { font-size: 17px; }
-.technology-stage-links small, .technology-detail-pagination small { font-size: 10px; }
+.technology-stage-links small, .technology-detail-pagination small { font-size: 12px; }
 .technology-stage-links strong, .technology-detail-pagination strong { font-size: 13px; }
-.technology-related-tags span { font-size: 11px; }
+.technology-related-tags span { font-size: 12px; }
 .technology-home-cta { padding: 24px; border-radius: 16px; }
 
 /* Career centre */
 .career-hero { gap: 40px; }
 .career-hero-copy h1 { font-size: clamp(44px, 5vw, 64px); }
 .career-hero-copy > p { font-size: 16px; }
-.career-hero-meta { gap: 18px; font-size: 11px; }
-.career-panel-top { font-size: 11px; }
+.career-hero-meta { gap: 18px; font-size: 12px; }
+.career-panel-top { font-size: 12px; }
 .career-panel-stats strong { font-size: 30px; }
-.career-panel-stats span { font-size: 10px; }
-.career-panel-flow > div > span { font-size: 11px; }
+.career-panel-stats span { font-size: 12px; }
+.career-panel-flow > div > span { font-size: 12px; }
 .career-panel-flow strong { font-size: 14px; }
 .career-panel-flow small { font-size: 12px; }
 .career-section-nav a { padding: 11px 14px; font-size: 12px; }
 .career-section-heading p { font-size: 14px; }
 .career-section-count strong { font-size: 30px; }
-.career-section-count span { font-size: 10px; }
+.career-section-count span { font-size: 12px; }
 .certification-guidance strong { font-size: 14px; }
 .certification-guidance p { font-size: 13px; }
-.career-results-count { font-size: 11px; }
+.career-results-count { font-size: 12px; }
 .career-track-filters button, .interview-category-filters button { min-height: 40px; font-size: 12px; }
-.career-track-filters button span { font-size: 11px; }
+.career-track-filters button span { font-size: 12px; }
 .certification-compare-bar strong { font-size: 14px; }
 .certification-compare-bar span { font-size: 12px; }
 .career-text-button { font-size: 12px; }
@@ -315,10 +316,10 @@ body {
 .comparison-heading h3 { font-size: 19px; }
 .comparison-table th, .comparison-table td { padding: 14px; font-size: 12px; }
 .comparison-table thead th { font-size: 13px; }
-.certification-track-label, .certification-level { font-size: 10px; }
+.certification-track-label, .certification-level { font-size: 12px; }
 .certification-card h3 { font-size: 18px; }
 .certification-provider { font-size: 12px; }
-.certification-exam-code span, .certification-best-for > span, .certification-stage-links > span { font-size: 10px; }
+.certification-exam-code span, .certification-best-for > span, .certification-stage-links > span { font-size: 12px; }
 .certification-exam-code strong { font-size: 13px; }
 .certification-summary { font-size: 13px; line-height: 1.75; }
 .certification-best-for p { font-size: 12px; }
@@ -326,13 +327,13 @@ body {
 .certification-exam-note strong, .certification-detail-block > strong, .certification-objectives > strong, .certification-proof > strong { font-size: 12px; }
 .certification-exam-note p, .certification-detail-block p, .certification-objectives p { font-size: 12px; line-height: 1.75; }
 .certification-objectives > div > span { font-size: 12px; }
-.certification-objectives > div > span b { font-size: 11px; }
+.certification-objectives > div > span b { font-size: 12px; }
 .certification-proof p { font-size: 12px; }
 .portfolio-intro strong { font-size: 14px; }
 .portfolio-intro p { font-size: 13px; }
 .portfolio-grid { gap: 14px; }
 .portfolio-card { padding: 19px; border-radius: 13px; }
-.portfolio-card > span { font-size: 10px; }
+.portfolio-card > span { font-size: 12px; }
 .portfolio-card h3 { font-size: 17px; }
 .portfolio-card > p { font-size: 13px; }
 .portfolio-card li { font-size: 12px; }
@@ -342,12 +343,12 @@ body {
 .interview-question-list { gap: 10px; }
 .interview-question-card { border-radius: 12px; }
 .interview-question-trigger { padding: 18px; }
-.interview-question-number { font-size: 11px; }
-.interview-question-meta { font-size: 10px; }
+.interview-question-number { font-size: 12px; }
+.interview-question-meta { font-size: 12px; }
 .interview-question-copy > strong { font-size: 14px; }
 .interview-answer-framework { gap: 13px; padding: 0 20px 20px 66px; }
 .interview-why { padding: 13px; }
-.interview-why strong, .answer-framework-title, .interview-follow-up span { font-size: 10px; }
+.interview-why strong, .answer-framework-title, .interview-follow-up span { font-size: 12px; }
 .interview-why p, .interview-answer-framework li, .interview-follow-up p { font-size: 13px; line-height: 1.75; }
 .career-closing-note { padding: 26px; border-radius: 16px; }
 .career-closing-note h2 { font-size: 24px; }
@@ -380,14 +381,14 @@ body {
   .hero-note { font-size: 12px; }
   .network-visual { min-height: 350px; border-radius: 19px; }
   .infra-node { width: 104px; min-height: 78px; }
-  .infra-node span { font-size: 11px; }
-  .infra-node small { font-size: 9px; }
+  .infra-node span { font-size: 12px; }
+  .infra-node small { font-size: 12px; }
   .node-cloud, .node-monitor { left: calc(50% - 52px); }
   .infra-core { width: 156px; min-height: 105px; }
-  .infra-core strong { font-size: 11px; }
-  .infra-core > span { font-size: 9px; }
-  .core-status { font-size: 8px; }
-  .hero-bottom { align-items: flex-start; font-size: 9px; }
+  .infra-core strong { font-size: 12px; }
+  .infra-core > span { font-size: 12px; }
+  .core-status { font-size: 12px; }
+  .hero-bottom { align-items: flex-start; font-size: 12px; }
   .stats-grid div > span { font-size: 12px; }
   .section { padding: 76px 0; }
   .section-heading { margin-bottom: 32px; }
@@ -404,7 +405,7 @@ body {
   .discipline-grid, .resource-grid, .project-grid { grid-template-columns: 1fr; }
   .discipline-card, .resource-card, .project-card { min-height: 0; padding: 21px; }
   .tool-group { grid-template-columns: 1fr; gap: 10px; }
-  .tool-pill { font-size: 11px; }
+  .tool-pill { font-size: 12px; }
   .career-step { grid-template-columns: 30px minmax(0, 1fr) 18px; gap: 10px; }
   .career-step h3 { font-size: 16px; }
   .career-step p { font-size: 13px; }
@@ -423,7 +424,7 @@ body {
   .roadmap-stage-row { grid-template-columns: 28px 42px minmax(0, 1fr) 34px; gap: 11px; padding: 16px; }
   .roadmap-stage-content h2 { font-size: 17px; }
   .roadmap-stage-content > p { font-size: 13px; }
-  .roadmap-stage-topics span { font-size: 10px; }
+  .roadmap-stage-topics span { font-size: 12px; }
   .roadmap-stage-progress { display: none; }
   .stage-detail-grid, .technology-detail-layout { grid-template-columns: 1fr; gap: 18px; padding-top: 24px; }
   .stage-sidebar { position: static; grid-row: 1; margin-bottom: 4px; }
@@ -431,11 +432,11 @@ body {
   .detail-section h2, .technology-detail-section-heading h2, .technology-practices-section h2 { font-size: 21px; }
   .topic-expand { grid-template-columns: 24px minmax(0, 1fr) 20px; gap: 9px; padding: 14px 11px; }
   .topic-title-copy strong { font-size: 14px; }
-  .topic-title-copy small { font-size: 11px; }
+  .topic-title-copy small { font-size: 12px; }
   .topic-expanded { padding-left: 43px; padding-right: 13px; }
   .topic-expanded ul, .topic-expanded p { font-size: 13px; }
   .resource-library-stats { gap: 24px; }
-  .resource-library-stats span { font-size: 10px; }
+  .resource-library-stats span { font-size: 12px; }
   .resource-directory-grid, .technology-card-grid { grid-template-columns: 1fr; }
   .resource-directory-card { min-height: 0; padding: 19px; }
   .resource-directory-card h2, .technology-card h3 { font-size: 18px; }
@@ -452,7 +453,7 @@ body {
   .technology-info-grid, .technology-concept-grid, .technology-labs-grid { grid-template-columns: 1fr; }
   .technology-guidance-note { grid-template-columns: 1fr; gap: 14px; padding: 19px; }
   .career-section-nav { top: 70px; }
-  .career-section-nav a { font-size: 11px; }
+  .career-section-nav a { font-size: 12px; }
   .career-section-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
   .certification-grid, .career-path-grid, .portfolio-grid { grid-template-columns: 1fr; }
   .certification-toolbar, .interview-controls { align-items: stretch; flex-direction: column; gap: 10px; }
@@ -476,21 +477,54 @@ body {
   .hero-copy h1 { font-size: 40px; }
   .network-visual { min-height: 315px; }
   .infra-node { width: 90px; min-height: 70px; }
-  .infra-node span { font-size: 10px; }
-  .infra-node small { font-size: 8px; }
+  .infra-node span { font-size: 12px; }
+  .infra-node small { font-size: 12px; }
   .node-cloud, .node-monitor { left: calc(50% - 45px); }
   .node-network { left: 2%; }
   .node-identity { right: 2%; }
   .infra-core { width: 142px; min-height: 98px; }
-  .infra-core strong { font-size: 10px; }
-  .infra-core > span { font-size: 8px; }
-  .core-status { font-size: 7px; }
-  .hero-bottom { font-size: 8px; }
+  .infra-core strong { font-size: 12px; }
+  .infra-core > span { font-size: 12px; }
+  .core-status { font-size: 12px; }
+  .hero-bottom { font-size: 12px; }
   .schedule-month-grid { grid-template-columns: 1fr; }
   .schedule-metrics > div { grid-template-columns: 22px 1fr; padding: 13px 10px; }
   .schedule-metrics strong { font-size: 13px; }
-  .schedule-metrics small { font-size: 11px; }
+  .schedule-metrics small { font-size: 12px; }
   .career-panel-stats strong { font-size: 24px; }
   .certification-compare-actions { align-items: stretch; flex-direction: column; }
   .certification-compare-actions .button { width: 100%; }
 }
+
+/* Keep supporting copy and compact labels readable on every page. */
+.inner-page p { font-size: 14px; }
+.inner-page small { font-size: 12px; }
+.schedule-task-copy { font-size: 14px; }
+.schedule-task-copy small,
+.schedule-week-nav-number,
+.schedule-week-nav small,
+.schedule-week-detail-top > div > span,
+.schedule-month-milestone > div,
+.schedule-task-heading span,
+.schedule-month-completion > span { font-size: 12px; }
+.schedule-week-nav strong { font-size: 15px; }
+.schedule-month-milestone p { font-size: 14px; }
+.technology-card-category,
+.technology-level,
+.technology-stack small,
+.certification-track-label,
+.certification-level,
+.certification-exam-code span,
+.certification-best-for > span { font-size: 12px; }
+.technology-panel-note { font-size: 14px; }
+.certification-best-for p,
+.certification-item p,
+.certification-card > small { font-size: 14px; }
+.topic-title-copy small,
+.topic-expanded-label,
+.roadmap-stage-meta,
+.stage-detail-meta span { font-size: 12px; }
+
+/* Minimum readable size for prose and browser-small elements. */
+p, li { font-size: max(14px, .875em) !important; }
+small { font-size: max(12px, .75em) !important; }

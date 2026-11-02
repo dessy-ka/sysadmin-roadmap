@@ -32,6 +32,8 @@ export function RoadmapProgressProvider({ children }: { children: ReactNode }) {
           for (const [id, value] of Object.entries(parsed)) {
             if (validTopicIds.has(id) && value === true) restored[id] = true;
           }
+          // Restore local storage after hydration so server and client markup match.
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setCompleted(restored);
         }
       }

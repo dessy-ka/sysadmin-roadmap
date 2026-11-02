@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "SysAdmin Learning Resources | SysAdmin Roadmap",
+  title: "SYSADMIN. | Resources",
   description: "Search a curated library of official documentation, technical references and learning resources for System Administration."
 };
 

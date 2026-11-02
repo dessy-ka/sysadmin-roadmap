@@ -32,7 +32,7 @@ export function RoadmapExplorer() {
       <div className="container">
         <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><span>Complete roadmap</span></div>
         <div className="roadmap-index-hero">
-          <div><span className="eyebrow">THE PROFESSIONAL JOURNEY / 00—07</span><h1>The complete <span>SysAdmin roadmap.</span></h1><p>Explore the full progression from IT fundamentals to advanced infrastructure engineering. Every stage includes concepts, practical labs, portfolio projects, exit criteria and relevant learning references.</p></div>
+          <div><h1>The complete <span>SysAdmin roadmap.</span></h1><p>Explore the full progression from IT fundamentals to advanced infrastructure engineering. Every stage includes concepts, practical labs, portfolio projects, exit criteria and relevant learning references.</p></div>
           <div className="overall-progress-card"><span>YOUR LEARNING PROGRESS</span><strong>{overallProgress}%</strong><div className="progress-track"><span style={{ width: `${overallProgress}%` }} /></div><small>{completedCount} of {totalTopics} topics marked complete</small><small className="progress-storage-note">Saved locally in this browser</small></div>
         </div>
 

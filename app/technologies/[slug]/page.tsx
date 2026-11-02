@@ -14,8 +14,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const technology = getTechnologyBySlug(slug);
-  if (!technology) return { title: "Technology guide not found | SysAdmin Roadmap" };
-  return { title: `${technology.name} | SysAdmin Roadmap`, description: technology.summary };
+  if (!technology) return { title: "SYSADMIN. | Technology Not Found" };
+  return { title: `SYSADMIN. | ${technology.name}`, description: technology.summary };
 }
 
 export default async function TechnologyPage({ params }: PageProps) {

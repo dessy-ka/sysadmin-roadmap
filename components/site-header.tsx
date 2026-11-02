@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Server, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { BrandMark } from "@/components/brand-mark";
 
 const links = [
-  { label: "Overview", href: "/#about" },
+  { label: "Overview", href: "/" },
   { label: "Roadmap", href: "/roadmap" },
   { label: "Technologies", href: "/technologies" },
   { label: "Career centre", href: "/career-center" },
@@ -19,7 +20,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)} aria-label="SysAdmin Roadmap home">
-          <span className="brand-mark"><Server size={19} /></span><span className="brand-name">SYSADMIN<span>.</span></span>
+          <span className="brand-mark"><BrandMark /></span><span className="brand-name">SYSADMIN<span>.</span></span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">{links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</nav>
         <div className="header-actions">

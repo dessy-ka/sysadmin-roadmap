@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Technologies & Tools Directory | SysAdmin Roadmap",
+  title: "SYSADMIN. | Technologies",
   description: "Explore practical SysAdmin technology guides for Linux, Windows Server, networking, Proxmox, Docker, Kubernetes, Ansible, monitoring, databases and cloud platforms."
 };
 

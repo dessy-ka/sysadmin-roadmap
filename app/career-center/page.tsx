@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Certifications & Career Preparation | SysAdmin Roadmap",
+  title: "SYSADMIN. | Career Center",
   description: "Compare SysAdmin certifications, explore infrastructure career paths, build a practical portfolio and prepare for Linux, Windows, networking, cloud and systems administration interviews."
 };
 

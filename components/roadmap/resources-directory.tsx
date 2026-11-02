@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Search, SlidersHorizontal } from "lucide-react";
+import { ExternalLink, Search, SlidersHorizontal } from "lucide-react";
 import { resources, resourceCategories } from "@/data/resources";
 
 const stagePaths: Record<string, string> = {
@@ -35,7 +35,7 @@ export function ResourcesDirectory() {
     <main id="main-content" className="inner-page resources-page">
       <div className="container">
         <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><span>Learning resources</span></div>
-        <div className="resources-hero"><span className="eyebrow">DOCUMENTATION / COURSES / TECHNICAL REFERENCES</span><h1>A curated library of <span>SysAdmin resources.</span></h1><p>Find official documentation, guided learning paths and practical references mapped to the roadmap. Use these alongside hands-on labs, not as a replacement for practice.</p><div className="resource-library-stats"><div><strong>{resources.length}+</strong><span>Resources</span></div><div><strong>{resourceCategories.length - 1}</strong><span>Categories</span></div><div><strong>8</strong><span>Roadmap stages</span></div></div></div>
+        <div className="resources-hero"><h1>A curated library of <span>SysAdmin resources.</span></h1><p>Find official documentation, guided learning paths and practical references mapped to the roadmap. Use these alongside hands-on labs, not as a replacement for practice.</p><div className="resource-library-stats"><div><strong>{resources.length}+</strong><span>Resources</span></div><div><strong>{resourceCategories.length - 1}</strong><span>Categories</span></div><div><strong>8</strong><span>Roadmap stages</span></div></div></div>
         <div className="resource-controls">
           <label className="roadmap-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search documentation, tools or topics..." aria-label="Search learning resources" /></label>
           <label className="resource-select"><SlidersHorizontal size={15} /><select value={category} onChange={(event) => setCategory(event.target.value)} aria-label="Filter by category">{resourceCategories.map((item) => <option key={item}>{item}</option>)}</select></label>
@@ -52,7 +52,7 @@ export function ResourcesDirectory() {
           </motion.article>)}
         </div>
         {!filtered.length && <div className="topic-empty">No resources match those filters. Try another search or access type.</div>}
-        <div className="resource-disclaimer"><strong>Keep links current.</strong><p>Providers can reorganise pages, change course availability or update exam versions. If a link moves, use the provider's own learning catalogue and search for the resource title. Always confirm certification and pricing details before making a purchase.</p></div>
+        <div className="resource-disclaimer"><strong>Keep links current.</strong><p>Providers can reorganise pages, change course availability or update exam versions. If a link moves, use the provider&apos;s own learning catalogue and search for the resource title. Always confirm certification and pricing details before making a purchase.</p></div>
       </div>
     </main>
   );

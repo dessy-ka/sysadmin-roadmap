@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 /* global require, process, console, URL */
+/* eslint-disable @typescript-eslint/no-require-imports -- This QA script uses CommonJS by design (.cjs). */
 /* Offline content, route, import and TS/TSX syntax checks for this project. */
 const fs = require("node:fs");
 const path = require("node:path");
