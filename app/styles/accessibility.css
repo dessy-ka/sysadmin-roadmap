@@ -30,7 +30,7 @@
 .status-page-actions .button { display: inline-flex; align-items: center; gap: 8px; }
 .status-page-back { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
 .status-page-back:hover { color: var(--accent); }
-.error-digest { display: block; margin-top: 14px; color: var(--muted-2); font: 12px var(--font-dm-mono), monospace; }
+.error-digest { display: block; margin-top: 14px; color: var(--muted-2); font: 12px var(--font-mono), monospace; }
 @media (max-width: 520px) {
   .status-page-content { padding-block: 50px; }
   .status-page-actions { align-items: stretch; flex-direction: column; gap: 14px; }

@@ -29,7 +29,7 @@ export function SiteHeader() {
           <button className="icon-button mobile-menu-button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" type="button" onClick={() => setOpen((value) => !value)}>{open ? <X size={20} /> : <Menu size={20} />}</button>
         </div>
       </div>
-      <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" hidden={!open}>{[...links, { label: "Labs & projects", href: "/#labs" }].map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>)}</nav>
+      <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" hidden={!open}>{[...links, { label: "Labs & projects", href: "/roadmap#stages" }].map((link) => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>)}</nav>
     </header>
   );
 }

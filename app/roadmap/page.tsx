@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { RoadmapExplorer } from "@/components/roadmap/roadmap-explorer";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "SYSADMIN. | Roadmap",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function RoadmapPage() {
-  return <><SiteHeader /><RoadmapExplorer /><SiteFooter /></>;
+  return <><SiteHeader /><RoadmapExplorer /></>;
 }

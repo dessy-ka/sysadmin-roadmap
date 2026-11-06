@@ -41,7 +41,7 @@ export function RoadmapExplorer() {
           <div className="level-filters" aria-label="Filter by level">{["All levels", "Beginner", "Intermediate", "Advanced"].map((item) => <button key={item} className={level === item ? "active" : ""} onClick={() => setLevel(item)}>{item}</button>)}</div>
         </div>
 
-        <div className="roadmap-stage-list">
+        <div id="stages" className="roadmap-stage-list">
           {filteredStages.map((stage, index) => {
             const Icon = iconByStage[roadmapStages.indexOf(stage)] ?? Server;
             const topics = stage.sections.flatMap((section) => section.topics);

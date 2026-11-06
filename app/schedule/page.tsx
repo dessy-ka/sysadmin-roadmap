@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { SchedulePlanner } from "@/components/schedule/schedule-planner";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "SYSADMIN. | Schedule",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function SchedulePage() {
-  return <><SiteHeader /><SchedulePlanner /><SiteFooter /></>;
+  return <><SiteHeader /><SchedulePlanner /></>;
 }

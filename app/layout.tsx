@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { RoadmapProgressProvider } from "@/components/roadmap/use-roadmap-progress";
 import { getSiteUrl } from "@/lib/site-url";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import "./styles/font-stack.css";
 import "./styles/roadmap.css";
@@ -42,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>

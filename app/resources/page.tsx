@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ResourcesDirectory } from "@/components/roadmap/resources-directory";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "SYSADMIN. | Resources",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ResourcesPage() {
-  return <><SiteHeader /><ResourcesDirectory /><SiteFooter /></>;
+  return <><SiteHeader /><ResourcesDirectory /></>;
 }

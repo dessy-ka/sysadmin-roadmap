@@ -10,7 +10,7 @@
 .schedule-flex-note { display: flex; align-items: flex-start; gap: 9px; margin-top: 22px; color: var(--muted-2); font-size: 12px; line-height: 1.7; }
 .schedule-flex-note svg { flex: 0 0 auto; margin-top: 1px; color: var(--accent); }
 .schedule-progress-card { padding: 24px; border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(145deg, var(--surface), var(--surface-2)); box-shadow: var(--shadow); }
-.schedule-progress-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted-2); font: 12px var(--font-dm-mono), monospace; letter-spacing: .11em; }
+.schedule-progress-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .11em; }
 .schedule-live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 15%, transparent); }
 .schedule-progress-number { margin: 14px 0 10px; font-size: 57px; font-weight: 800; letter-spacing: -.07em; line-height: 1; }
 .schedule-progress-number small { margin-left: 3px; color: var(--accent); font-size: 23px; }
@@ -23,7 +23,7 @@
 .study-hours-control svg { color: var(--accent); }
 .study-hours-control strong { color: var(--text); font-size: 13px; }
 .schedule-progress-card input[type="range"] { width: 100%; margin: 17px 0 5px; accent-color: var(--accent); cursor: pointer; }
-.schedule-hours-scale { display: flex; justify-content: space-between; color: var(--muted-2); font: 12px var(--font-dm-mono), monospace; }
+.schedule-hours-scale { display: flex; justify-content: space-between; color: var(--muted-2); font: 12px var(--font-mono), monospace; }
 .schedule-pace-estimate { margin: 13px 0 0; padding: 10px 11px; border-radius: 8px; background: var(--accent-soft); color: var(--muted); font-size: 12px; line-height: 1.65; }
 .schedule-pace-estimate strong { color: var(--accent); }
 .schedule-local-note { display: flex; align-items: center; gap: 6px; margin-top: 14px; color: var(--muted-2); font-size: 12px; }
@@ -31,7 +31,7 @@
 .schedule-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 6px 0 64px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
 .schedule-metrics > div { display: grid; grid-template-columns: 27px 1fr; column-gap: 9px; align-content: center; padding: 19px 21px; border-right: 1px solid var(--border); }
 .schedule-metrics > div:last-child { border-right: 0; }
-.schedule-metrics > div > span { grid-row: span 2; color: var(--accent); font: 12px var(--font-dm-mono), monospace; padding-top: 3px; }
+.schedule-metrics > div > span { grid-row: span 2; color: var(--accent); font: 12px var(--font-mono), monospace; padding-top: 3px; }
 .schedule-metrics strong { font-size: 12px; }
 .schedule-metrics small { margin-top: 4px; color: var(--muted-2); font-size: 12px; }
 .schedule-month-section { padding: 0 0 58px; border-bottom: 1px solid var(--border); }
@@ -46,9 +46,9 @@
 .schedule-month-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); box-shadow: var(--shadow); }
 .schedule-month-card.selected { border-color: var(--accent); background: linear-gradient(145deg, var(--accent-soft), var(--surface)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 20%, transparent); }
 .schedule-month-card-top { display: flex; align-items: center; justify-content: space-between; color: var(--accent); }
-.schedule-month-card-top > small { font: 12px var(--font-dm-mono), monospace; letter-spacing: .1em; }
+.schedule-month-card-top > small { font: 12px var(--font-mono), monospace; letter-spacing: .1em; }
 .schedule-month-card-top svg { color: var(--green); }
-.schedule-month-progress-label { color: var(--muted-2); font: 12px var(--font-dm-mono), monospace; }
+.schedule-month-progress-label { color: var(--muted-2); font: 12px var(--font-mono), monospace; }
 .schedule-month-card > strong { margin-top: 12px; font-size: 12px; line-height: 1.45; }
 .schedule-month-stage { margin-top: 4px; color: var(--muted-2); font-size: 12px; }
 .schedule-month-progress { height: 4px; margin-top: auto; margin-bottom: 9px; }
@@ -60,7 +60,7 @@
 .schedule-week-heading h2 { max-width: 720px; }
 .schedule-month-completion { min-width: 125px; display: grid; gap: 4px; padding: 13px 15px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
 .schedule-month-completion strong { font-size: 24px; letter-spacing: -.04em; }
-.schedule-month-completion > span { color: var(--muted-2); font: 12px var(--font-dm-mono), monospace; letter-spacing: .08em; }
+.schedule-month-completion > span { color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .08em; }
 .schedule-month-completion > div { height: 4px; overflow: hidden; margin-top: 5px; border-radius: 10px; background: var(--border); }
 .schedule-month-completion i { display: block; height: 100%; border-radius: inherit; background: var(--green); }
 .schedule-stage-reference { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin: 21px 0 17px; padding: 11px 13px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
@@ -73,12 +73,12 @@
 .schedule-week-nav button { position: relative; display: grid; gap: 5px; padding: 13px 15px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); color: var(--text); text-align: left; cursor: pointer; transition: border-color .2s, background .2s; }
 .schedule-week-nav button.active { border-color: var(--accent); background: var(--accent-soft); }
 .schedule-week-nav button > svg { position: absolute; top: 15px; right: 13px; color: var(--green); }
-.schedule-week-nav-number { color: var(--accent); font: 12px var(--font-dm-mono), monospace; letter-spacing: .08em; }
+.schedule-week-nav-number { color: var(--accent); font: 12px var(--font-mono), monospace; letter-spacing: .08em; }
 .schedule-week-nav strong { padding-right: 10px; font-size: 12px; line-height: 1.5; }
 .schedule-week-nav small { color: var(--muted-2); font-size: 12px; }
 .schedule-week-detail { min-width: 0; padding: 23px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); box-shadow: var(--shadow); }
 .schedule-week-detail-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; }
-.schedule-week-detail-top > div > span { color: var(--accent); font: 12px var(--font-dm-mono), monospace; letter-spacing: .1em; }
+.schedule-week-detail-top > div > span { color: var(--accent); font: 12px var(--font-mono), monospace; letter-spacing: .1em; }
 .schedule-week-detail-top h3 { margin: 8px 0 0; font-size: 21px; letter-spacing: -.035em; }
 .schedule-week-hours { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; padding: 7px 9px; border: 1px solid var(--border); border-radius: 7px; color: var(--muted); font-size: 12px; }
 .schedule-week-hours svg { color: var(--accent); }
@@ -91,12 +91,12 @@
 .schedule-task input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .schedule-task-check { width: 17px; height: 17px; display: grid; place-items: center; margin-top: 1px; border: 1px solid var(--border); border-radius: 5px; color: transparent; transition: background .2s, border-color .2s, color .2s; }
 .schedule-task input:focus-visible + .schedule-task-check { outline: 2px solid var(--accent); outline-offset: 3px; }
-.schedule-task input:checked + .schedule-task-check { border-color: var(--green); background: var(--green); color: #fff; }
+.schedule-task input:checked + .schedule-task-check { border-color: var(--green); background: var(--green); color: #f7f8fa; }
 .schedule-task-copy { display: grid; gap: 4px; color: var(--muted); font-size: 12px; line-height: 1.7; transition: color .2s; }
-.schedule-task-copy small { color: var(--muted-2); font: 12px var(--font-dm-mono), monospace; letter-spacing: .08em; }
+.schedule-task-copy small { color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .08em; }
 .schedule-task.done .schedule-task-copy { color: var(--muted-2); text-decoration: line-through; text-decoration-color: var(--muted-2); }
 .schedule-deliverable { margin-top: 17px; padding: 13px 15px; border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border)); border-radius: 8px; background: var(--accent-soft); }
-.schedule-deliverable > span { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font: 12px var(--font-dm-mono), monospace; letter-spacing: .08em; }
+.schedule-deliverable > span { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font: 12px var(--font-mono), monospace; letter-spacing: .08em; }
 .schedule-deliverable p { margin: 7px 0 0; color: var(--text); font-size: 12px; line-height: 1.7; }
 .schedule-related-resources { margin-top: 19px; }
 .schedule-related-resources > div:first-child { display: flex; align-items: center; gap: 7px; color: var(--text); font-size: 12px; }
@@ -106,10 +106,10 @@
 .schedule-resource-links a:hover { border-color: var(--accent); color: var(--accent); }
 .schedule-week-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; padding-top: 15px; border-top: 1px solid var(--border); }
 .schedule-week-change, .schedule-week-next { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); color: var(--muted); font-size: 12px; font-weight: 800; cursor: pointer; }
-.schedule-week-next { border-color: var(--accent); background: var(--accent); color: #fff; }
+.schedule-week-next { border-color: var(--accent); background: var(--accent); color: #f7f8fa; }
 .schedule-week-change:disabled, .schedule-week-next:disabled { opacity: .35; cursor: not-allowed; }
 .schedule-month-milestone { display: flex; align-items: center; gap: 18px; margin-top: 15px; padding: 15px 18px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-2); }
-.schedule-month-milestone > div { display: flex; align-items: center; gap: 7px; flex: 0 0 auto; color: var(--accent); font: 12px var(--font-dm-mono), monospace; letter-spacing: .07em; }
+.schedule-month-milestone > div { display: flex; align-items: center; gap: 7px; flex: 0 0 auto; color: var(--accent); font: 12px var(--font-mono), monospace; letter-spacing: .07em; }
 .schedule-month-milestone p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
 .schedule-guidance { display: grid; grid-template-columns: 43px 1fr auto; align-items: center; gap: 15px; margin-top: 52px; padding: 20px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface); }
 .schedule-guidance-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: var(--accent-soft); color: var(--accent); }

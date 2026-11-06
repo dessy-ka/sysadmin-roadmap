@@ -1,7 +1,26 @@
 "use client";
+
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, BookOpen, Boxes, CalendarDays, CheckCircle2, ChevronRight, Cloud, Database, ExternalLink, FileText, Gauge, GitBranch, LockKeyhole, Network, RadioTower, Server, ShieldCheck, Terminal, Workflow, Monitor, Activity, Clock3 } from "lucide-react";
+import {
+  Activity,
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Boxes,
+  CalendarDays,
+  CheckCircle2,
+  ChevronRight,
+  Cloud,
+  FileText,
+  Network,
+  RadioTower,
+  Server,
+  ShieldCheck,
+  Terminal,
+  Monitor
+} from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -13,75 +32,132 @@ const reveal: Variants = {
     transition: { duration: 0.55, ease: "easeOut" }
   }
 };
+
 const stages = [
- {n:"00",slug:"it-fundamentals",title:"IT & Computer Fundamentals",level:"Beginner",icon:Monitor,desc:"Understand hardware, computer architecture, operating-system fundamentals and structured troubleshooting.",topics:["Hardware & architecture","OS fundamentals","Boot & recovery","Troubleshooting"]},
- {n:"01",slug:"networking",title:"Networking & Network Administration",level:"Foundation → Intermediate",icon:Network,desc:"Learn addressing, subnetting, switching, routing, DNS, DHCP, firewalls and secure connectivity.",topics:["TCP/IP & subnetting","VLANs & routing","DNS & DHCP","Firewalls & VPNs"]},
- {n:"02",slug:"linux-windows-administration",title:"Linux & Windows Administration",level:"Core SysAdmin skills",icon:Terminal,desc:"Administer Linux and Windows servers, manage users and services, configure storage and troubleshoot from the command line.",topics:["Linux administration","Windows Server","Bash & PowerShell","Services & storage"]},
- {n:"03",slug:"enterprise-administration",title:"Enterprise System Administration",level:"Junior → Independent",icon:Server,desc:"Manage organisational identity, Active Directory, Group Policy, shared services and enterprise operations.",topics:["Active Directory","Group Policy","Identity lifecycle","Enterprise services"]},
- {n:"04",slug:"infrastructure-operations",title:"Virtualization, Storage & Monitoring",level:"Intermediate",icon:Boxes,desc:"Operate virtual infrastructure, containers, storage, backup, disaster recovery and monitoring platforms.",topics:["Proxmox & hypervisors","Storage & RAID","Backup & recovery","Monitoring"]},
- {n:"05",slug:"security-automation",title:"Security, Automation & Operations",level:"Intermediate → Advanced",icon:ShieldCheck,desc:"Harden systems, manage risk and automate repeatable infrastructure tasks with scripts and infrastructure as code.",topics:["System hardening","IAM & security","Ansible","Terraform & Git"]},
- {n:"06",slug:"cloud-hybrid",title:"Cloud & Hybrid Administration",level:"Intermediate → Advanced",icon:Cloud,desc:"Operate Azure, AWS or Google Cloud and integrate cloud services with on-premises infrastructure.",topics:["Cloud foundations","Azure / AWS / GCP","Hybrid identity","Cloud governance"]},
- {n:"07",slug:"advanced-engineering",title:"Advanced Infrastructure, Kubernetes & SRE",level:"Advanced",icon:Activity,desc:"Design resilient platforms, operate Kubernetes, measure reliability and develop infrastructure architecture skills.",topics:["High availability","Kubernetes","SRE & observability","Architecture"]}
+  { n: "00", slug: "it-fundamentals", title: "IT & Computer Fundamentals", level: "Beginner", icon: Monitor, desc: "Understand hardware, computer architecture, operating-system fundamentals and structured troubleshooting.", topics: ["Hardware & architecture", "OS fundamentals", "Boot & recovery", "Troubleshooting"] },
+  { n: "01", slug: "networking", title: "Networking & Network Administration", level: "Foundation to intermediate", icon: Network, desc: "Learn addressing, subnetting, switching, routing, DNS, DHCP, firewalls and secure connectivity.", topics: ["TCP/IP & subnetting", "VLANs & routing", "DNS & DHCP", "Firewalls & VPNs"] },
+  { n: "02", slug: "linux-windows-administration", title: "Linux & Windows Administration", level: "Core SysAdmin skills", icon: Terminal, desc: "Administer Linux and Windows servers, manage users and services, configure storage and troubleshoot from the command line.", topics: ["Linux administration", "Windows Server", "Bash & PowerShell", "Services & storage"] },
+  { n: "03", slug: "enterprise-administration", title: "Enterprise System Administration", level: "Junior to independent", icon: Server, desc: "Manage organisational identity, Active Directory, Group Policy, shared services and enterprise operations.", topics: ["Active Directory", "Group Policy", "Identity lifecycle", "Enterprise services"] },
+  { n: "04", slug: "infrastructure-operations", title: "Virtualization, Storage & Monitoring", level: "Intermediate", icon: Boxes, desc: "Operate virtual infrastructure, containers, storage, backup, disaster recovery and monitoring platforms.", topics: ["Proxmox & hypervisors", "Storage & RAID", "Backup & recovery", "Monitoring"] },
+  { n: "05", slug: "security-automation", title: "Security, Automation & Operations", level: "Intermediate to advanced", icon: ShieldCheck, desc: "Harden systems, manage risk and automate repeatable infrastructure tasks with scripts and infrastructure as code.", topics: ["System hardening", "IAM & security", "Ansible", "Terraform & Git"] },
+  { n: "06", slug: "cloud-hybrid", title: "Cloud & Hybrid Administration", level: "Intermediate to advanced", icon: Cloud, desc: "Operate Azure, AWS or Google Cloud and integrate cloud services with on-premises infrastructure.", topics: ["Cloud foundations", "Azure / AWS / GCP", "Hybrid identity", "Cloud governance"] },
+  { n: "07", slug: "advanced-engineering", title: "Advanced Infrastructure, Kubernetes & SRE", level: "Advanced", icon: Activity, desc: "Design resilient platforms, operate Kubernetes, measure reliability and develop infrastructure architecture skills.", topics: ["High availability", "Kubernetes", "SRE & observability", "Architecture"] }
 ];
-const disciplines = [
- {title:"Operating systems",desc:"Linux, Windows Server, processes, services and system internals.",icon:Terminal,tags:["Linux","Windows","PowerShell"]},
- {title:"Networking",desc:"Addressing, routing, switching, name resolution and secure connectivity.",icon:Network,tags:["TCP/IP","DNS","VLANs"]},
- {title:"Server infrastructure",desc:"Identity, directory services, compute, storage and enterprise services.",icon:Server,tags:["AD DS","DHCP","File services"]},
- {title:"Virtualization",desc:"Run and manage virtual machines, containers and homelab environments.",icon:Boxes,tags:["Proxmox","Hyper-V","Docker"]},
- {title:"Storage & backup",desc:"Protect data, plan capacity and recover services after failures.",icon:Database,tags:["RAID","Snapshots","Recovery"]},
- {title:"Security",desc:"Apply least privilege, patch systems, harden services and monitor threats.",icon:LockKeyhole,tags:["Hardening","IAM","Firewalls"]},
- {title:"Automation",desc:"Use scripts and infrastructure as code to make operations repeatable.",icon:Workflow,tags:["Bash","Ansible","Terraform"]},
- {title:"Cloud & reliability",desc:"Operate cloud platforms and build observable, resilient services.",icon:Cloud,tags:["AWS","Azure","Monitoring"]}
+
+const destinations = [
+  { title: "Technologies & tools", description: "Explore guides to operating systems, networking, virtualization, security and cloud.", href: "/technologies", action: "Browse technologies", icon: Boxes },
+  { title: "Learning resources", description: "Find official documentation and trusted learning material in one searchable library.", href: "/resources", action: "Browse resources", icon: BookOpen },
+  { title: "Study schedule", description: "Use a flexible 12-month plan with weekly topics, tasks and milestones.", href: "/schedule", action: "View the schedule", icon: CalendarDays },
+  { title: "Career center", description: "Compare certifications, explore roles, build a portfolio and practise interviews.", href: "/career-center", action: "Explore career paths", icon: ShieldCheck }
 ];
-const toolGroups = [
- ["Operating systems",["Debian","Ubuntu Server","RHEL","Windows Server","PowerShell"]],
- ["Networking",["Cisco","GNS3","Packet Tracer","Wireshark","OPNsense"]],
- ["Virtualization & containers",["Proxmox VE","Hyper-V","VMware","Docker","Kubernetes"]],
- ["Monitoring & operations",["Nagios","Prometheus","Grafana","Zabbix","Loki"]],
- ["Automation & cloud",["Ansible","Terraform","Git","AWS","Microsoft Azure"]]
-] as const;
-const resources = [
- {name:"Microsoft Learn",cat:"Windows & Azure",type:"Free",desc:"Official learning paths for Windows Server, PowerShell and Azure administration.",url:"https://learn.microsoft.com/"},
- {name:"Debian Documentation",cat:"Linux",type:"Free",desc:"Installation, administration and reference documentation for Debian systems.",url:"https://www.debian.org/doc/"},
- {name:"Ubuntu Server Guide",cat:"Linux",type:"Free",desc:"Practical guidance for deploying and administering Ubuntu Server.",url:"https://documentation.ubuntu.com/server/"},
- {name:"Cisco Networking Academy",cat:"Networking",type:"Mixed",desc:"Networking fundamentals, introductory courses and hands-on learning.",url:"https://www.netacad.com/"},
- {name:"Proxmox VE Documentation",cat:"Virtualization",type:"Free",desc:"Official administration guide for Proxmox Virtual Environment.",url:"https://pve.proxmox.com/pve-docs/"},
- {name:"Ansible Documentation",cat:"Automation",type:"Free",desc:"Learn inventory, playbooks, modules and repeatable configuration management.",url:"https://docs.ansible.com/"},
- {name:"AWS Skill Builder",cat:"Cloud",type:"Mixed",desc:"Digital training and learning plans for AWS cloud technologies.",url:"https://skillbuilder.aws/"},
- {name:"Kubernetes Documentation",cat:"Cloud native",type:"Free",desc:"Official tutorials and reference material for Kubernetes.",url:"https://kubernetes.io/docs/tutorials/"}
-];
-const months = [
- ["01","Foundations","IT fundamentals, hardware, operating systems and command-line basics."],
- ["02","Networking I","TCP/IP, IPv4, subnetting, switching and routing fundamentals."],
- ["03","Networking II","DNS, DHCP, VLANs, firewalls, VPNs and troubleshooting."],
- ["04","Linux I","Linux installation, filesystem, shell, users and permissions."],
- ["05","Linux II","Services, storage, logs, SSH, scripting and server operations."],
- ["06","Windows Server","Windows Server, Active Directory, DNS, DHCP and PowerShell."],
- ["07","Enterprise services","Group Policy, identity, file services and access management."],
- ["08","Infrastructure","Virtualization, storage, backup, recovery and homelab design."],
- ["09","Monitoring & security","Observability, patching, hardening and incident fundamentals."],
- ["10","Automation","Bash, PowerShell, Git, Ansible and Infrastructure as Code."],
- ["11","Cloud","Cloud fundamentals, networking, identity, compute and storage."],
- ["12","Integration project","Build, document and present an end-to-end infrastructure project."]
-];
-const projects = [
- {title:"Build a home lab",desc:"Create a small virtual environment with a hypervisor, Linux and Windows servers, storage and a documented network.",icon:Server,level:"Foundation → Intermediate"},
- {title:"Deploy central identity",desc:"Configure Active Directory, DNS, DHCP, users, groups and Group Policy in a test domain.",icon:ShieldCheck,level:"Intermediate"},
- {title:"Monitor an infrastructure stack",desc:"Deploy monitoring and dashboards, define alerts and investigate service or resource failures.",icon:Activity,level:"Intermediate → Advanced"},
- {title:"Automate server configuration",desc:"Use Git and Ansible to provision, configure and validate a repeatable server setup.",icon:GitBranch,level:"Advanced"}
-];
-function Heading({title,desc,center=false}:{title:string;desc:string;center?:boolean}) { return <motion.div className={`section-heading ${center?"center":""}`} variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true,amount:.2}}><h2>{title}</h2><p>{desc}</p></motion.div>; }
-function InfrastructureGraphic() { return <div className="network-visual" aria-label="Illustration of connected IT infrastructure"><svg className="network-lines" viewBox="0 0 620 440" fill="none" aria-hidden="true"><path d="M310 95 L145 180 L145 275 M310 95 L475 180 L475 275 M145 275 L310 350 L475 275 M310 95 L310 350"/><path d="M145 180 L475 180" className="line-dash"/><circle cx="310" cy="95" r="4"/><circle cx="145" cy="180" r="4"/><circle cx="475" cy="180" r="4"/><circle cx="145" cy="275" r="4"/><circle cx="475" cy="275" r="4"/><circle cx="310" cy="350" r="4"/></svg><div className="infra-node node-cloud"><Cloud size={21}/><span>Cloud</span><small>Public / Private</small></div><div className="infra-node node-network"><Network size={21}/><span>Network</span><small>Routing · DNS</small></div><div className="infra-node node-identity"><ShieldCheck size={21}/><span>Identity</span><small>Access · Policies</small></div><div className="infra-core"><div className="core-icon"><Server size={27}/></div><strong>Core infrastructure</strong><span>Compute · Storage · Services</span><div className="core-status"><i/> ALL SYSTEMS CONNECTED</div></div><div className="infra-node node-monitor"><Activity size={21}/><span>Monitoring</span><small>Logs · Metrics</small></div></div>; }
-export default function HomePage() { return <><SiteHeader/><main id="main-content"><div id="top" />
-<section className="hero-section"><div className="hero-grid"/><div className="container hero-layout"><motion.div className="hero-copy" initial="hidden" animate="visible" variants={{hidden:{},visible:{transition:{staggerChildren:.11}}}}><motion.h1 variants={reveal}>Understand the systems.<br/><span>Master the infrastructure.</span></motion.h1><motion.p variants={reveal}>A practical, structured guide to System Administration — from operating systems and networking to enterprise infrastructure, automation and cloud architecture.</motion.p><motion.div variants={reveal} className="hero-actions"><a className="button button-primary" href="#roadmap">Explore the roadmap <ArrowRight size={17}/></a><a className="button button-secondary" href="#resources">Browse resources <BookOpen size={16}/></a></motion.div><motion.div variants={reveal} className="hero-note"><CheckCircle2 size={15}/> A knowledge and roadmap portal. Not an online course platform.</motion.div></motion.div><motion.div className="hero-art" initial={{opacity:0,scale:.96,y:16}} animate={{opacity:1,scale:1,y:0}} transition={{duration:.8,delay:.25}}><InfrastructureGraphic/></motion.div></div><div className="container hero-bottom"><a href="#about">Discover the field <ArrowDown size={14}/></a></div></section>
-<section className="stats-strip"><div className="container stats-grid"><div><strong>08</strong><span>Roadmap stages</span></div><div><strong>40<span>+</span></strong><span>Curated resources</span></div><div><strong>12</strong><span>Month study plan</span></div><div><strong>01</strong><span>Connected profession</span></div></div></section>
-<section id="about" className="section"><div className="container about-grid"><Heading title="The work behind reliable technology." desc="System Administration is the practice of deploying, maintaining, securing and troubleshooting the systems that people and organisations depend on every day."/><motion.div className="about-detail" variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true}}><p>From a small Linux server to a complex enterprise environment, a System Administrator keeps infrastructure available, secure, organised and performing as expected.</p><div className="about-points"><div><CheckCircle2/><span>Keep systems available and reliable</span></div><div><CheckCircle2/><span>Manage users, services and infrastructure</span></div><div><CheckCircle2/><span>Protect data and control access</span></div><div><CheckCircle2/><span>Automate operations and solve problems</span></div></div><a className="text-link" href="#technologies">Explore the technical disciplines <ArrowUpRight size={16}/></a></motion.div></div></section>
-<section id="roadmap" className="section section-roadmap"><div className="container"><Heading title="The complete SysAdmin roadmap." desc="A structured progression through the knowledge areas, technologies and practical capabilities used in modern System Administration."/><div className="roadmap-grid">{stages.map((s,i)=>{const Icon=s.icon;return <motion.article key={s.n} className="stage-card" variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true,amount:.12}} transition={{delay:i*.035}}><div className="stage-card-top"><span className="stage-number">{s.n}</span><span className="stage-level">{s.level}</span></div><div className="stage-icon"><Icon size={21}/></div><h3>{s.title}</h3><p>{s.desc}</p><div className="stage-topics">{s.topics.map(t=><span key={t}>{t}</span>)}</div><Link href={`/roadmap/${s.slug}`} className="stage-link">Explore this stage <ChevronRight size={15}/></Link></motion.article>;})}</div><div className="roadmap-footnote"><FileText size={16}/><span>Open the full roadmap to explore detailed topics, hands-on labs, portfolio projects, exit criteria, certification guidance and related learning references.</span><Link href="/roadmap" className="text-link">Open full roadmap <ArrowUpRight size={15}/></Link></div></div></section>
-<section id="technologies" className="section"><div className="container"><Heading title="The technologies you'll work with." desc="System Administration spans multiple connected disciplines. Explore the foundations behind the tools and platforms."/><div className="discipline-grid">{disciplines.map((d,i)=>{const Icon=d.icon;return <motion.article key={d.title} className="discipline-card" variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true}} transition={{delay:i*.035}}><div className="discipline-icon"><Icon size={20}/></div><h3>{d.title}</h3><p>{d.desc}</p><div className="tag-row">{d.tags.map(t=><span key={t}>{t}</span>)}</div></motion.article>;})}</div><div className="technology-home-cta"><div><strong>Explore the technologies behind each discipline.</strong><p>Open detailed guides with practical labs, infrastructure context and official documentation.</p></div><Link className="button button-primary" href="/technologies">Explore technologies & tools <ArrowUpRight size={16}/></Link></div></div></section>
-<section id="tools" className="section section-tools"><div className="container tools-layout"><div className="tools-copy"><Heading title="Know the tools. Understand where they fit." desc="A practical map of the platforms and utilities commonly used to operate, secure and automate IT infrastructure."/><a className="text-link" href="#resources">Find official documentation <ArrowUpRight size={16}/></a></div><div className="tool-groups">{toolGroups.map(([group,items])=><div className="tool-group" key={group}><span>{group}</span><div>{items.map(item=><span className="tool-pill" key={item}>{item}</span>)}</div></div>)}</div></div></section>
-<section id="resources" className="section"><div className="container"><Heading title="Learn from the source." desc="A curated starting point for official documentation, structured learning paths and trusted technical references."/><div className="resource-grid">{resources.map((r,i)=><motion.a key={r.name} className="resource-card" href={r.url} target="_blank" rel="noopener noreferrer" variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true}} transition={{delay:i*.04}}><div className="resource-card-top"><span>{r.cat}</span><span className="resource-type">{r.type}</span></div><h3>{r.name}</h3><p>{r.desc}</p><div className="resource-open">Visit resource <ExternalLink size={14}/></div></motion.a>)}</div><div className="center-action"><Link className="button button-secondary" href="/resources">Browse the full resource library <ArrowUpRight size={16}/></Link></div></div></section>
-<section id="labs" className="section section-labs"><div className="container"><Heading title="Turn technical knowledge into capability." desc="Practical projects help connect concepts across operating systems, networking, infrastructure and automation."/><div className="project-grid">{projects.map((p,i)=>{const Icon=p.icon;return <motion.article key={p.title} className="project-card" variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true}} transition={{delay:i*.04}}><div className="project-icon"><Icon size={21}/></div><span className="project-level">{p.level}</span><h3>{p.title}</h3><p>{p.desc}</p><span className="project-footer">PRACTICAL PROJECT <ArrowUpRight size={14}/></span></motion.article>;})}</div></div></section>
-<section id="schedule" className="section section-schedule"><div className="container"><div className="schedule-heading-row"><Heading title="A schedule that turns the roadmap into a plan." desc="A suggested 12-month sequence that balances theory, practical labs, review and a final infrastructure project."/><div className="schedule-meta"><CalendarDays size={18}/><span>12 MONTHS</span><i/><Clock3 size={17}/><span>FLEXIBLE PACE</span></div></div><div className="schedule-grid">{months.map(([n,title,desc],i)=><motion.div className="month-row" key={n} variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true}} transition={{delay:i*.025}}><span className="month-number">M{n}</span><div className="month-copy"><strong>{title}</strong><p>{desc}</p></div><span className="month-indicator"><span/></span></motion.div>)}</div><div className="schedule-note"><Gauge size={18}/><p>This is a suggested sequence, not a deadline. Adjust the pace based on your available time, previous experience and access to lab equipment.</p></div><div className="schedule-full-link"><Link className="button button-secondary" href="/schedule">Open the interactive 12-month schedule <ArrowUpRight size={15}/></Link></div></div></section>
-<section id="careers" className="section section-careers"><div className="container"><Heading title="Where can the journey lead?" desc="System Administration provides a foundation for several infrastructure and operations specialisations." center/><div className="career-track">{[["01","IT Support / Junior Administrator","Build operational confidence and support end users and systems."],["02","System Administrator","Own servers, services, access, backups and day-to-day infrastructure."],["03","Senior / Infrastructure Engineer","Design, automate and improve complex environments."],["04","Infrastructure Architect","Plan resilient, secure and scalable technology platforms."]].map(([n,title,desc],i)=><motion.div className="career-step" key={n} variants={reveal} initial="hidden" whileInView="visible" viewport={{once:true}} transition={{delay:i*.07}}><span>{n}</span><div><h3>{title}</h3><p>{desc}</p></div><ChevronRight size={18}/></motion.div>)}</div><div className="career-home-cta"><div><strong>Compare certifications. Prepare for real interviews.</strong><p>Explore infrastructure career paths, exam objectives, portfolio project ideas and practical SysAdmin interview questions.</p></div><Link className="button button-primary" href="/career-center">Open the career centre <ArrowUpRight size={16}/></Link></div></div></section>
-<section className="closing-section"><div className="container closing-inner"><div className="closing-orb"><RadioTower size={27}/></div><h2>Understand the infrastructure.<br/><span>Build the capability.</span></h2><p>Explore the roadmap, follow the technical disciplines and use trusted resources to keep developing your System Administration skills.</p><a className="button button-primary" href="#roadmap">Start exploring <ArrowRight size={17}/></a></div></section>
-</main><SiteFooter/></>; }
+
+function Heading({ title, desc }: { title: string; desc: string }) {
+  return (
+    <motion.div className="section-heading" variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+      <h2>{title}</h2>
+      <p>{desc}</p>
+    </motion.div>
+  );
+}
+
+function InfrastructureGraphic() {
+  return (
+    <div className="network-visual" aria-label="Illustration of connected IT infrastructure">
+      <svg className="network-lines" viewBox="0 0 620 440" fill="none" aria-hidden="true">
+        <path d="M310 95 L145 180 L145 275 M310 95 L475 180 L475 275 M145 275 L310 350 L475 275 M310 95 L310 350" />
+        <path d="M145 180 L475 180" className="line-dash" />
+        <circle cx="310" cy="95" r="4" /><circle cx="145" cy="180" r="4" /><circle cx="475" cy="180" r="4" />
+        <circle cx="145" cy="275" r="4" /><circle cx="475" cy="275" r="4" /><circle cx="310" cy="350" r="4" />
+      </svg>
+      <div className="infra-node node-cloud"><Cloud size={21} /><span>Cloud</span><small>Public / Private</small></div>
+      <div className="infra-node node-network"><Network size={21} /><span>Network</span><small>Routing · DNS</small></div>
+      <div className="infra-node node-identity"><ShieldCheck size={21} /><span>Identity</span><small>Access · Policies</small></div>
+      <div className="infra-core">
+        <div className="core-icon"><Server size={27} /></div>
+        <strong>Core infrastructure</strong>
+        <span>Compute · Storage · Services</span>
+        <div className="core-status"><i /> ALL SYSTEMS CONNECTED</div>
+      </div>
+      <div className="infra-node node-monitor"><Activity size={21} /><span>Monitoring</span><small>Logs · Metrics</small></div>
+    </div>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <SiteHeader />
+      <main id="main-content">
+        <section className="hero-section">
+          <div className="hero-grid" />
+          <div className="container hero-layout">
+            <motion.div className="hero-copy" initial="hidden" animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.11 } } }}>
+              <motion.h1 variants={reveal}>Understand the systems.<br /><span>Master the infrastructure.</span></motion.h1>
+              <motion.p variants={reveal}>A practical, structured guide to System Administration, from operating systems and networking to enterprise infrastructure, automation and cloud architecture.</motion.p>
+              <motion.div variants={reveal} className="hero-actions">
+                <a className="button button-primary" href="#roadmap">Explore the roadmap <ArrowRight size={17} /></a>
+                <a className="button button-secondary" href="#explore">Choose where to go next <BookOpen size={16} /></a>
+              </motion.div>
+              <motion.div variants={reveal} className="hero-note"><CheckCircle2 size={15} /> A knowledge and roadmap portal. Not an online course platform.</motion.div>
+            </motion.div>
+            <motion.div className="hero-art" initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25 }}>
+              <InfrastructureGraphic />
+            </motion.div>
+          </div>
+          <div className="container hero-bottom"><a href="#roadmap">Start with the roadmap <ArrowDown size={14} /></a></div>
+        </section>
+
+        <section id="roadmap" className="section section-roadmap">
+          <div className="container">
+            <Heading title="Start with the fundamentals." desc="Follow the first steps in order. Every stage has its own topics, practical labs and projects." />
+            <div className="roadmap-grid">
+              {stages.slice(0, 3).map((stage, index) => {
+                const Icon = stage.icon;
+                return (
+                  <motion.article key={stage.n} className="stage-card" variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * 0.035 }}>
+                    <div className="stage-card-top"><span className="stage-number">{stage.n}</span><span className="stage-level">{stage.level}</span></div>
+                    <div className="stage-icon"><Icon size={21} /></div>
+                    <h3>{stage.title}</h3>
+                    <p>{stage.desc}</p>
+                    <div className="stage-topics">{stage.topics.map((topic) => <span key={topic}>{topic}</span>)}</div>
+                    <Link href={`/roadmap/${stage.slug}`} className="stage-link">Explore this stage <ChevronRight size={15} /></Link>
+                  </motion.article>
+                );
+              })}
+            </div>
+            <div className="roadmap-footnote"><FileText size={16} /><span>Every roadmap stage includes practical labs, project ideas and a completion checklist.</span><Link href="/roadmap" className="text-link">View all 8 stages <ArrowUpRight size={15} /></Link></div>
+          </div>
+        </section>
+
+        <section id="explore" className="section home-explore-section">
+          <div className="container">
+            <Heading title="Choose what you need next." desc="Go straight to the guide that matches your current goal." />
+            <div className="home-explore-grid">
+              {destinations.map((destination) => {
+                const Icon = destination.icon;
+                return (
+                  <Link className="home-explore-card" href={destination.href} key={destination.href}>
+                    <span className="home-explore-icon"><Icon size={20} /></span>
+                    <h3>{destination.title}</h3>
+                    <p>{destination.description}</p>
+                    <span className="home-explore-action">{destination.action}<ArrowUpRight size={15} /></span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="closing-section">
+          <div className="container closing-inner">
+            <div className="closing-orb"><RadioTower size={27} /></div>
+            <h2>Understand the infrastructure.<br /><span>Build the capability.</span></h2>
+            <p>Start with the roadmap and build your System Administration skills one stage at a time.</p>
+            <Link className="button button-primary" href="/roadmap">Explore the roadmap <ArrowRight size={17} /></Link>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
+    </>
+  );
+}

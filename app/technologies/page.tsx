@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { TechnologyDirectory } from "@/components/technologies/technology-directory";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "SYSADMIN. | Technologies",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function TechnologiesPage() {
-  return <><SiteHeader /><TechnologyDirectory /><SiteFooter /></>;
+  return <><SiteHeader /><TechnologyDirectory /></>;
 }

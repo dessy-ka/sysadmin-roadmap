@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Compass } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = { title: "SYSADMIN. | Page Not Found" };
 
@@ -22,7 +21,6 @@ export default function NotFound() {
           </div>
         </div>
       </main>
-      <SiteFooter />
     </>
   );
 }

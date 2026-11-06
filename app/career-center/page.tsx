@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { CareerCenter } from "@/components/career-center/career-center";
 import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "SYSADMIN. | Career Center",
@@ -9,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function CareerCenterPage() {
-  return <><SiteHeader /><CareerCenter /><SiteFooter /></>;
+  return <><SiteHeader /><CareerCenter /></>;
 }
