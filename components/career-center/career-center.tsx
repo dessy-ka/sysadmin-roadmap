@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowDown, ArrowRight, ArrowUpRight, Award, BookOpen, BriefcaseBusiness,
+  ArrowRight, ArrowUpRight, Award, BookOpen,
   CheckCircle2, ChevronDown, Cloud, ExternalLink, GraduationCap, Network,
-  Search, Server, ShieldCheck, Terminal, X
+  Search, ShieldCheck, Terminal, X
 } from "lucide-react";
 import {
   careerPaths, certifications, interviewQuestions, portfolioProjects,
@@ -31,7 +31,16 @@ const trackIcons: Record<CertificationTrack, LucideIcon> = {
   "Cloud & automation": Cloud
 };
 
-export function CareerCenter() {
+export type CareerCenterSection = "certifications" | "career-paths" | "portfolio-proof" | "interview-preparation";
+
+const sectionDetails: Record<CareerCenterSection, { label: string; description: string }> = {
+  certifications: { label: "Certifications", description: "Compare credentials by focus and level, then choose one that supports the skills you are building." },
+  "career-paths": { label: "Career paths", description: "Explore common infrastructure roles, skill progressions and certifications related to each direction." },
+  "portfolio-proof": { label: "Portfolio proof", description: "Turn lab work into clear evidence that shows how you plan, build, test and improve systems." },
+  "interview-preparation": { label: "Interview preparation", description: "Practise explaining your troubleshooting process and technical decisions with structured prompts." }
+};
+
+export function CareerCenter({ section }: { section: CareerCenterSection }) {
   const [certQuery, setCertQuery] = useState("");
   const [certTrack, setCertTrack] = useState<(typeof tracks)[number]>("All tracks");
   const [selectedCertIds, setSelectedCertIds] = useState<string[]>([]);
@@ -80,43 +89,11 @@ export function CareerCenter() {
   return (
     <main id="main-content" className="inner-page career-center-page">
       <div className="container">
-        <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><span>Career centre</span></div>
-
-        <section className="career-hero">
-          <div className="career-hero-copy">
-            
-            <h1>Turn technical skills into a <span>career direction.</span></h1>
-            <p>Compare certifications, understand the skills employers expect at each stage, and practise explaining how you solve real infrastructure problems. Use credentials to support your experience—not replace it.</p>
-            <div className="career-hero-actions">
-              <a className="button button-primary" href="#certifications">Compare certifications <ArrowRight size={16} /></a>
-              <a className="button button-secondary" href="#interview-prep">Practise interview questions <ArrowDown size={15} /></a>
-            </div>
-            
-          </div>
-          <aside className="career-hero-panel">
-            
-            <div className="career-panel-stats">
-              <div><strong>{certifications.length.toString().padStart(2, "0")}</strong><span>CERTIFICATION<br />PATHS</span></div>
-              <div><strong>{careerPaths.length.toString().padStart(2, "0")}</strong><span>CAREER<br />DIRECTIONS</span></div>
-              <div><strong>{interviewQuestions.length.toString().padStart(2, "0")}</strong><span>INTERVIEW<br />PROMPTS</span></div>
-            </div>
-            <div className="career-panel-flow">
-              <div><span>01</span><strong>Build fundamentals</strong><small>Systems · networking · security</small></div>
-              <div><span>02</span><strong>Choose a specialisation</strong><small>Linux · Windows · network · cloud</small></div>
-              <div><span>03</span><strong>Prove practical ability</strong><small>Labs · documentation · recovery</small></div>
-              <div><span>04</span><strong>Grow into engineering</strong><small>Automation · reliability · design</small></div>
-            </div>
-          </aside>
+        <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/career-center/certifications">Career centre</Link><span>/</span><span>{sectionDetails[section].label}</span></div>
+        <section className="career-hero career-subpage-hero">
+          <div className="career-hero-copy"><h1>{sectionDetails[section].label}</h1><p>{sectionDetails[section].description}</p></div>
         </section>
-
-        <nav className="career-section-nav" aria-label="Career centre sections">
-          <a href="#certifications"><Award size={15} /> Certifications</a>
-          <a href="#career-paths"><BriefcaseBusiness size={15} /> Career paths</a>
-          <a href="#portfolio"><CheckCircle2 size={15} /> Portfolio proof</a>
-          <a href="#interview-prep"><BookOpen size={15} /> Interview preparation</a>
-        </nav>
-
-        <section id="certifications" className="career-content-section" aria-labelledby="certification-heading">
+        {section === "certifications" && <section id="certifications" className="career-content-section" aria-labelledby="certification-heading">
           <div className="career-section-heading">
             <div><h2 id="certification-heading">Choose a credential that supports your direction.</h2><p>Compare the purpose and exam focus of recognised infrastructure certifications. Select up to three to view them side by side.</p></div>
             <div className="career-section-count"><strong>{certifications.length.toString().padStart(2, "0")}</strong><span>REFERENCE PATHS</span></div>
@@ -183,9 +160,9 @@ export function CareerCenter() {
             })}
           </div> : <div className="career-empty-state">No certifications match that search. Try another keyword or select a different track.</div>}
           <p className="career-content-disclaimer">Exam codes, objectives, prices, languages and retirement dates can change. This directory intentionally avoids fixed exam fees because local pricing and taxes vary. Always confirm the live details with the issuing organisation before paying for an exam.</p>
-        </section>
+        </section>}
 
-        <section id="career-paths" className="career-content-section career-paths-section" aria-labelledby="career-paths-heading">
+        {section === "career-paths" && <section id="career-paths" className="career-content-section career-paths-section" aria-labelledby="career-paths-heading">
           <div className="career-section-heading">
             <div><h2 id="career-paths-heading">Choose a direction, then build depth.</h2><p>There is no single ladder into infrastructure work. These are common progressions; actual job titles and responsibilities vary by organisation.</p></div>
             <div className="career-section-count"><strong>{careerPaths.length.toString().padStart(2, "0")}</strong><span>CAREER DIRECTIONS</span></div>
@@ -196,20 +173,20 @@ export function CareerCenter() {
               <h3>{path.title}</h3><p className="career-path-summary">{path.summary}</p>
               <div className="career-progression-list">{path.progression.map((step, stepIndex) => <div key={step.role}><span>{String(stepIndex + 1).padStart(2, "0")}</span><div><strong>{step.role}</strong><p>{step.focus}</p></div></div>)}</div>
               <div className="career-path-skill-block"><strong>CORE SKILLS TO DEVELOP</strong><div>{path.skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>
-              <div className="career-path-certifications"><strong>RELATED CERTIFICATIONS</strong><div>{path.certifications.map((id) => { const certification = certifications.find((item) => item.id === id); return certification ? <a key={id} href={`#cert-${id}`}>{certification.name}<ArrowUpRight size={11} /></a> : null; })}</div></div>
+              <div className="career-path-certifications"><strong>RELATED CERTIFICATIONS</strong><div>{path.certifications.map((id) => { const certification = certifications.find((item) => item.id === id); return certification ? <Link key={id} href={`/career-center/certifications#cert-${id}`}>{certification.name}<ArrowUpRight size={11} /></Link> : null; })}</div></div>
             </article>)}
           </div>
-        </section>
+        </section>}
 
-        <section id="portfolio" className="career-content-section portfolio-section" aria-labelledby="portfolio-heading">
+        {section === "portfolio-proof" && <section id="portfolio" className="career-content-section portfolio-section" aria-labelledby="portfolio-heading">
           <div className="career-section-heading">
             <div><h2 id="portfolio-heading">Make your experience visible.</h2><p>A small, well-documented lab can give an interviewer better evidence than a long list of tools on a CV.</p></div>
           </div>
           <div className="portfolio-intro"><div><ShieldCheck size={21} /><strong>Show the outcome, not just the screenshot.</strong></div><p>For every project, explain the problem, design choices, configuration, test results, failure handling and what you would improve. Remove passwords, public IPs, personal data and other sensitive details before sharing.</p></div>
           <div className="portfolio-grid">{portfolioProjects.map((project, index) => <article className="portfolio-card" key={project.title}><span>PROJECT {String(index + 1).padStart(2, "0")}</span><h3>{project.title}</h3><p>{project.focus}</p><ul>{project.evidence.map((item) => <li key={item}><CheckCircle2 size={14} />{item}</li>)}</ul></article>)}</div>
-        </section>
+        </section>}
 
-        <section id="interview-prep" className="career-content-section interview-section" aria-labelledby="interview-heading">
+        {section === "interview-preparation" && <section id="interview-prep" className="career-content-section interview-section" aria-labelledby="interview-heading">
           <div className="career-section-heading">
             <div><h2 id="interview-heading">Practise explaining how you think.</h2><p>These are original practice prompts, not leaked or reproduced employer questions. Expand each one for an answer framework and a useful follow-up.</p></div>
             <div className="career-section-count"><strong>{interviewQuestions.length.toString().padStart(2, "0")}</strong><span>PRACTICE QUESTIONS</span></div>
@@ -234,12 +211,7 @@ export function CareerCenter() {
             })}
             {filteredQuestions.length === 0 && <div className="career-empty-state">No questions match that search. Try another topic or keyword.</div>}
           </div>
-        </section>
-
-        <section className="career-closing-note">
-          <div className="career-closing-icon"><Server size={23} /></div>
-          <div><h2>Build one skill. Prove it. Then move forward.</h2><p>Use the roadmap to identify your next technical gap, follow the schedule to practise consistently, and document each lab as evidence of your growing capability.</p><div><Link href="/roadmap">Open the technical roadmap <ArrowRight size={14} /></Link><Link href="/schedule">Continue with the 12-month schedule <ArrowRight size={14} /></Link><Link href="/technologies">Explore the technology guides <ArrowRight size={14} /></Link></div></div>
-        </section>
+        </section>}
       </div>
     </main>
   );

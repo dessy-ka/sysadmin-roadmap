@@ -13,7 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: new URL("/", siteUrl).toString(), changeFrequency: "weekly", priority: 1 },
     { url: new URL("/roadmap", siteUrl).toString(), changeFrequency: "monthly", priority: 0.9 },
     { url: new URL("/technologies", siteUrl).toString(), changeFrequency: "monthly", priority: 0.9 },
-    { url: new URL("/career-center", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 },
+    { url: new URL("/career-center/certifications", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 },
+    { url: new URL("/career-center/career-paths", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 },
+    { url: new URL("/career-center/portfolio-proof", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 },
+    { url: new URL("/career-center/interview-preparation", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 },
     { url: new URL("/resources", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 },
     { url: new URL("/schedule", siteUrl).toString(), changeFrequency: "monthly", priority: 0.8 }
   ];

@@ -120,7 +120,7 @@ for (const filename of sourceFiles) {
 }
 
 // Check hard-coded internal routes and anchors in JSX.
-const staticRoutes = new Set(["/", "/roadmap", "/technologies", "/resources", "/schedule", "/career-center"]);
+const staticRoutes = new Set(["/", "/roadmap", "/technologies", "/resources", "/schedule", "/career-center", "/career-center/certifications", "/career-center/career-paths", "/career-center/portfolio-proof", "/career-center/interview-preparation"]);
 const { roadmapStages } = loadDataModule("roadmap");
 const { resources } = loadDataModule("resources");
 const { studySchedule } = loadDataModule("schedule");

@@ -42,6 +42,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
 .container { width: min(1240px, calc(100% - 64px)); }
 
 /* Navigation */
@@ -53,9 +54,24 @@ body {
 .brand-name { font-size: 17px; letter-spacing: .055em; }
 .desktop-nav { gap: clamp(15px, 1.8vw, 25px); }
 .desktop-nav a { font-size: 13px; font-weight: 700; }
+.career-nav-dropdown { position: relative; }
+.career-nav-trigger { display: inline-flex; align-items: center; gap: 5px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 13px; font-weight: 700; cursor: pointer; }
+.career-nav-trigger:hover, .career-nav-trigger[aria-expanded="true"] { color: var(--accent); }
+.career-nav-trigger svg { transition: transform .2s; }
+.career-nav-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.career-nav-menu { position: absolute; top: calc(100% + 22px); left: 50%; z-index: 60; display: grid; width: 245px; gap: 3px; padding: 8px; transform: translateX(-50%); border: 1px solid var(--border); border-radius: 11px; background: var(--surface); box-shadow: var(--shadow); }
+.career-nav-menu a { display: block; padding: 10px 11px; border-radius: 7px; color: var(--muted); font-size: 13px; font-weight: 700; }
+.career-nav-menu a:hover, .career-nav-menu a:focus-visible { background: var(--accent-soft); color: var(--accent); }
 .header-cta { padding: 11px 15px; border-radius: 10px; font-size: 13px; }
 .icon-button { width: 42px; height: 42px; border-radius: 12px; }
 .mobile-nav a { padding-block: 15px; font-size: 15px; }
+.mobile-nav-parent { display: flex; width: 100%; justify-content: space-between; align-items: center; padding: 15px 4px; border: 0; border-bottom: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 15px; font-weight: 700; text-align: left; cursor: pointer; }
+.mobile-nav-parent[aria-expanded="true"] { color: var(--accent); }
+.mobile-nav-parent svg { transition: transform .2s; }
+.mobile-nav-parent[aria-expanded="true"] svg { transform: rotate(180deg); }
+.mobile-career-subnav { display: grid; padding: 4px 0 8px 15px; border-bottom: 1px solid var(--border); }
+.mobile-nav .mobile-career-subnav a { padding-block: 11px; border-bottom: 0; color: var(--muted-2); font-size: 14px; }
+.mobile-nav .mobile-career-subnav a:hover { color: var(--accent); }
 
 /* Shared typography and page rhythm */
 .eyebrow, .hero-kicker { font-size: 12px; letter-spacing: .12em; }
@@ -76,7 +92,8 @@ body {
 .inner-page :is(.eyebrow, .roadmap-stage-meta, .stage-detail-meta, .technology-detail-meta, .career-hero-meta) { font-size: 12px; }
 .inner-page :is(.progress-storage-note, .resource-directory-top, .resource-stage-tags a, .technology-card-category, .technology-level, .career-panel-top, .certification-track-label, .certification-level) { font-size: 12px; }
 .inner-page :is(.roadmap-index-hero p, .resources-hero > p, .stage-detail-copy > p, .schedule-hero-copy > p, .technology-hero-copy > p, .technology-detail-copy > p, .career-hero-copy > p) { font-size: 16px; line-height: 1.85; }
-.inner-page :is(.roadmap-controls input, .resource-select select, .technology-level-select select, .topic-search input) { min-height: 46px; font-size: 14px; }
+.inner-page :is(.roadmap-controls input, .resource-select select, .topic-search input) { min-height: 46px; font-size: 14px; }
+.inner-page .technology-level-select select { min-height: 24px; font-size: 14px; }
 
 /* Homepage hero and sections */
 .hero-section { padding-top: 104px; }
@@ -543,3 +560,26 @@ body {
 /* Minimum readable size for prose and browser-small elements. */
 p, li { font-size: max(14px, .875em) !important; }
 small { font-size: max(12px, .75em) !important; }
+
+/* Keep decorative icons visible without a boxed background. */
+.core-icon,
+.closing-orb,
+.infra-node,
+.stage-icon,
+.discipline-icon,
+.project-icon,
+.home-explore-icon,
+.roadmap-stage-icon,
+.detail-icon,
+.technology-detail-icon,
+.guidance-mark,
+.interview-method-icon,
+.career-closing-icon,
+.schedule-guidance-icon,
+.status-page-icon {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}

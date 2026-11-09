@@ -1,6 +1,9 @@
 /* Career centre: certifications, role progression and interview practice */
 .career-center-page { padding-bottom: 96px; }
 .career-hero { display: grid; grid-template-columns: minmax(0, 1fr) 390px; gap: 48px; align-items: center; padding: 28px 0 45px; }
+.career-subpage-hero { grid-template-columns: minmax(0, 1fr); padding: 24px 0 27px; border-bottom: 1px solid var(--border); }
+.career-subpage-hero .career-hero-copy h1 { margin-top: 8px; }
+.career-center-page .career-content-section { padding-top: 36px; scroll-margin-top: 110px; }
 .career-hero-copy h1 { max-width: 720px; margin: 20px 0 17px; font-size: clamp(38px, 5vw, 60px); line-height: 1.1; letter-spacing: -.055em; }
 .career-hero-copy h1 span { color: var(--accent); }
 .career-hero-copy > p { max-width: 680px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.9; }

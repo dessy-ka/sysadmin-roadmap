@@ -84,7 +84,7 @@ export function TechnologyDirectory() {
           </div>
 
           {filteredTechnologies.length ? <div className="technology-card-grid">
-            {filteredTechnologies.map((technology, index) => {
+            {filteredTechnologies.map((technology) => {
               const Icon = iconMap[technology.icon] ?? Server;
               return <Link href={`/technologies/${technology.slug}`} className="technology-card" key={technology.slug}>
                 <div className="technology-card-top"><span className="technology-card-category">{technology.category}</span><span className={`technology-level level-${technology.level.toLowerCase()}`}>{technology.level}</span></div>
@@ -93,7 +93,6 @@ export function TechnologyDirectory() {
                 <p>{technology.tagline}</p>
                 <div className="technology-card-concepts">{technology.relatedTools.slice(0, 4).map((tool) => <span key={tool}>{tool}</span>)}</div>
                 <div className="technology-card-bottom"><span>Open technology guide</span><ArrowRight size={16} /></div>
-                <span className="technology-card-number">{String(index + 1).padStart(2, "0")}</span>
               </Link>;
             })}
           </div> : <div className="topic-empty">No technology guides match those filters. Try a different keyword or category.</div>}

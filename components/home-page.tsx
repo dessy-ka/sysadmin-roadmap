@@ -48,7 +48,7 @@ const destinations = [
   { title: "Technologies & tools", description: "Explore guides to operating systems, networking, virtualization, security and cloud.", href: "/technologies", action: "Browse technologies", icon: Boxes },
   { title: "Learning resources", description: "Find official documentation and trusted learning material in one searchable library.", href: "/resources", action: "Browse resources", icon: BookOpen },
   { title: "Study schedule", description: "Use a flexible 12-month plan with weekly topics, tasks and milestones.", href: "/schedule", action: "View the schedule", icon: CalendarDays },
-  { title: "Career center", description: "Compare certifications, explore roles, build a portfolio and practise interviews.", href: "/career-center", action: "Explore career paths", icon: ShieldCheck }
+  { title: "Career center", description: "Compare certifications, explore roles, build a portfolio and practise interviews.", href: "/career-center/career-paths", action: "Explore career paths", icon: ShieldCheck }
 ];
 
 function Heading({ title, desc }: { title: string; desc: string }) {
