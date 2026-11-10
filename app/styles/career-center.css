@@ -41,7 +41,6 @@
 .certification-toolbar, .interview-controls { display: flex; align-items: center; gap: 15px; margin-top: 22px; }
 .career-search { flex: 1; min-width: 0; }
 .career-search input { width: 100%; }
-.career-results-count { flex: 0 0 auto; color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .06em; }
 .career-track-filters, .interview-category-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 13px 0 16px; }
 .career-track-filters button, .interview-category-filters button { display: inline-flex; align-items: center; gap: 8px; min-height: 31px; padding: 0 10px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); color: var(--muted); font-size: 12px; font-weight: 800; cursor: pointer; transition: border-color .2s, background .2s, color .2s; }
 .career-track-filters button span { color: var(--muted-2); font: 12px var(--font-mono), monospace; }
@@ -65,7 +64,7 @@
 .comparison-table th, .comparison-table td { width: 25%; padding: 11px 12px; border-top: 1px solid var(--border); vertical-align: top; color: var(--muted); font-size: 12px; line-height: 1.65; }
 .comparison-table thead th { color: var(--text); font-size: 12px; }
 .comparison-table th:first-child { width: 115px; color: var(--text); font-weight: 800; }
-.certification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+.certification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 14px; align-items: stretch; }
 .certification-card { min-width: 0; height: 100%; display: flex; flex-direction: column; padding: 18px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface); transition: border-color .2s, box-shadow .2s, transform .2s; scroll-margin-top: 160px; }
 .certification-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); box-shadow: var(--shadow); transform: translateY(-2px); }
 .certification-card.is-selected { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 14%, transparent); }
@@ -74,7 +73,7 @@
 .certification-level { padding: 5px 7px; border: 1px solid var(--border); border-radius: 5px; color: var(--muted-2); font: 12px var(--font-mono), monospace; text-transform: uppercase; }
 .certification-level-entry { color: var(--green); border-color: color-mix(in srgb, var(--green) 35%, var(--border)); }
 .certification-level-associate { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
-.certification-level-professional { color: #b17be9; border-color: color-mix(in srgb, #b17be9 35%, var(--border)); }
+.certification-level-professional { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 35%, var(--border)); }
 .certification-card h3 { min-height: 42px; margin: 14px 0 4px; font-size: 14px; line-height: 1.45; letter-spacing: -.025em; }
 .certification-provider { color: var(--muted-2); font-size: 12px; }
 .certification-exam-code { display: grid; gap: 5px; margin: 14px 0 11px; padding: 10px; border: 1px solid var(--border); border-radius: 7px; background: var(--bg); }
@@ -90,7 +89,14 @@
 .certification-select { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 800; cursor: pointer; }
 .certification-select input { width: 14px; height: 14px; accent-color: var(--accent); }
 .certification-select input:disabled { cursor: not-allowed; }
-.certification-expanded { display: grid; gap: 12px; margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--border); }
+.certification-objective-dialog { width: min(920px, calc(100% - 32px)); max-width: 100%; max-height: min(88dvh, 900px); margin: auto; padding: 0; overflow: auto; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+.certification-objective-dialog::backdrop { background: rgb(3 8 15 / .72); backdrop-filter: blur(3px); }
+.certification-objective-dialog-content { padding: 20px; }
+.certification-objective-dialog-header { position: sticky; top: -20px; z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; margin: -20px -20px 16px; padding: 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
+.certification-objective-dialog-header span { color: var(--accent); font: 12px var(--font-mono), monospace; letter-spacing: .07em; text-transform: uppercase; }
+.certification-objective-dialog-header h2 { margin: 7px 0 0; font-size: 20px; line-height: 1.4; }
+.certification-expanded { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.certification-objectives { grid-column: 1 / -1; }
 .certification-exam-note { padding: 10px; border-radius: 7px; background: var(--accent-soft); }
 .certification-exam-note strong, .certification-detail-block > strong, .certification-objectives > strong, .certification-proof > strong { display: block; margin-bottom: 5px; color: var(--text); font-size: 12px; }
 .certification-exam-note p, .certification-detail-block p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
@@ -193,12 +199,17 @@
   .career-section-count { display: flex; align-items: baseline; gap: 8px; text-align: left; }
   .career-section-count strong { font-size: 21px; }
   .certification-toolbar, .interview-controls { align-items: stretch; flex-direction: column; gap: 8px; }
-  .career-results-count { text-align: right; }
   .career-track-filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; }
   .career-track-filters button { flex: 0 0 auto; }
   .certification-compare-bar { align-items: stretch; flex-direction: column; }
   .certification-compare-actions { justify-content: space-between; }
   .certification-grid, .career-path-grid { grid-template-columns: 1fr; }
+  .certification-objective-dialog { width: calc(100% - 20px); max-height: 92dvh; border-radius: 11px; }
+  .certification-objective-dialog-content { padding: 14px; }
+  .certification-objective-dialog-header { top: -14px; margin: -14px -14px 13px; padding: 14px; }
+  .certification-objective-dialog-header h2 { font-size: 17px; }
+  .certification-expanded { grid-template-columns: 1fr; }
+  .certification-objectives { grid-column: auto; }
   .certification-card h3, .certification-summary, .career-path-summary { min-height: 0; }
   .comparison-heading h3 { font-size: 14px; }
   .portfolio-intro { grid-template-columns: 1fr; gap: 9px; }

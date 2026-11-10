@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Activity, ArrowRight, Boxes, Cloud, Code2, Database, GitBranch, Network, Package, Search, Server, Terminal, Users, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { SelectDropdown } from "@/components/ui/select-dropdown";
 import { technologies } from "@/data/technologies";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -71,12 +72,11 @@ export function TechnologyDirectory() {
         <section className="technology-directory-section" aria-labelledby="technology-directory-title">
           <div className="technology-section-heading">
             <div><h2 id="technology-directory-title">Explore the technology directory.</h2><p>Search by product, discipline or capability. Open a guide for practical context and a path into the official documentation.</p></div>
-            <span className="technology-total"><strong>{filteredTechnologies.length.toString().padStart(2, "0")}</strong> / {technologies.length} GUIDES</span>
           </div>
 
           <div className="technology-controls">
             <label className="roadmap-search technology-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Linux, Docker, monitoring, identity..." aria-label="Search technologies" /></label>
-            <label className="technology-level-select"><span>Experience</span><select value={level} onChange={(event) => setLevel(event.target.value)} aria-label="Filter by experience level"><option>All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+            <SelectDropdown className="technology-level-select" value={level} options={["All levels", "Beginner", "Intermediate", "Advanced"]} onChange={setLevel} ariaLabel="Filter by experience level" />
           </div>
 
           <div className="technology-category-filters" aria-label="Filter by technology category">

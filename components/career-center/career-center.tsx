@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight, ArrowUpRight, Award, BookOpen,
@@ -46,6 +46,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
   const [selectedCertIds, setSelectedCertIds] = useState<string[]>([]);
   const [showComparison, setShowComparison] = useState(false);
   const [expandedCertId, setExpandedCertId] = useState<string | null>(null);
+  const objectiveDialogRef = useRef<HTMLDialogElement>(null);
   const [questionQuery, setQuestionQuery] = useState("");
   const [questionCategory, setQuestionCategory] = useState<(typeof questionCategories)[number]>("All questions");
   const [expandedQuestionIds, setExpandedQuestionIds] = useState<string[]>([]);
@@ -64,6 +65,15 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
   }, [certQuery, certTrack]);
 
   const selectedCertifications = certifications.filter((certification) => selectedCertIds.includes(certification.id));
+  const expandedCertification = certifications.find((certification) => certification.id === expandedCertId) ?? null;
+
+  useEffect(() => {
+    const dialog = objectiveDialogRef.current;
+    if (!dialog) return;
+
+    if (expandedCertId && !dialog.open) dialog.showModal();
+    if (!expandedCertId && dialog.open) dialog.close();
+  }, [expandedCertId]);
 
   const filteredQuestions = useMemo(() => {
     const normalized = questionQuery.trim().toLowerCase();
@@ -106,7 +116,6 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
 
           <div className="certification-toolbar">
             <label className="roadmap-search career-search"><Search size={17} /><input value={certQuery} onChange={(event) => setCertQuery(event.target.value)} placeholder="Search Linux, networking, cloud, exam code..." aria-label="Search certifications" /></label>
-            <span className="career-results-count">{filteredCertifications.length} OF {certifications.length} PATHS</span>
           </div>
           <div className="career-track-filters" aria-label="Filter certifications by track">
             {tracks.map((track) => <button key={track} type="button" className={certTrack === track ? "active" : ""} onClick={() => setCertTrack(track)}>{track}<span>{track === "All tracks" ? certifications.length : certifications.filter((certification) => certification.track === track).length}</span></button>)}
@@ -145,20 +154,36 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
                 <p className="certification-summary">{certification.summary}</p>
                 <div className="certification-best-for"><span>BEST FOR</span><p>{certification.bestFor}</p></div>
                 <div className="certification-card-actions">
-                  <button type="button" className="certification-expand-button" aria-expanded={expanded} onClick={() => setExpandedCertId(expanded ? null : certification.id)}>{expanded ? "Hide objective map" : "View objective map"}<ChevronDown size={15} className={expanded ? "rotated" : ""} /></button>
+                  <button type="button" className="certification-expand-button" aria-expanded={expanded} aria-controls="certification-objective-dialog" onClick={() => setExpandedCertId(expanded ? null : certification.id)}>{expanded ? "Hide objective map" : "View objective map"}<ChevronDown size={15} className={expanded ? "rotated" : ""} /></button>
                   <label className="certification-select"><input type="checkbox" checked={selected} disabled={!selected && selectedCertIds.length >= 3} onChange={() => toggleCertification(certification.id)} /><span>Compare</span></label>
                 </div>
-                {expanded && <div className="certification-expanded">
-                  <div className="certification-exam-note"><strong>Version note</strong><p>{certification.versionNote}</p></div>
-                  <div className="certification-detail-block"><strong>Recommended starting point</strong><p>{certification.prerequisites}</p><p className="certification-format"><b>Exam format:</b> {certification.format}</p></div>
-                  <div className="certification-objectives"><strong>Exam objective areas</strong>{certification.domains.map((domain) => <div key={domain.title}><span>{domain.title}{domain.weight ? <b>{domain.weight}</b> : null}</span><p>{domain.detail}</p></div>)}</div>
-                  <div className="certification-proof"><strong>Practical evidence to build</strong>{certification.practicalProof.map((item) => <p key={item}><CheckCircle2 size={14} />{item}</p>)}</div>
-                  <div className="certification-official-links"><a href={certification.officialUrl} target="_blank" rel="noopener noreferrer">Vendor certification page <ExternalLink size={13} /></a><a href={certification.objectivesUrl} target="_blank" rel="noopener noreferrer">Exam objectives / study guide <ExternalLink size={13} /></a></div>
-                  <div className="certification-stage-links"><span>RELATED ROADMAP STAGES</span>{certification.roadmapStages.map((slug) => { const stage = roadmapStages.find((item) => item.slug === slug); return stage ? <Link key={slug} href={`/roadmap/${slug}`}>{stage.shortTitle}<ArrowUpRight size={11} /></Link> : null; })}</div>
-                </div>}
               </article>;
             })}
           </div> : <div className="career-empty-state">No certifications match that search. Try another keyword or select a different track.</div>}
+          <dialog
+            ref={objectiveDialogRef}
+            id="certification-objective-dialog"
+            className="certification-objective-dialog"
+            aria-label="Certification objective map"
+            onCancel={() => setExpandedCertId(null)}
+            onClose={() => setExpandedCertId(null)}
+            onClick={(event) => { if (event.target === objectiveDialogRef.current) setExpandedCertId(null); }}
+          >
+            {expandedCertification && <div className="certification-objective-dialog-content">
+              <header className="certification-objective-dialog-header">
+                <div><span>{expandedCertification.track} · {expandedCertification.level}</span><h2 id="certification-objective-heading">{expandedCertification.name} objective map</h2></div>
+                <button type="button" className="icon-button" aria-label="Close objective map" onClick={() => setExpandedCertId(null)}><X size={18} /></button>
+              </header>
+              <div className="certification-expanded">
+                <div className="certification-exam-note"><strong>Version note</strong><p>{expandedCertification.versionNote}</p></div>
+                <div className="certification-detail-block"><strong>Recommended starting point</strong><p>{expandedCertification.prerequisites}</p><p className="certification-format"><b>Exam format:</b> {expandedCertification.format}</p></div>
+                <div className="certification-objectives"><strong>Exam objective areas</strong>{expandedCertification.domains.map((domain) => <div key={domain.title}><span>{domain.title}{domain.weight ? <b>{domain.weight}</b> : null}</span><p>{domain.detail}</p></div>)}</div>
+                <div className="certification-proof"><strong>Practical evidence to build</strong>{expandedCertification.practicalProof.map((item) => <p key={item}><CheckCircle2 size={14} />{item}</p>)}</div>
+                <div className="certification-official-links"><a href={expandedCertification.officialUrl} target="_blank" rel="noopener noreferrer">Vendor certification page <ExternalLink size={13} /></a><a href={expandedCertification.objectivesUrl} target="_blank" rel="noopener noreferrer">Exam objectives / study guide <ExternalLink size={13} /></a></div>
+                <div className="certification-stage-links"><span>RELATED ROADMAP STAGES</span>{expandedCertification.roadmapStages.map((slug) => { const stage = roadmapStages.find((item) => item.slug === slug); return stage ? <Link key={slug} href={`/roadmap/${slug}`}>{stage.shortTitle}<ArrowUpRight size={11} /></Link> : null; })}</div>
+              </div>
+            </div>}
+          </dialog>
           <p className="career-content-disclaimer">Exam codes, objectives, prices, languages and retirement dates can change. This directory intentionally avoids fixed exam fees because local pricing and taxes vary. Always confirm the live details with the issuing organisation before paying for an exam.</p>
         </section>}
 
@@ -194,19 +219,18 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
           <div className="interview-method-card"><div className="interview-method-icon"><BookOpen size={19} /></div><div><strong>A reliable structure for scenario questions</strong><p><b>Clarify</b> the impact → <b>Gather</b> evidence → <b>Isolate</b> the fault → <b>Change</b> safely → <b>Verify</b> recovery → <b>Document</b> what happened.</p></div></div>
           <div className="interview-controls">
             <label className="roadmap-search career-search"><Search size={17} /><input value={questionQuery} onChange={(event) => setQuestionQuery(event.target.value)} placeholder="Search a question, tool or concept..." aria-label="Search interview questions" /></label>
-            <span className="career-results-count">{filteredQuestions.length} QUESTIONS</span>
           </div>
           <div className="interview-category-filters" aria-label="Filter interview questions by topic">{questionCategories.map((category) => <button key={category} type="button" className={questionCategory === category ? "active" : ""} onClick={() => setQuestionCategory(category)}>{category}</button>)}</div>
           <div className="interview-question-list">
             {filteredQuestions.map((question, index) => {
               const expanded = expandedQuestionIds.includes(question.id);
               return <article className={`interview-question-card${expanded ? " is-expanded" : ""}`} key={question.id}>
-                <button type="button" className="interview-question-trigger" aria-expanded={expanded} onClick={() => toggleQuestion(question.id)}>
+                <button type="button" className="interview-question-trigger" aria-expanded={expanded} aria-controls={`interview-answer-${question.id}`} onClick={() => toggleQuestion(question.id)}>
                   <span className="interview-question-number">{String(index + 1).padStart(2, "0")}</span>
                   <span className="interview-question-copy"><span className="interview-question-meta"><b>{question.category}</b><i />{question.level}</span><strong>{question.question}</strong></span>
                   <ChevronDown size={18} className={expanded ? "rotated" : ""} />
                 </button>
-                {expanded && <div className="interview-answer-framework"><div className="interview-why"><strong>WHAT THE INTERVIEWER IS TESTING</strong><p>{question.why}</p></div><strong className="answer-framework-title">A strong answer should cover</strong><ol>{question.answerFramework.map((point) => <li key={point}>{point}</li>)}</ol><div className="interview-follow-up"><span>FOLLOW-UP TO PRACTISE</span><p>{question.followUp}</p></div></div>}
+                {expanded && <div id={`interview-answer-${question.id}`} className="interview-answer-framework"><div className="interview-why"><strong>WHAT THE INTERVIEWER IS TESTING</strong><p>{question.why}</p></div><strong className="answer-framework-title">A strong answer should cover</strong><ol>{question.answerFramework.map((point) => <li key={point}>{point}</li>)}</ol><div className="interview-follow-up"><span>FOLLOW-UP TO PRACTISE</span><p>{question.followUp}</p></div></div>}
               </article>;
             })}
             {filteredQuestions.length === 0 && <div className="career-empty-state">No questions match that search. Try another topic or keyword.</div>}

@@ -42,7 +42,7 @@ export type RoadmapStage = {
 export const roadmapStages: RoadmapStage[] = [
   {
     slug: "it-fundamentals",
-    number: "00",
+    number: "01",
     title: "IT & Computer Fundamentals",
     shortTitle: "IT Fundamentals",
     level: "Beginner",
@@ -95,7 +95,7 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "networking",
-    number: "01",
+    number: "02",
     title: "Networking & Network Administration",
     shortTitle: "Networking",
     level: "Foundation → Intermediate",
@@ -154,14 +154,14 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "linux-windows-administration",
-    number: "02",
+    number: "03",
     title: "Linux & Windows System Administration",
     shortTitle: "Linux & Windows",
     level: "Core SysAdmin skills",
     duration: "8–12 weeks",
     summary: "Move from operating-system concepts into hands-on server administration across Linux and Windows, including users, permissions, services, storage, logs and remote access.",
     objective: "Administer individual servers confidently, understand the core tools of each platform, and troubleshoot common operating-system and service failures.",
-    prerequisites: ["Stage 0 fundamentals", "Basic networking and IP addressing"],
+    prerequisites: ["Stage 1 fundamentals", "Basic networking and IP addressing"],
     outcomes: ["Administer a Linux server from the shell", "Manage Windows using Server Manager and PowerShell", "Manage users, groups, permissions and services", "Configure storage, networking, updates and logs", "Secure remote access and recover from routine failures"],
     sections: [
       {
@@ -211,14 +211,14 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "enterprise-administration",
-    number: "03",
+    number: "04",
     title: "Enterprise System Administration",
     shortTitle: "Enterprise Administration",
     level: "Junior → Independent administrator",
     duration: "8–12 weeks",
     summary: "Move from administering individual servers to managing identity, policies, shared services and the day-to-day systems used across an organisation.",
     objective: "Build and operate a small enterprise environment with centralised identity, policy enforcement, shared storage, core network services and auditable administration.",
-    prerequisites: ["Stage 1 networking fundamentals", "Stage 2 Linux and Windows server administration"],
+    prerequisites: ["Stage 2 networking fundamentals", "Stage 3 Linux and Windows server administration"],
     outcomes: ["Deploy and manage Active Directory Domain Services", "Create and troubleshoot Group Policy", "Manage joiner, mover and leaver identity processes", "Operate DNS, DHCP and file services", "Automate common domain tasks with PowerShell"],
     sections: [
       {
@@ -274,7 +274,7 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "infrastructure-operations",
-    number: "04",
+    number: "05",
     title: "Virtualization, Storage, Backup & Monitoring",
     shortTitle: "Infrastructure Operations",
     level: "Intermediate SysAdmin",
@@ -334,7 +334,7 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "security-automation",
-    number: "05",
+    number: "06",
     title: "Security, Automation & Infrastructure Management",
     shortTitle: "Security & Automation",
     level: "Intermediate → Advanced",
@@ -405,7 +405,7 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "cloud-hybrid",
-    number: "06",
+    number: "07",
     title: "Cloud & Hybrid System Administration",
     shortTitle: "Cloud & Hybrid",
     level: "Intermediate → Advanced",
@@ -469,7 +469,7 @@ export const roadmapStages: RoadmapStage[] = [
   },
   {
     slug: "advanced-engineering",
-    number: "07",
+    number: "08",
     title: "Advanced Infrastructure, Kubernetes & SRE",
     shortTitle: "Advanced Engineering",
     level: "Advanced",

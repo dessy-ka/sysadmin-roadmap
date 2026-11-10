@@ -15,7 +15,7 @@
 .schedule-progress-number { margin: 14px 0 10px; font-size: 57px; font-weight: 800; letter-spacing: -.07em; line-height: 1; }
 .schedule-progress-number small { margin-left: 3px; color: var(--accent); font-size: 23px; }
 .schedule-progress-track, .schedule-month-progress { display: block; height: 6px; overflow: hidden; border-radius: 10px; background: var(--border); }
-.schedule-progress-track span, .schedule-month-progress i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #2563eb, #58a5ff); transition: width .35s ease; }
+.schedule-progress-track span, .schedule-month-progress i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--button-primary), var(--accent)); transition: width .35s ease; }
 .schedule-progress-bottom { display: flex; justify-content: space-between; gap: 10px; margin-top: 9px; color: var(--muted-2); font-size: 12px; }
 .schedule-progress-divider { height: 1px; margin: 21px 0 17px; background: var(--border); }
 .study-hours-control { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--muted); font-size: 12px; }
@@ -91,7 +91,7 @@
 .schedule-task input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .schedule-task-check { width: 17px; height: 17px; display: grid; place-items: center; margin-top: 1px; border: 1px solid var(--border); border-radius: 5px; color: transparent; transition: background .2s, border-color .2s, color .2s; }
 .schedule-task input:focus-visible + .schedule-task-check { outline: 2px solid var(--accent); outline-offset: 3px; }
-.schedule-task input:checked + .schedule-task-check { border-color: var(--green); background: var(--green); color: #f7f8fa; }
+.schedule-task input:checked + .schedule-task-check { border-color: var(--green); background: var(--green); color: var(--green-contrast); }
 .schedule-task-copy { display: grid; gap: 4px; color: var(--muted); font-size: 12px; line-height: 1.7; transition: color .2s; }
 .schedule-task-copy small { color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .08em; }
 .schedule-task.done .schedule-task-copy { color: var(--muted-2); text-decoration: line-through; text-decoration-color: var(--muted-2); }
@@ -106,7 +106,7 @@
 .schedule-resource-links a:hover { border-color: var(--accent); color: var(--accent); }
 .schedule-week-footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; padding-top: 15px; border-top: 1px solid var(--border); }
 .schedule-week-change, .schedule-week-next { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface); color: var(--muted); font-size: 12px; font-weight: 800; cursor: pointer; }
-.schedule-week-next { border-color: var(--accent); background: var(--accent); color: #f7f8fa; }
+.schedule-week-next { border-color: var(--button-primary); background: var(--button-primary); color: var(--button-primary-text); }
 .schedule-week-change:disabled, .schedule-week-next:disabled { opacity: .35; cursor: not-allowed; }
 .schedule-month-milestone { display: flex; align-items: center; gap: 18px; margin-top: 15px; padding: 15px 18px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-2); }
 .schedule-month-milestone > div { display: flex; align-items: center; gap: 7px; flex: 0 0 auto; color: var(--accent); font: 12px var(--font-mono), monospace; letter-spacing: .07em; }

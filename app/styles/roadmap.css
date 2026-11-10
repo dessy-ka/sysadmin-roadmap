@@ -205,7 +205,7 @@
 .resource-directory-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); box-shadow: var(--shadow); }
 .resource-directory-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .07em; text-transform: uppercase; }
 .resource-access { padding: 5px 7px; border-radius: 5px; background: var(--surface-2); color: var(--green); white-space: nowrap; }
-.resource-access.access-mixed { color: #b7791f; }
+.resource-access.access-mixed { color: var(--amber); }
 .resource-access.access-paid, .resource-access.access-free-prep-paid-exam { color: var(--accent); }
 .resource-directory-card h2 { margin: 13px 0 7px; font-size: 14px; line-height: 1.4; letter-spacing: -.025em; }
 .resource-directory-card > p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
@@ -285,6 +285,17 @@
   .roadmap-stage-content h2 { font-size: 12px; }
   .roadmap-stage-topics span:nth-child(n+4) { display: none; }
   .level-filters button { font-size: 12px; }
+}
+
+/* Give the three-column stage workspace more room on desktop screens. */
+@media (min-width: 981px) {
+  .stage-detail-page > .container { width: min(1540px, calc(100% - 48px)); }
+}
+@media (min-width: 981px) and (max-width: 1359px) {
+  .stage-detail-grid { grid-template-columns: 260px minmax(0, 1fr) 275px; gap: 18px; }
+}
+@media (min-width: 1360px) {
+  .stage-detail-grid { grid-template-columns: 285px minmax(0, 1fr) 300px; gap: 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .topic-expanded { animation: none; }

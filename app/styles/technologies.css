@@ -23,8 +23,6 @@
 .technology-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 25px; }
 .technology-section-heading h2 { margin: 11px 0 9px; font-size: clamp(25px, 3.2vw, 35px); letter-spacing: -.045em; }
 .technology-section-heading p { max-width: 720px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
-.technology-total { flex: 0 0 auto; color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .07em; }
-.technology-total strong { color: var(--accent); font-size: 17px; }
 .technology-controls { display: grid; grid-template-columns: minmax(0, 1fr) 220px; align-items: stretch; gap: 12px; margin-top: 23px; }
 .technology-search { margin: 0; }
 .technology-level-select { min-width: 0; min-height: 50px; display: grid; align-content: center; gap: 2px; padding: 4px 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); }
@@ -43,7 +41,7 @@
 .technology-card-category { color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .07em; text-transform: uppercase; }
 .technology-level { display: inline-flex; align-items: center; padding: 5px 7px; border: 1px solid var(--border); border-radius: 5px; background: var(--surface-2); color: var(--muted); font: 12px var(--font-mono), monospace; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
 .technology-level.level-beginner { color: var(--green); }
-.technology-level.level-intermediate { color: #bd8732; }
+.technology-level.level-intermediate { color: var(--amber); }
 .technology-level.level-advanced { color: var(--accent); }
 .technology-card-icon { width: fit-content; display: inline-flex; align-items: center; justify-content: center; margin-top: 16px; background: transparent; color: var(--accent); }
 .technology-card h3 { margin: 13px 0 7px; font-size: 14px; line-height: 1.4; letter-spacing: -.025em; }

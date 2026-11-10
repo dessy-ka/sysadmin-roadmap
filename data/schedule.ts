@@ -30,7 +30,7 @@ const week = (month: number, number: number, title: string, focus: string, tasks
 
 export const studySchedule: StudyMonth[] = [
   {
-    number: 1, title: "IT & Computer Foundations", stageSlug: "it-fundamentals", stageLabel: "Stage 00 · IT Fundamentals",
+    number: 1, title: "IT & Computer Foundations", stageSlug: "it-fundamentals", stageLabel: "Stage 01 · IT Fundamentals",
     summary: "Understand computer hardware, operating-system fundamentals, command-line basics and a repeatable troubleshooting method.",
     milestone: "Build and document a small Windows/Linux workstation lab.",
     weeks: [
@@ -41,7 +41,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 2, title: "Networking Fundamentals", stageSlug: "networking", stageLabel: "Stage 01 · Networking",
+    number: 2, title: "Networking Fundamentals", stageSlug: "networking", stageLabel: "Stage 02 · Networking",
     summary: "Build a strong understanding of network models, Ethernet, addressing, subnetting, switching and routing.",
     milestone: "Design and simulate a small routed LAN with documented IP addressing.",
     weeks: [
@@ -52,7 +52,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 3, title: "Network Services & Security", stageSlug: "networking", stageLabel: "Stage 01 · Networking",
+    number: 3, title: "Network Services & Security", stageSlug: "networking", stageLabel: "Stage 02 · Networking",
     summary: "Administer core network services and understand traffic inspection, segmentation and secure remote connectivity.",
     milestone: "Deliver a segmented network with working DNS, DHCP and firewall rules.",
     weeks: [
@@ -63,7 +63,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 4, title: "Linux Administration I", stageSlug: "linux-windows-administration", stageLabel: "Stage 02 · Linux & Windows Administration",
+    number: 4, title: "Linux Administration I", stageSlug: "linux-windows-administration", stageLabel: "Stage 03 · Linux & Windows Administration",
     summary: "Install and administer a Linux server, work confidently in the shell, manage users and configure storage.",
     milestone: "Deploy a Linux server with secure accounts, storage and remote administration.",
     weeks: [
@@ -74,7 +74,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 5, title: "Linux Administration II", stageSlug: "linux-windows-administration", stageLabel: "Stage 02 · Linux & Windows Administration",
+    number: 5, title: "Linux Administration II", stageSlug: "linux-windows-administration", stageLabel: "Stage 03 · Linux & Windows Administration",
     summary: "Operate services, networking, logs, secure remote access, scheduled jobs and basic shell automation.",
     milestone: "Run a secured Linux service and automate a routine maintenance task.",
     weeks: [
@@ -85,7 +85,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 6, title: "Windows Server Administration", stageSlug: "linux-windows-administration", stageLabel: "Stage 02 · Linux & Windows Administration",
+    number: 6, title: "Windows Server Administration", stageSlug: "linux-windows-administration", stageLabel: "Stage 03 · Linux & Windows Administration",
     summary: "Deploy Windows Server, configure core roles and administer systems using Server Manager and PowerShell.",
     milestone: "Deploy a Windows Server lab with core network roles and administrative documentation.",
     weeks: [
@@ -96,7 +96,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 7, title: "Enterprise System Administration", stageSlug: "enterprise-administration", stageLabel: "Stage 03 · Enterprise Administration",
+    number: 7, title: "Enterprise System Administration", stageSlug: "enterprise-administration", stageLabel: "Stage 04 · Enterprise Administration",
     summary: "Manage identity, Active Directory, Group Policy, shared services and common enterprise administration workflows.",
     milestone: "Build a small Windows domain with structured users, groups, policies and shared resources.",
     weeks: [
@@ -107,7 +107,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 8, title: "Virtualization, Storage & Backup", stageSlug: "infrastructure-operations", stageLabel: "Stage 04 · Infrastructure Operations",
+    number: 8, title: "Virtualization, Storage & Backup", stageSlug: "infrastructure-operations", stageLabel: "Stage 05 · Infrastructure Operations",
     summary: "Build and operate virtual infrastructure, containers, storage systems and tested backup and recovery workflows.",
     milestone: "Create a documented virtual infrastructure environment and prove that a restore works.",
     weeks: [
@@ -118,7 +118,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 9, title: "Monitoring & Security Operations", stageSlug: "security-automation", stageLabel: "Stage 05 · Security & Automation",
+    number: 9, title: "Monitoring & Security Operations", stageSlug: "security-automation", stageLabel: "Stage 06 · Security & Automation",
     summary: "Establish monitoring, alerting, patching, hardening and incident-handling habits for reliable infrastructure operations.",
     milestone: "Monitor a small infrastructure stack and apply a documented security baseline.",
     weeks: [
@@ -129,7 +129,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 10, title: "Automation & Infrastructure as Code", stageSlug: "security-automation", stageLabel: "Stage 05 · Security & Automation",
+    number: 10, title: "Automation & Infrastructure as Code", stageSlug: "security-automation", stageLabel: "Stage 06 · Security & Automation",
     summary: "Automate repeatable administration tasks with shell scripts, PowerShell, Git, Ansible and Terraform fundamentals.",
     milestone: "Store and run a repeatable infrastructure configuration project from version control.",
     weeks: [
@@ -140,7 +140,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 11, title: "Cloud & Hybrid Administration", stageSlug: "cloud-hybrid", stageLabel: "Stage 06 · Cloud & Hybrid",
+    number: 11, title: "Cloud & Hybrid Administration", stageSlug: "cloud-hybrid", stageLabel: "Stage 07 · Cloud & Hybrid",
     summary: "Understand cloud service models and administer identity, networking, compute, storage, monitoring and cost controls.",
     milestone: "Design and document a secure, cost-aware cloud or hybrid infrastructure pattern.",
     weeks: [
@@ -151,7 +151,7 @@ export const studySchedule: StudyMonth[] = [
     ]
   },
   {
-    number: 12, title: "Advanced Engineering & Capstone", stageSlug: "advanced-engineering", stageLabel: "Stage 07 · Advanced Engineering & SRE",
+    number: 12, title: "Advanced Engineering & Capstone", stageSlug: "advanced-engineering", stageLabel: "Stage 08 · Advanced Engineering & SRE",
     summary: "Explore resilient architecture, Kubernetes, observability and reliability engineering, then integrate the skills in a capstone.",
     milestone: "Build, test and present an end-to-end infrastructure environment with an operations runbook.",
     weeks: [
