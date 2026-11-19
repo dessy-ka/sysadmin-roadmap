@@ -93,14 +93,14 @@ pnpm start
 
 - `/` — homepage and overview
 - `/roadmap` — complete roadmap explorer
-- `/roadmap/it-fundamentals` — Stage 00
-- `/roadmap/networking` — Stage 01
-- `/roadmap/linux-windows-administration` — Stage 02
-- `/roadmap/enterprise-administration` — Stage 03
-- `/roadmap/infrastructure-operations` — Stage 04
-- `/roadmap/security-automation` — Stage 05
-- `/roadmap/cloud-hybrid` — Stage 06
-- `/roadmap/advanced-engineering` — Stage 07
+- `/roadmap/it-fundamentals` — Stage 01
+- `/roadmap/networking` — Stage 02
+- `/roadmap/linux-windows-administration` — Stage 03
+- `/roadmap/enterprise-administration` — Stage 04
+- `/roadmap/infrastructure-operations` — Stage 05
+- `/roadmap/security-automation` — Stage 06
+- `/roadmap/cloud-hybrid` — Stage 07
+- `/roadmap/advanced-engineering` — Stage 08
 - `/technologies` — searchable technologies and tools directory
 - `/career-center` — certification comparisons, career paths, portfolio guidance and interview preparation
 - `/technologies/linux-server` — example Linux Server field guide (16 technology guides are available)
@@ -123,7 +123,9 @@ The roadmap is a learning guide, not a substitute for safe change control, vendo
 
 ## Release validation status
 
-- Offline QA checks: passed.
-- TypeScript/TSX syntax transpilation: passed.
-- TypeScript fixes are applied to the shared animation variants and restored progress map. Full TypeScript semantic check, ESLint run, dependency audit, Next.js production build and live browser tests must still be run after installing dependencies in an environment with registry access. The lockfile must be generated locally (or imported from an existing npm lockfile) before reproducible deployment.
-- External URL reachability: not checked; verify important vendor and certification links before release.
+Run these before every release (the CI workflow in `.github/workflows/ci.yml` runs them on every push and pull request):
+
+- `pnpm run check` — offline content/link QA, TypeScript type check and ESLint.
+- `pnpm run audit` — dependency vulnerability audit.
+- `pnpm run build` — production build.
+- External URL reachability is not checked automatically; verify important vendor and certification links before release.

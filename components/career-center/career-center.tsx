@@ -118,7 +118,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
             <label className="roadmap-search career-search"><Search size={17} /><input value={certQuery} onChange={(event) => setCertQuery(event.target.value)} placeholder="Search Linux, networking, cloud, exam code..." aria-label="Search certifications" /></label>
           </div>
           <div className="career-track-filters" aria-label="Filter certifications by track">
-            {tracks.map((track) => <button key={track} type="button" className={certTrack === track ? "active" : ""} onClick={() => setCertTrack(track)}>{track}<span>{track === "All tracks" ? certifications.length : certifications.filter((certification) => certification.track === track).length}</span></button>)}
+            {tracks.map((track) => <button key={track} type="button" className={certTrack === track ? "active" : ""} aria-pressed={certTrack === track} onClick={() => setCertTrack(track)}>{track}<span>{track === "All tracks" ? certifications.length : certifications.filter((certification) => certification.track === track).length}</span></button>)}
           </div>
 
           <div className="certification-compare-bar">
@@ -220,7 +220,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
           <div className="interview-controls">
             <label className="roadmap-search career-search"><Search size={17} /><input value={questionQuery} onChange={(event) => setQuestionQuery(event.target.value)} placeholder="Search a question, tool or concept..." aria-label="Search interview questions" /></label>
           </div>
-          <div className="interview-category-filters" aria-label="Filter interview questions by topic">{questionCategories.map((category) => <button key={category} type="button" className={questionCategory === category ? "active" : ""} onClick={() => setQuestionCategory(category)}>{category}</button>)}</div>
+          <div className="interview-category-filters" aria-label="Filter interview questions by topic">{questionCategories.map((category) => <button key={category} type="button" className={questionCategory === category ? "active" : ""} aria-pressed={questionCategory === category} onClick={() => setQuestionCategory(category)}>{category}</button>)}</div>
           <div className="interview-question-list">
             {filteredQuestions.map((question, index) => {
               const expanded = expandedQuestionIds.includes(question.id);

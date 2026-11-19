@@ -1,4 +1,25 @@
 # Changelog
+## [0.2.4] - 2026-11-19
+
+### Security
+- Upgraded `next` and `eslint-config-next` from 16.4.3 to 16.4.5, which resolves two moderate advisories (GHSA-mfr8-8qww-v76h and GHSA-vc7v-qv4w-wrv8). `pnpm audit` now reports no known vulnerabilities.
+- Pinned `geist` to an exact version (1.9.1) to match the other dependencies.
+
+### Fixed
+- Resource stage keys now use the same 1–8 numbering as the roadmap stages (they were 0–7 with a +1 applied when displayed). This fixes `pnpm run check`, which was failing in the QA step.
+- The QA script validated the stage route map inside the per-resource loop, repeating each error 45 times. It now validates the map once and also checks that every number matches the stage that owns the slug.
+- The roadmap level filter no longer hides Stage 03 and Stage 04. Stages now carry a structured `levels` list (checked by QA) instead of matching free-text display copy.
+- Saved progress no longer flashes as 0% on first load; progress widgets stay hidden until browser progress has been restored.
+
+### Accessibility
+- Framer Motion animations now honour `prefers-reduced-motion` through `MotionConfig`.
+- Filter buttons on the roadmap, schedule and career centre expose their state with `aria-pressed` (and explicit `type="button"`).
+- The stage detail panel no longer re-announces its whole content on every selection; a short status message announces the selected topic instead.
+
+### Documentation and tooling
+- README stage routes now match the 01–08 numbering, and the stale release-validation status was replaced with the current checks.
+- Added a GitHub Actions workflow that runs check, audit and build on every push and pull request.
+
 ## [0.2.3] - 2026-11-01
 
 ### Fixed

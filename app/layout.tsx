@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
+import { MotionProvider } from "@/components/motion-provider";
 import { RoadmapProgressProvider } from "@/components/roadmap/use-roadmap-progress";
 import { getSiteUrl } from "@/lib/site-url";
 import { GeistSans } from "geist/font/sans";
@@ -48,7 +49,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <RoadmapProgressProvider>{children}</RoadmapProgressProvider>
+          <MotionProvider>
+            <RoadmapProgressProvider>{children}</RoadmapProgressProvider>
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

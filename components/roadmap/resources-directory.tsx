@@ -8,14 +8,14 @@ import { SelectDropdown } from "@/components/ui/select-dropdown";
 import { resources, resourceCategories } from "@/data/resources";
 
 const stagePaths: Record<string, string> = {
-  "0": "it-fundamentals",
-  "1": "networking",
-  "2": "linux-windows-administration",
-  "3": "enterprise-administration",
-  "4": "infrastructure-operations",
-  "5": "security-automation",
-  "6": "cloud-hybrid",
-  "7": "advanced-engineering"
+  "1": "it-fundamentals",
+  "2": "networking",
+  "3": "linux-windows-administration",
+  "4": "enterprise-administration",
+  "5": "infrastructure-operations",
+  "6": "security-automation",
+  "7": "cloud-hybrid",
+  "8": "advanced-engineering"
 };
 
 export function ResourcesDirectory() {
@@ -48,7 +48,7 @@ export function ResourcesDirectory() {
             <div className="resource-directory-top"><span>{resource.category}</span><span className={`resource-access access-${resource.cost.toLowerCase().replace(/[^a-z]+/g, "-")}`}>{resource.cost}</span></div>
             <h2>{resource.name}</h2><p>{resource.description}</p>
             <div className="resource-start"><strong>Recommended starting point</strong><span>{resource.startHere}</span></div>
-            <div className="resource-stage-tags">{resource.stages.map((stage) => <Link href={`/roadmap/${stagePaths[stage] ?? ""}`} key={stage}>Stage {String(Number(stage) + 1).padStart(2, "0")}</Link>)}</div>
+            <div className="resource-stage-tags">{resource.stages.filter((stage) => stagePaths[stage]).map((stage) => <Link href={`/roadmap/${stagePaths[stage]}`} key={stage}>Stage {stage.padStart(2, "0")}</Link>)}</div>
             <a className="resource-directory-link" href={resource.url} target="_blank" rel="noopener noreferrer">Open resource <ExternalLink size={14} /></a>
           </motion.article>)}
         </div>

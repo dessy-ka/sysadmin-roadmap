@@ -20,12 +20,16 @@ export type RoadmapProject = {
   deliverables: string[];
 };
 
+export type RoadmapLevel = "Beginner" | "Intermediate" | "Advanced";
+
 export type RoadmapStage = {
   slug: string;
   number: string;
   title: string;
   shortTitle: string;
   level: string;
+  /** Structured levels used by the roadmap level filter; `level` stays as display copy. */
+  levels: RoadmapLevel[];
   duration: string;
   summary: string;
   objective: string;
@@ -46,6 +50,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "IT & Computer Fundamentals",
     shortTitle: "IT Fundamentals",
     level: "Beginner",
+    levels: ["Beginner"],
     duration: "2–4 weeks",
     summary: "Understand the computer systems, hardware, operating-system concepts and troubleshooting methods that underpin every SysAdmin role.",
     objective: "Understand how computers operate, how operating systems interact with hardware, and how to diagnose ordinary technical problems before moving into server and network administration.",
@@ -99,6 +104,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Networking & Network Administration",
     shortTitle: "Networking",
     level: "Foundation → Intermediate",
+    levels: ["Beginner", "Intermediate"],
     duration: "6–10 weeks",
     summary: "Learn how systems communicate, how networks are segmented and routed, and how to diagnose connectivity, DNS, DHCP and firewall problems.",
     objective: "Build the networking knowledge required to deploy, connect, secure and troubleshoot servers and services in small and enterprise environments.",
@@ -158,6 +164,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Linux & Windows System Administration",
     shortTitle: "Linux & Windows",
     level: "Core SysAdmin skills",
+    levels: ["Intermediate"],
     duration: "8–12 weeks",
     summary: "Move from operating-system concepts into hands-on server administration across Linux and Windows, including users, permissions, services, storage, logs and remote access.",
     objective: "Administer individual servers confidently, understand the core tools of each platform, and troubleshoot common operating-system and service failures.",
@@ -215,6 +222,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Enterprise System Administration",
     shortTitle: "Enterprise Administration",
     level: "Junior → Independent administrator",
+    levels: ["Intermediate"],
     duration: "8–12 weeks",
     summary: "Move from administering individual servers to managing identity, policies, shared services and the day-to-day systems used across an organisation.",
     objective: "Build and operate a small enterprise environment with centralised identity, policy enforcement, shared storage, core network services and auditable administration.",
@@ -278,6 +286,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Virtualization, Storage, Backup & Monitoring",
     shortTitle: "Infrastructure Operations",
     level: "Intermediate SysAdmin",
+    levels: ["Intermediate"],
     duration: "6–10 weeks",
     summary: "Operate virtual machines and containers, design storage, protect workloads with backups and monitor the health of infrastructure services.",
     objective: "Build and maintain a small virtual infrastructure, understand data protection and recovery, and create monitoring that detects service and resource failures.",
@@ -338,6 +347,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Security, Automation & Infrastructure Management",
     shortTitle: "Security & Automation",
     level: "Intermediate → Advanced",
+    levels: ["Intermediate", "Advanced"],
     duration: "8–12 weeks",
     summary: "Protect infrastructure through hardening, identity controls, patching and monitoring, then automate repeatable administration with scripts and infrastructure as code.",
     objective: "Develop secure administration habits and use automation to make system configuration consistent, repeatable, testable and auditable.",
@@ -409,6 +419,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Cloud & Hybrid System Administration",
     shortTitle: "Cloud & Hybrid",
     level: "Intermediate → Advanced",
+    levels: ["Intermediate", "Advanced"],
     duration: "8–12 weeks",
     summary: "Learn to operate cloud infrastructure and integrate it with on-premises environments, with attention to identity, networking, security, monitoring and cost control.",
     objective: "Become proficient in one cloud platform first, then understand how equivalent services and hybrid identity work across providers.",
@@ -473,6 +484,7 @@ export const roadmapStages: RoadmapStage[] = [
     title: "Advanced Infrastructure, Kubernetes & SRE",
     shortTitle: "Advanced Engineering",
     level: "Advanced",
+    levels: ["Advanced"],
     duration: "6–18+ months plus professional experience",
     summary: "Progress from administering individual systems to designing, operating and improving reliable platforms and complex infrastructure.",
     objective: "Develop the engineering judgement required to design resilient infrastructure, operate container platforms, manage service reliability and lead complex operational work.",
