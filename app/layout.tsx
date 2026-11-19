@@ -5,6 +5,7 @@ import { RoadmapProgressProvider } from "@/components/roadmap/use-roadmap-progre
 import { getCanonicalUrl, getSiteUrl } from "@/lib/site-url";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import "./styles/font-stack.css";
 import "./styles/roadmap.css";
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <RoadmapProgressProvider>{children}</RoadmapProgressProvider>
           </MotionProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
