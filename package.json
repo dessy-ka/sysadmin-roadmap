@@ -13,6 +13,7 @@
     "audit": "pnpm audit --audit-level=moderate"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "14.9.0",
     "geist": "1.9.1",
     "lucide-react": "1.62.0",
