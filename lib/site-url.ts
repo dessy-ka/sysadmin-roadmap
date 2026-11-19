@@ -18,3 +18,11 @@ export function getSiteUrl(): URL | null {
     return null;
   }
 }
+
+export function getCanonicalUrl(pathname: string): URL | undefined {
+  const siteUrl = getSiteUrl();
+  if (!siteUrl) return undefined;
+
+  const normalizedPath = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return new URL(normalizedPath, siteUrl);
+}
