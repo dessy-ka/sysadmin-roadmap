@@ -86,7 +86,8 @@ export function StageDetail({ stage, previous, next }: { stage: RoadmapStage; pr
             </div>
           </aside>
 
-          <div className="stage-main-column" ref={mainColumnRef} aria-live="polite" tabIndex={-1}>
+          <div className="stage-main-column" ref={mainColumnRef} tabIndex={-1}>
+            <p className="sr-only" role="status">{selectedTopic ? `Showing topic: ${selectedTopic.title}` : selectedStageView ? `Showing: ${selectedStageView.label}` : ""}</p>
             {selectedTopic && (
               <article className="detail-section selected-topic-panel" key={selectedTopic.id}>
                 <div className="selected-topic-heading">

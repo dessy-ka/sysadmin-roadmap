@@ -87,7 +87,7 @@ export function SchedulePlanner() {
   }
 
   return (
-    <main id="main-content" className="inner-page schedule-page">
+    <main id="main-content" className="inner-page schedule-page" data-progress-ready={ready ? "true" : "false"}>
       <div className="container">
         <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><span>Study schedule</span></div>
 
@@ -123,7 +123,7 @@ export function SchedulePlanner() {
         <section className="schedule-month-section" id="month-plan">
           <div className="schedule-section-heading">
             <div><h2>Choose your month.</h2><p>Explore the monthly focus areas and select a month to open its weekly plan.</p></div>
-            <div className="schedule-filter" aria-label="Filter months">{["All months", "Not started", "In progress", "Completed"].map((item) => <button type="button" key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>{item}</button>)}</div>
+            <div className="schedule-filter" aria-label="Filter months">{["All months", "Not started", "In progress", "Completed"].map((item) => <button type="button" key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}</button>)}</div>
           </div>
           <div className="schedule-month-grid">
             {visibleMonths.map((month) => {

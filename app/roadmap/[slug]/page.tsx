@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { roadmapStages, getStageBySlug } from "@/data/roadmap";
 import { StageDetail } from "@/components/roadmap/stage-detail";
 import { SiteHeader } from "@/components/site-header";
+import { createPageMetadata } from "@/lib/page-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -13,11 +14,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const stage = getStageBySlug(slug);
-  if (!stage) return { title: "SYSADMIN. | Roadmap Stage Not Found" };
-  return {
-    title: `SYSADMIN. | ${stage.title}`,
-    description: stage.summary
-  };
+  if (!stage) return { title: "Roadmap Stage Not Found" };
+  return createPageMetadata({
+    title: stage.title,
+    description: stage.summary,
+    pathname: `/roadmap/${stage.slug}`
+  });
 }
 
 export default async function RoadmapStagePage({ params }: PageProps) {

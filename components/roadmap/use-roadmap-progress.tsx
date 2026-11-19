@@ -45,6 +45,11 @@ export function RoadmapProgressProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    // Lets CSS hide progress widgets until saved progress has loaded, avoiding a brief "0%" flash.
+    if (ready) document.documentElement.dataset.progressReady = "true";
+  }, [ready]);
+
+  useEffect(() => {
     if (!ready) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));

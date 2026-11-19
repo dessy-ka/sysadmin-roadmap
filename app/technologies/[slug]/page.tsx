@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTechnologyBySlug, technologies } from "@/data/technologies";
 import { TechnologyDetail } from "@/components/technologies/technology-detail";
 import { SiteHeader } from "@/components/site-header";
+import { createPageMetadata } from "@/lib/page-metadata";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -13,8 +14,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const technology = getTechnologyBySlug(slug);
-  if (!technology) return { title: "SYSADMIN. | Technology Not Found" };
-  return { title: `SYSADMIN. | ${technology.name}`, description: technology.summary };
+  if (!technology) return { title: "Technology Not Found" };
+  return createPageMetadata({
+    title: technology.name,
+    description: technology.summary,
+    pathname: `/technologies/${technology.slug}`
+  });
 }
 
 export default async function TechnologyPage({ params }: PageProps) {

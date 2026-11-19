@@ -21,7 +21,7 @@ export function RoadmapExplorer() {
   const filteredStages = useMemo(() => {
     const normalized = query.trim().toLowerCase();
     return roadmapStages.filter((stage) => {
-      const matchesLevel = level === "All levels" || stage.level.toLowerCase().includes(level.toLowerCase());
+      const matchesLevel = level === "All levels" || stage.levels.some((item) => item === level);
       const searchable = [stage.title, stage.summary, stage.objective, ...stage.sections.map((section) => section.title), ...stage.sections.flatMap((section) => section.topics.map((topic) => `${topic.title} ${topic.summary} ${topic.details.join(" ")}`))].join(" ").toLowerCase();
       return matchesLevel && (!normalized || searchable.includes(normalized));
     });
@@ -38,7 +38,7 @@ export function RoadmapExplorer() {
 
         <div className="roadmap-controls">
           <label className="roadmap-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search stages, topics or technologies..." aria-label="Search roadmap" /></label>
-          <div className="level-filters" aria-label="Filter by level">{["All levels", "Beginner", "Intermediate", "Advanced"].map((item) => <button key={item} className={level === item ? "active" : ""} onClick={() => setLevel(item)}>{item}</button>)}</div>
+          <div className="level-filters" aria-label="Filter by level">{["All levels", "Beginner", "Intermediate", "Advanced"].map((item) => <button key={item} type="button" className={level === item ? "active" : ""} aria-pressed={level === item} onClick={() => setLevel(item)}>{item}</button>)}</div>
         </div>
 
         <div id="stages" className="roadmap-stage-list">

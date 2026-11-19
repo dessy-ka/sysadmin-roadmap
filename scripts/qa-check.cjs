@@ -203,6 +203,10 @@ unique(technologies.map((technology) => technology.slug), "technology slugs");
 unique(certifications.map((certification) => certification.id), "certification IDs");
 
 for (const stage of roadmapStages) {
+  const validLevels = ["Beginner", "Intermediate", "Advanced"];
+  if (!Array.isArray(stage.levels) || !stage.levels.length || !stage.levels.every((level) => validLevels.includes(level))) {
+    report(`Roadmap stage '${stage.slug}' needs a non-empty 'levels' list drawn from ${validLevels.join(", ")} so the level filter can find it.`);
+  }
   for (const id of stage.resourceIds || []) if (!resourceIds.has(id)) report(`Unknown resource '${id}' referenced by roadmap stage '${stage.slug}'.`);
 }
 for (const resource of resources) {
@@ -211,9 +215,12 @@ for (const resource of resources) {
     if (!roadmapNumbers.has(Number(stage))) report(`Unknown roadmap stage '${stage}' referenced by resource '${resource.id}'.`);
     if (!stagePathEntries.has(stage)) report(`Missing resource directory route mapping for roadmap stage '${stage}'.`);
   }
-  for (const [number, slug] of stagePathEntries) {
-    if (!roadmapSlugs.has(slug) || !roadmapNumbers.has(Number(number))) report(`Invalid resource directory stage route mapping: ${number} -> ${slug}.`);
-  }
+}
+// Validate the stage-number -> slug map once, and make sure each number matches the stage that owns that slug.
+for (const [number, slug] of stagePathEntries) {
+  const owner = roadmapStages.find((stage) => stage.slug === slug);
+  if (!owner) report(`Resource directory stage route mapping points to unknown slug: ${number} -> ${slug}.`);
+  else if (Number(owner.number) !== Number(number)) report(`Resource directory stage route mapping ${number} -> ${slug} does not match roadmap stage number ${owner.number}.`);
 }
 for (const month of studySchedule) {
   if (!roadmapSlugs.has(month.stageSlug)) report(`Unknown roadmap stage '${month.stageSlug}' referenced by schedule month '${month.title}'.`);
