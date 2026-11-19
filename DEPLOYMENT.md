@@ -97,7 +97,26 @@ Roadmap topic completion and schedule task completion are stored in the visitor'
 
 Do not describe the current progress feature as cloud-synchronised or account-backed.
 
-## 6. Release checks
+## 6. Content-Security-Policy
+
+`next.config.ts` sends a Content-Security-Policy on every route. It currently ships in **report-only** mode (`Content-Security-Policy-Report-Only`), so browsers log what the policy would block but block nothing.
+
+What the policy does:
+
+- Locks scripts, styles, images, fonts, fetches and form posts to the site's own origin, and disables plugins (`object-src 'none'`) and `<base>` tampering.
+- Allows inline scripts and styles (`'unsafe-inline'`). Next.js emits small per-page inline scripts and React/Framer Motion emit inline `style` attributes. A nonce-based policy would remove that allowance but forces every page to render dynamically, which is not worth it for a static content site.
+- Adds `frame-ancestors 'none'` once enforced. Until then `X-Frame-Options: DENY` covers framing.
+
+Before switching to enforcement:
+
+1. Deploy the report-only version (for example a Vercel preview).
+2. Open the browser console on every page, with the console filter set to show messages, and look for lines starting with `[Report Only]`.
+3. If you later add an external resource (analytics, an embedded video, a font CDN, an external image), add its origin to the matching directive in `next.config.ts` first.
+4. When the console is clean, change `cspMode` to `"enforce"` in `next.config.ts` and redeploy.
+
+An automated headless-Chrome crawl of all 34 pages (including clicking through filters, tabs and dialogs) found no violations in either mode, but a real-browser pass on the deployed site is still the final check.
+
+## 7. Release checks
 
 Before publishing a new version:
 
@@ -109,6 +128,6 @@ Before publishing a new version:
 - Confirm that `/robots.txt` and `/sitemap.xml` use the final public origin.
 - Open the official documentation and certification links; providers may move pages or change exam details.
 - Test keyboard-only navigation and reduced-motion settings.
-- Review the browser console and hosting logs for runtime errors.
+- Review the browser console and hosting logs for runtime errors, including any `[Report Only]` Content-Security-Policy messages.
 
 The offline QA script checks source syntax, local imports, hard-coded internal links, page anchors, new-tab link safety and data relationships. It does not test the live reachability of external websites or replace a production build and browser-based test pass.

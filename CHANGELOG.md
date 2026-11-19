@@ -1,4 +1,9 @@
 # Changelog
+## [Unreleased]
+
+### Security
+- Added a Content-Security-Policy in report-only mode (same-origin for scripts, styles, images, fonts, fetches and form posts; no plugins). Switch `cspMode` to `"enforce"` in `next.config.ts` once the browser console shows no `[Report Only]` messages. See `DEPLOYMENT.md` section 6.
+
 ## [0.2.4] - 2026-11-19
 
 ### Security
