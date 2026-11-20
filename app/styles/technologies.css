@@ -1,3 +1,4 @@
+@layer technologies {
 /* Technology and tools directory */
 .technology-index-hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr); align-items: center; gap: 54px; padding: 31px 0 49px; border-bottom: 1px solid var(--border); }
 .technology-hero-copy h1 { max-width: 760px; margin: 16px 0 17px; font-size: clamp(39px, 5.1vw, 60px); line-height: 1.08; letter-spacing: -.06em; }
@@ -182,4 +183,5 @@
   .technology-card { min-height: 235px; }
   .technology-hero-stats { gap: 15px; }
   .technology-hero-stats span { font-size: 12px; }
+}
 }

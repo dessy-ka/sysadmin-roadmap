@@ -1,3 +1,4 @@
+@layer refresh {
 /* -------------------------------------------------------------------------- */
 /* Visual refresh 0.2.0 — calmer surfaces, clearer hierarchy, larger type      */
 /* -------------------------------------------------------------------------- */
@@ -810,3 +811,4 @@ main :is(article, [class*="-card"]) h3 { font-size: var(--type-card-title) !impo
 .closing-orb, .closing-inner .eyebrow { color: var(--accent-on-dark); }
 .footer-links a:hover, .footer-bottom a:hover { color: var(--accent-on-dark); }
 .site-footer { background: var(--palette-navy); }
+}

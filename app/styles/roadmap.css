@@ -1,3 +1,4 @@
+@layer roadmap {
 /* Roadmap explorer, detailed stages and learning-resource directory */
 .inner-page { padding: 36px 0 100px; min-height: 65vh; }
 .breadcrumbs { display: flex; align-items: center; gap: 9px; margin: 0 0 30px; color: var(--muted-2); font-size: 12px; font-weight: 700; }
@@ -288,9 +289,7 @@
 }
 
 /* Give the three-column stage workspace more room on desktop screens. */
-@media (min-width: 981px) {
-  .stage-detail-page > .container { width: min(1540px, calc(100% - 48px)); }
-}
+/* .stage-detail-page > .container width lives in overrides.css (it must beat the generic .container rule). */
 @media (min-width: 981px) and (max-width: 1359px) {
   .stage-detail-grid { grid-template-columns: 260px minmax(0, 1fr) 275px; gap: 18px; }
 }
@@ -300,4 +299,5 @@
 @media (prefers-reduced-motion: reduce) {
   .topic-expanded { animation: none; }
   .progress-track > span { transition: none; }
+}
 }
