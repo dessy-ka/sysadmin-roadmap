@@ -1,0 +1,20 @@
+@layer overrides {
+  /* Rules that must beat a generic rule in a later layer (visual-refresh.css).
+     Before cascade layers they won on selector specificity; layers compare
+     order first, so they are kept here, in the last layer, to keep that outcome. */
+
+  /* beats `.container { width }` in visual-refresh.css */
+  @media (min-width: 981px) {
+    .stage-detail-page > .container { width: min(1540px, calc(100% - 48px)); }
+  }
+
+  /* beats `.button { padding-inline: 20px }` in visual-refresh.css */
+  .certification-compare-actions .button { padding-inline: 12px; }
+
+  /* The font shorthand resets line-height; it must beat `small { line-height: 1.5 }`
+     in visual-refresh.css. Font size is still forced by that file's !important rule. */
+  .schedule-task-copy small { font: 12px var(--font-mono), monospace; }
+
+  /* beats `.inner-page p { line-height: 1.8 }` in visual-refresh.css */
+  .schedule-week-heading > div:first-child > p { line-height: 1.75; }
+}

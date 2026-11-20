@@ -1,3 +1,4 @@
+@layer a11y {
 /* Accessibility and release-readiness refinements */
 .skip-link {
   position: fixed;
@@ -41,3 +42,4 @@
 /* Hide progress widgets until saved browser progress has been restored (prevents a brief 0% flash). */
 html:not([data-progress-ready]) :is(.overall-progress-card, .roadmap-stage-progress, .stage-progress-panel) { visibility: hidden; }
 .schedule-page[data-progress-ready="false"] :is(.schedule-progress-card, .schedule-month-grid, .schedule-month-completion, .schedule-week-nav, .schedule-task-list) { visibility: hidden; }
+}

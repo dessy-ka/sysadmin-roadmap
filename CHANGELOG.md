@@ -1,4 +1,10 @@
 # Changelog
+## [Unreleased]
+
+### Changed
+- All stylesheets now sit in named CSS cascade layers (`base`, `roadmap`, `schedule`, `technologies`, `career`, `a11y`, `refresh`, `overrides`), declared once at the top of `app/globals.css`. A later layer now beats an earlier one regardless of selector specificity, so the visual refresh no longer relies on being loaded last. Rendering is unchanged: computed styles were compared against the previous build across every page, three viewport widths, both themes, and click, hover and keyboard-focus states.
+- Added `app/styles/overrides.css` for the four rules that used to win on specificity over a generic `visual-refresh.css` rule. Each is commented with the rule it beats.
+
 ## [0.2.4] - 2026-11-19
 
 ### Security
