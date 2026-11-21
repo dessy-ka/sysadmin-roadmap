@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 
 export function SiteFooter() {
@@ -11,6 +11,6 @@ export function SiteFooter() {
         <div><span className="footer-heading">Reference</span><Link href="/resources">Learning resources</Link><Link href="/schedule">Interactive study schedule</Link><Link href="/career-center/portfolio-proof">Portfolio proof</Link><Link href="/career-center/interview-preparation">Interview preparation</Link></div>
       </div>
     </div>
-    <div className="container footer-bottom"><span>© {new Date().getFullYear()} SysAdmin Roadmap. A technical knowledge guide.</span><Link href="/">Back to top <ArrowUpRight size={14} /></Link></div>
+    <div className="container footer-bottom"><span>© {new Date().getFullYear()} SysAdmin Roadmap. A technical knowledge guide.</span><Link href="/">Back to top <ArrowUp size={14} /></Link></div>
   </footer>;
 }

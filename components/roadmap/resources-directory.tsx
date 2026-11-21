@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Search, SlidersHorizontal } from "lucide-react";
 import { SelectDropdown } from "@/components/ui/select-dropdown";
+import { SegmentedFilter } from "@/components/ui/segmented-filter";
 import { resources, resourceCategories } from "@/data/resources";
 
 const stagePaths: Record<string, string> = {
@@ -40,7 +41,7 @@ export function ResourcesDirectory() {
         <div className="resource-controls">
           <label className="roadmap-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search documentation, tools or topics..." aria-label="Search learning resources" /></label>
           <SelectDropdown className="resource-select" value={category} options={resourceCategories} onChange={setCategory} ariaLabel="Filter by category" icon={SlidersHorizontal} />
-          <SelectDropdown className="resource-select" value={cost} options={["All access types", "Free", "Mixed", "Paid"]} onChange={setCost} ariaLabel="Filter by access type" />
+          <SegmentedFilter label="Filter by access type" value={cost} options={["All access types", "Free", "Mixed", "Paid"]} onChange={setCost} />
         </div>
         <h2 className="sr-only">Resource results</h2>
         <div className="resource-results-bar"><span>{filtered.length} resources found</span><span>Access labels describe the linked learning resource; related exams or cloud services may cost extra.</span></div>
