@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Activity, ArrowRight, Boxes, Cloud, Code2, Database, GitBranch, Network, Package, Search, Server, Terminal, Users, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { SelectDropdown } from "@/components/ui/select-dropdown";
+import { SegmentedFilter } from "@/components/ui/segmented-filter";
 import { technologies } from "@/data/technologies";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -77,7 +77,7 @@ export function TechnologyDirectory() {
 
           <div className="technology-controls">
             <label className="roadmap-search technology-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search Linux, Docker, monitoring, identity..." aria-label="Search technologies" /></label>
-            <SelectDropdown className="technology-level-select" value={level} options={["All levels", "Beginner", "Intermediate", "Advanced"]} onChange={setLevel} ariaLabel="Filter by experience level" />
+            <SegmentedFilter label="Filter by experience level" value={level} options={["All levels", "Beginner", "Intermediate", "Advanced"]} onChange={setLevel} />
           </div>
 
           <div className="technology-category-filters" aria-label="Filter by technology category">

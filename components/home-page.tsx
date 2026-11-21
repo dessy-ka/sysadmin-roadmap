@@ -2,25 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
-import {
-  Activity,
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Boxes,
-  CalendarDays,
-  CheckCircle2,
-  ChevronRight,
-  Cloud,
-  FileText,
-  Network,
-  RadioTower,
-  Server,
-  ShieldCheck,
-  Terminal,
-  Monitor
-} from "lucide-react";
+import { Activity, ArrowDown, ArrowRight, BookOpen, Boxes, CalendarDays, CheckCircle2, ChevronRight, Cloud, FileText, Monitor, Network, RadioTower, Server, ShieldCheck, Terminal } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -38,17 +20,17 @@ const stages = [
   { n: "02", slug: "networking", title: "Networking & Network Administration", level: "Foundation to intermediate", icon: Network, desc: "Learn addressing, subnetting, switching, routing, DNS, DHCP, firewalls and secure connectivity.", topics: ["TCP/IP & subnetting", "VLANs & routing", "DNS & DHCP", "Firewalls & VPNs"] },
   { n: "03", slug: "linux-windows-administration", title: "Linux & Windows Administration", level: "Core SysAdmin skills", icon: Terminal, desc: "Administer Linux and Windows servers, manage users and services, configure storage and troubleshoot from the command line.", topics: ["Linux administration", "Windows Server", "Bash & PowerShell", "Services & storage"] },
   { n: "04", slug: "enterprise-administration", title: "Enterprise System Administration", level: "Junior to independent", icon: Server, desc: "Manage organisational identity, Active Directory, Group Policy, shared services and enterprise operations.", topics: ["Active Directory", "Group Policy", "Identity lifecycle", "Enterprise services"] },
-  { n: "05", slug: "infrastructure-operations", title: "Virtualization, Storage & Monitoring", level: "Intermediate", icon: Boxes, desc: "Operate virtual infrastructure, containers, storage, backup, disaster recovery and monitoring platforms.", topics: ["Proxmox & hypervisors", "Storage & RAID", "Backup & recovery", "Monitoring"] },
+  { n: "05", slug: "infrastructure-operations", title: "Virtualisation, Storage & Monitoring", level: "Intermediate", icon: Boxes, desc: "Operate virtual infrastructure, containers, storage, backup, disaster recovery and monitoring platforms.", topics: ["Proxmox & hypervisors", "Storage & RAID", "Backup & recovery", "Monitoring"] },
   { n: "06", slug: "security-automation", title: "Security, Automation & Operations", level: "Intermediate to advanced", icon: ShieldCheck, desc: "Harden systems, manage risk and automate repeatable infrastructure tasks with scripts and infrastructure as code.", topics: ["System hardening", "IAM & security", "Ansible", "Terraform & Git"] },
   { n: "07", slug: "cloud-hybrid", title: "Cloud & Hybrid Administration", level: "Intermediate to advanced", icon: Cloud, desc: "Operate Azure, AWS or Google Cloud and integrate cloud services with on-premises infrastructure.", topics: ["Cloud foundations", "Azure / AWS / GCP", "Hybrid identity", "Cloud governance"] },
   { n: "08", slug: "advanced-engineering", title: "Advanced Infrastructure, Kubernetes & SRE", level: "Advanced", icon: Activity, desc: "Design resilient platforms, operate Kubernetes, measure reliability and develop infrastructure architecture skills.", topics: ["High availability", "Kubernetes", "SRE & observability", "Architecture"] }
 ];
 
 const destinations = [
-  { title: "Technologies & tools", description: "Explore guides to operating systems, networking, virtualization, security and cloud.", href: "/technologies", action: "Browse technologies", icon: Boxes },
+  { title: "Technologies & tools", description: "Explore guides to operating systems, networking, virtualisation, security and cloud.", href: "/technologies", action: "Browse technologies", icon: Boxes },
   { title: "Learning resources", description: "Find official documentation and trusted learning material in one searchable library.", href: "/resources", action: "Browse resources", icon: BookOpen },
   { title: "Study schedule", description: "Use a flexible 12-month plan with weekly topics, tasks and milestones.", href: "/schedule", action: "View the schedule", icon: CalendarDays },
-  { title: "Career center", description: "Compare certifications, explore roles, build a portfolio and practise interviews.", href: "/career-center/career-paths", action: "Explore career paths", icon: ShieldCheck }
+  { title: "Career centre", description: "Compare certifications, explore roles, build a portfolio and practise interviews.", href: "/career-center/career-paths", action: "Explore career paths", icon: ShieldCheck }
 ];
 
 function Heading({ title, desc }: { title: string; desc: string }) {
@@ -125,7 +107,7 @@ export default function HomePage() {
                 );
               })}
             </div>
-            <div className="roadmap-footnote"><FileText size={16} /><span>Every roadmap stage includes practical labs, project ideas and a completion checklist.</span><Link href="/roadmap" className="text-link">View all 8 stages <ArrowUpRight size={15} /></Link></div>
+            <div className="roadmap-footnote"><FileText size={16} /><span>Every roadmap stage includes practical labs, project ideas and a completion checklist.</span><Link href="/roadmap" className="text-link">View all 8 stages <ArrowRight size={15} /></Link></div>
           </div>
         </section>
 
@@ -140,7 +122,7 @@ export default function HomePage() {
                     <span className="home-explore-icon"><Icon size={20} /></span>
                     <h3>{destination.title}</h3>
                     <p>{destination.description}</p>
-                    <span className="home-explore-action">{destination.action}<ArrowUpRight size={15} /></span>
+                    <span className="home-explore-action">{destination.action}<ArrowRight size={15} /></span>
                   </Link>
                 );
               })}
@@ -151,7 +133,7 @@ export default function HomePage() {
         <section className="closing-section">
           <div className="container closing-inner">
             <div className="closing-orb"><RadioTower size={27} /></div>
-            <h2>Understand the infrastructure.<br /><span>Build the capability.</span></h2>
+            <h2>Understand the systems.<br /><span>Master the infrastructure.</span></h2>
             <p>Start with the roadmap and build your System Administration skills one stage at a time.</p>
             <Link className="button button-primary" href="/roadmap">Explore the roadmap <ArrowRight size={17} /></Link>
           </div>

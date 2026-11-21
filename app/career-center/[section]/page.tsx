@@ -20,7 +20,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { section } = await params;
-  if (!sections.includes(section as CareerCenterSection)) return { title: "Career Center" };
+  if (!sections.includes(section as CareerCenterSection)) return { title: "Career Centre" };
   const title = sectionTitles[section as CareerCenterSection];
   return createPageMetadata({
     title,

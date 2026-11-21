@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Boxes, Cloud, Monitor, Network, Search, Server, ShieldCheck, Terminal } from "lucide-react";
 import { getAllTopicIds, roadmapStages } from "@/data/roadmap";
+import { SegmentedFilter } from "@/components/ui/segmented-filter";
 import { useRoadmapProgress } from "@/components/roadmap/use-roadmap-progress";
 
 const iconByStage = [Monitor, Network, Terminal, Server, Boxes, ShieldCheck, Cloud, Cloud];
@@ -38,7 +39,7 @@ export function RoadmapExplorer() {
 
         <div className="roadmap-controls">
           <label className="roadmap-search"><Search size={17} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search stages, topics or technologies..." aria-label="Search roadmap" /></label>
-          <div className="level-filters" aria-label="Filter by level">{["All levels", "Beginner", "Intermediate", "Advanced"].map((item) => <button key={item} type="button" className={level === item ? "active" : ""} aria-pressed={level === item} onClick={() => setLevel(item)}>{item}</button>)}</div>
+          <SegmentedFilter label="Filter by level" value={level} options={["All levels", "Beginner", "Intermediate", "Advanced"]} onChange={setLevel} />
         </div>
 
         <div id="stages" className="roadmap-stage-list">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, BookOpen, Check, CheckCircle2, Clock3, ExternalLink, Flag, Gauge, RotateCcw, Target } from "lucide-react";
+import { ArrowDown, ArrowRight, BookOpen, Check, CheckCircle2, Clock3, ExternalLink, Flag, Gauge, RotateCcw, Target } from "lucide-react";
 import { studySchedule } from "@/data/schedule";
 import { resources } from "@/data/resources";
 import { getStageBySlug } from "@/data/roadmap";
@@ -96,12 +96,12 @@ export function SchedulePlanner() {
             
             <h1>Build your SysAdmin skills, <span>one week at a time.</span></h1>
             <p>A practical sequence that takes you from IT fundamentals to advanced infrastructure engineering. Each week combines focused learning, hands-on work and a tangible outcome you can add to your technical portfolio.</p>
-            <div className="schedule-hero-actions"><a className="button button-primary" href="#month-plan">Explore the schedule <ArrowDownRight size={16} /></a><Link className="button button-secondary" href="/roadmap">View complete roadmap <ArrowUpRight size={15} /></Link></div>
+            <div className="schedule-hero-actions"><a className="button button-primary" href="#month-plan">Explore the schedule <ArrowDown size={16} /></a><Link className="button button-secondary" href="/roadmap">View complete roadmap <ArrowRight size={15} /></Link></div>
             <div className="schedule-flex-note"><Gauge size={16} /><span>Suggested pace, not a deadline. Adjust the hours and timeline to suit your experience and availability.</span></div>
           </div>
           <div className="schedule-progress-card">
             <div className="schedule-progress-top"><span>YOUR SCHEDULE PROGRESS</span><span className="schedule-live-dot" /></div>
-            <div className="schedule-progress-number">{overallProgress}<small>%</small></div>
+            <div className="schedule-progress-number">{overallProgress}<span className="schedule-progress-unit">%</span></div>
             <div className="schedule-progress-track"><span style={{ width: `${overallProgress}%` }} /></div>
             <div className="schedule-progress-bottom"><span>{completedCount} of {allTasks.length} tasks completed</span><span>{12 - studySchedule.filter((month) => month.weeks.every((week) => week.tasks.every((_, index) => completed[`${week.id}-t${index + 1}`]))).length} months to go</span></div>
             <div className="schedule-progress-divider" />
@@ -137,7 +137,7 @@ export function SchedulePlanner() {
                   <strong>{month.title}</strong>
                   <span className="schedule-month-stage">{month.stageLabel}</span>
                   <span className="schedule-month-progress"><i style={{ width: `${progress}%` }} /></span>
-                  <span className="schedule-month-card-bottom"><small>{doneCount}/{taskCount} tasks</small><ArrowUpRight size={15} /></span>
+                  <span className="schedule-month-card-bottom"><small>{doneCount}/{taskCount} tasks</small><ArrowRight size={15} /></span>
                 </button>
               );
             })}
@@ -150,7 +150,7 @@ export function SchedulePlanner() {
             <div><h2 id="week-plan-title">Month {String(currentMonth.number).padStart(2, "0")}: {currentMonth.title}</h2><p>{currentMonth.summary}</p></div>
             <div className="schedule-month-completion"><strong>{Math.round((monthDone / monthTotal) * 100)}%</strong><span>MONTH COMPLETE</span><div><i style={{ width: `${(monthDone / monthTotal) * 100}%` }} /></div></div>
           </div>
-          <div className="schedule-stage-reference"><span><Flag size={15} /> {currentMonth.stageLabel}</span>{selectedStage && <Link href={`/roadmap/${currentMonth.stageSlug}`}>Explore this roadmap stage <ArrowUpRight size={14} /></Link>}</div>
+          <div className="schedule-stage-reference"><span><Flag size={15} /> {currentMonth.stageLabel}</span>{selectedStage && <Link href={`/roadmap/${currentMonth.stageSlug}`}>Explore this roadmap stage <ArrowRight size={14} /></Link>}</div>
           <div className="schedule-week-layout">
             <nav className="schedule-week-nav" aria-label="Weeks in selected month">
               {currentMonth.weeks.map((week, index) => {
@@ -183,7 +183,7 @@ export function SchedulePlanner() {
           <button type="button" onClick={resetProgress}><RotateCcw size={14} /> Reset progress</button>
         </section>
 
-        <div className="schedule-bottom-links"><Link href="/roadmap">Explore all roadmap stages <ArrowUpRight size={14} /></Link><Link href="/resources">Browse the full resource library <ArrowUpRight size={14} /></Link></div>
+        <div className="schedule-bottom-links"><Link href="/roadmap">Explore all roadmap stages <ArrowRight size={14} /></Link><Link href="/resources">Browse the full resource library <ArrowRight size={14} /></Link></div>
       </div>
     </main>
   );
