@@ -184,7 +184,7 @@ export const technologies: Technology[] = [
     slug: "proxmox-ve",
     name: "Proxmox Virtual Environment",
     shortName: "Proxmox VE",
-    category: "Virtualization & Storage",
+    category: "Virtualisation & Storage",
     level: "Intermediate",
     icon: "boxes",
     tagline: "Run a practical virtualisation platform for servers, services and home labs.",

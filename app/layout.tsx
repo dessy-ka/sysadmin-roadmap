@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: { default: "SYSADMIN.", template: "SYSADMIN. | %s" },
   description: "A practical System Administration knowledge and roadmap portal covering operating systems, networking, infrastructure, security, automation, cloud and career development.",
   applicationName: "SYSADMIN.",
-  keywords: ["System Administration", "SysAdmin roadmap", "Linux", "Windows Server", "Networking", "Virtualization", "Infrastructure", "Cloud", "Automation", "Proxmox", "Docker", "Kubernetes", "Ansible", "Nagios", "Prometheus", "Terraform", "SysAdmin certifications", "IT career paths", "System Administrator interview questions"],
+  keywords: ["System Administration", "SysAdmin roadmap", "Linux", "Windows Server", "Networking", "Virtualisation", "Infrastructure", "Cloud", "Automation", "Proxmox", "Docker", "Kubernetes", "Ansible", "Nagios", "Prometheus", "Terraform", "SysAdmin certifications", "IT career paths", "System Administrator interview questions"],
   icons: { icon: "/sysadmin-logo.png", apple: "/sysadmin-logo.png" },
   ...(homeCanonical ? { alternates: { canonical: homeCanonical } } : {}),
   openGraph: {

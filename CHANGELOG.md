@@ -5,6 +5,16 @@
 - The 404 page no longer emits conflicting robots tags (`noindex` together with the site-wide `index, follow`); it is now `noindex, follow`.
 - The social preview wordmark no longer has a gap before the blue dot.
 
+### Consistency
+- Spelling is now British throughout the visible copy: "Career Centre" (header, home, page metadata) and "Virtualisation" (titles, categories, filters). Product names such as "Windows Admin Center" and route paths are unchanged.
+- Link icons follow one rule: `→` for internal links, `↓` for in-page jumps, `↑` for "Back to top", and the external-link icon only for links that open another site. The diagonal `↗`/`↘` arrows were used on internal links.
+- Home explore-card links are 14px like every other card action link (they were 12px).
+- Career centre page titles use the same accent-coloured last word as the other page heroes.
+- The closing home headline repeats the hero tagline instead of a second, different one.
+- Schedule progress shows "0%" with the percent sign at its intended size (a blanket `small` size rule was shrinking it).
+- Added a shared `SegmentedFilter` for short, exclusive choices. The roadmap level, technologies level and resources access-type filters now use it, so the same filter looks and behaves the same on every page. On phones it stays on one row, and scrolls sideways when it does not fit.
+- Fixed a large empty gap above the resources access filter on phones.
+
 ### Accessibility
 - Light theme contrast: darkened the teal (`--palette-teal`) and muted grey (`--muted-2`) so the "Free"/"Beginner" tags and small grey tags meet 4.5:1 on their backgrounds, and lightened the footer copyright text. The footer wordmark dot is now visible in the light theme.
 - Heading structure: resource card titles are now `h3` under a visually hidden "Resource results" `h2` instead of 45 sibling `h2`s. They now use the standard card-title size like every other card.

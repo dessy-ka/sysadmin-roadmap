@@ -3,11 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { LucideIcon } from "lucide-react";
-import {
-  ArrowRight, ArrowUpRight, Award, BookOpen,
-  CheckCircle2, ChevronDown, Cloud, ExternalLink, GraduationCap, Network,
-  Search, ShieldCheck, Terminal, X
-} from "lucide-react";
+import { ArrowRight, Award, BookOpen, CheckCircle2, ChevronDown, Cloud, ExternalLink, GraduationCap, Network, Search, ShieldCheck, Terminal, X } from "lucide-react";
 import {
   careerPaths, certifications, interviewQuestions, portfolioProjects,
   type CertificationTrack
@@ -32,6 +28,13 @@ const trackIcons: Record<CertificationTrack, LucideIcon> = {
 };
 
 export type CareerCenterSection = "certifications" | "career-paths" | "portfolio-proof" | "interview-preparation";
+
+// Matches the other page heroes: plain lead-in text with the final word in the accent colour.
+function AccentedTitle({ text }: { text: string }) {
+  const words = text.split(" ");
+  const last = words.pop();
+  return <>{words.length > 0 && `${words.join(" ")} `}<span>{last}</span></>;
+}
 
 const sectionDetails: Record<CareerCenterSection, { label: string; description: string }> = {
   certifications: { label: "Certifications", description: "Compare credentials by focus and level, then choose one that supports the skills you are building." },
@@ -101,7 +104,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
       <div className="container">
         <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/career-center/certifications">Career centre</Link><span>/</span><span>{sectionDetails[section].label}</span></div>
         <section className="career-hero career-subpage-hero">
-          <div className="career-hero-copy"><h1>{sectionDetails[section].label}</h1><p>{sectionDetails[section].description}</p></div>
+          <div className="career-hero-copy"><h1><AccentedTitle text={sectionDetails[section].label} /></h1><p>{sectionDetails[section].description}</p></div>
         </section>
         {section === "certifications" && <section id="certifications" className="career-content-section" aria-labelledby="certification-heading">
           <div className="career-section-heading">
@@ -179,7 +182,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
                 <div className="certification-objectives"><strong>Exam objective areas</strong>{expandedCertification.domains.map((domain) => <div key={domain.title}><span>{domain.title}{domain.weight ? <b>{domain.weight}</b> : null}</span><p>{domain.detail}</p></div>)}</div>
                 <div className="certification-proof"><strong>Practical evidence to build</strong>{expandedCertification.practicalProof.map((item) => <p key={item}><CheckCircle2 size={14} />{item}</p>)}</div>
                 <div className="certification-official-links"><a href={expandedCertification.officialUrl} target="_blank" rel="noopener noreferrer">Vendor certification page <ExternalLink size={13} /></a><a href={expandedCertification.objectivesUrl} target="_blank" rel="noopener noreferrer">Exam objectives / study guide <ExternalLink size={13} /></a></div>
-                <div className="certification-stage-links"><span>RELATED ROADMAP STAGES</span>{expandedCertification.roadmapStages.map((slug) => { const stage = roadmapStages.find((item) => item.slug === slug); return stage ? <Link key={slug} href={`/roadmap/${slug}`}>{stage.shortTitle}<ArrowUpRight size={11} /></Link> : null; })}</div>
+                <div className="certification-stage-links"><span>RELATED ROADMAP STAGES</span>{expandedCertification.roadmapStages.map((slug) => { const stage = roadmapStages.find((item) => item.slug === slug); return stage ? <Link key={slug} href={`/roadmap/${slug}`}>{stage.shortTitle}<ArrowRight size={11} /></Link> : null; })}</div>
               </div>
             </div>}
           </dialog>
@@ -197,7 +200,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
               <h3>{path.title}</h3><p className="career-path-summary">{path.summary}</p>
               <div className="career-progression-list">{path.progression.map((step, stepIndex) => <div key={step.role}><span>{String(stepIndex + 1).padStart(2, "0")}</span><div><strong>{step.role}</strong><p>{step.focus}</p></div></div>)}</div>
               <div className="career-path-skill-block"><strong>CORE SKILLS TO DEVELOP</strong><div>{path.skills.map((skill) => <span key={skill}>{skill}</span>)}</div></div>
-              <div className="career-path-certifications"><strong>RELATED CERTIFICATIONS</strong><div>{path.certifications.map((id) => { const certification = certifications.find((item) => item.id === id); return certification ? <Link key={id} href={`/career-center/certifications#cert-${id}`}>{certification.name}<ArrowUpRight size={11} /></Link> : null; })}</div></div>
+              <div className="career-path-certifications"><strong>RELATED CERTIFICATIONS</strong><div>{path.certifications.map((id) => { const certification = certifications.find((item) => item.id === id); return certification ? <Link key={id} href={`/career-center/certifications#cert-${id}`}>{certification.name}<ArrowRight size={11} /></Link> : null; })}</div></div>
             </article>)}
           </div>
         </section>}

@@ -283,7 +283,7 @@ export const roadmapStages: RoadmapStage[] = [
   {
     slug: "infrastructure-operations",
     number: "05",
-    title: "Virtualization, Storage, Backup & Monitoring",
+    title: "Virtualisation, Storage, Backup & Monitoring",
     shortTitle: "Infrastructure Operations",
     level: "Intermediate SysAdmin",
     levels: ["Intermediate"],
@@ -295,7 +295,7 @@ export const roadmapStages: RoadmapStage[] = [
     sections: [
       {
         id: "virtualization",
-        title: "Virtualization & hypervisors",
+        title: "Virtualisation & hypervisors",
         topics: [
           { id: "infra-hypervisors", title: "Hypervisors & virtualisation platforms", summary: "Compare the platforms used to consolidate and operate compute workloads.", details: ["Type 1 native versus Type 2 hosted hypervisors", "Proxmox VE: KVM virtual machines and LXC containers", "Microsoft Hyper-V: virtual switches and VHDX", "VMware vSphere: ESXi, vCenter, templates and resource pools", "Docker and Podman application containers"] },
           { id: "infra-vm-concepts", title: "VMs, containers & resource allocation", summary: "Understand how compute resources are assigned and isolated.", details: ["VMs with separate guest kernels versus containers sharing the host kernel", "vCPU allocation, scheduling and overcommitment", "RAM allocation, ballooning and swapping", "Raw, qcow2, VHDX and VMDK virtual disks", "Thin versus thick provisioning and resource contention"] },

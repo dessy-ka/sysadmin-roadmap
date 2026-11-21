@@ -24,7 +24,7 @@
 .technology-section-heading { display: flex; justify-content: space-between; align-items: end; gap: 25px; }
 .technology-section-heading h2 { margin: 11px 0 9px; font-size: clamp(25px, 3.2vw, 35px); letter-spacing: -.045em; }
 .technology-section-heading p { max-width: 720px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
-.technology-controls { display: grid; grid-template-columns: minmax(0, 1fr) 220px; align-items: stretch; gap: 12px; margin-top: 23px; }
+.technology-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: stretch; gap: 12px; margin-top: 23px; }
 .technology-search { margin: 0; }
 .technology-level-select { min-width: 0; min-height: 50px; display: grid; align-content: center; gap: 2px; padding: 4px 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); }
 .technology-level-select span { color: var(--muted-2); font: 12px var(--font-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
