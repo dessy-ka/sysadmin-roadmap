@@ -11,9 +11,11 @@ const isDev = process.env.NODE_ENV === "development";
  *
  * Why 'unsafe-inline' for scripts and styles: this site is statically generated,
  * and Next.js emits small inline scripts (the React flight payload, theme
- * bootstrap) whose contents differ on every page, so they cannot be allow-listed
- * with a single hash. A nonce would fix that but forces every page to render
- * dynamically (no static pages or CDN caching), which is not worth it here.
+ * bootstrap) whose contents differ on every page, so no single hash covers them.
+ * Two ways to drop 'unsafe-inline' for scripts exist, each with a cost: a nonce
+ * forces every page to render dynamically (no static pages or CDN caching), and
+ * Next's experimental `sri` option generates per-page hashes but is still
+ * experimental, so this config does not use it yet.
  * Inline `style` attributes (Framer Motion, React style props) also need
  * 'unsafe-inline' for styles. Everything else is locked to same-origin.
  */

@@ -30,7 +30,7 @@ export function createSocialImage() {
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div style={{ width: 8, height: 54, borderRadius: 4, backgroundColor: "#83b9ff" }} />
           <div style={{ display: "flex", fontSize: 72, fontWeight: 700, letterSpacing: -3 }}>
-            <span>SYSADMIN</span><span style={{ color: "#83b9ff" }}>.</span>
+            <span>SYSADMIN</span><span style={{ marginLeft: -9, color: "#83b9ff" }}>.</span>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, maxWidth: 760, fontSize: 38, fontWeight: 600, lineHeight: 1.2 }}>

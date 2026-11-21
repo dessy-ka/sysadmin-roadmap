@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { getCanonicalUrl } from "@/lib/site-url";
 
+// Bump when the social image artwork changes so link-preview caches fetch the new one.
+const SOCIAL_IMAGE_VERSION = "2";
+
 type PageMetadataInput = {
   title: string;
   description: string;
@@ -9,18 +12,11 @@ type PageMetadataInput = {
 
 export function createPageMetadata({ title, description, pathname }: PageMetadataInput): Metadata {
   const canonical = getCanonicalUrl(pathname);
-  const imageAlt = `SYSADMIN. — ${title}`;
-  const openGraphImage = {
-    url: "/opengraph-image",
+  const socialImage = {
+    url: `/opengraph-image?v=${SOCIAL_IMAGE_VERSION}`,
     width: 1200,
     height: 630,
-    alt: imageAlt
-  };
-  const twitterImage = {
-    url: "/twitter-image",
-    width: 1200,
-    height: 630,
-    alt: imageAlt
+    alt: `SYSADMIN. — ${title}`
   };
 
   return {
@@ -33,14 +29,14 @@ export function createPageMetadata({ title, description, pathname }: PageMetadat
       description,
       siteName: "SYSADMIN.",
       locale: "en_GB",
-      images: [openGraphImage],
+      images: [socialImage],
       ...(canonical ? { url: canonical } : {})
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [twitterImage]
+      images: [socialImage]
     }
   };
 }
