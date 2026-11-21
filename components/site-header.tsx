@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { BrandMark } from "@/components/brand-mark";
@@ -24,6 +25,9 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+  // The button points at /roadmap, so it is redundant on the home page (its hero has the same action) and on /roadmap itself.
+  const showRoadmapCta = pathname !== "/" && pathname !== "/roadmap";
 
   useEffect(() => {
     if (!careerOpen) return;
@@ -61,7 +65,7 @@ export function SiteHeader() {
           {links.slice(3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}
         </nav>
         <div className="header-actions">
-          <Link className="header-cta" href="/roadmap">View roadmap <ArrowUpRight size={15} /></Link>
+          {showRoadmapCta && <Link className="header-cta" href="/roadmap">View roadmap <ArrowUpRight size={15} /></Link>}
           <ThemeToggle />
           <button className="icon-button mobile-menu-button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-navigation" type="button" onClick={() => { setOpen((value) => !value); setCareerOpen(false); }}>{open ? <X size={20} /> : <Menu size={20} />}</button>
         </div>

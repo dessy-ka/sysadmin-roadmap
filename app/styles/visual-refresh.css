@@ -12,7 +12,7 @@
   color-scheme: light;
   --palette-navy: #172a3f;
   --palette-blue: #245fc7;
-  --palette-teal: #087b73;
+  --palette-teal: #06706a;
   --palette-amber: #875b10;
   --bg: #e9eef4;
   --surface: #f4f6f8;
@@ -20,7 +20,7 @@
   --surface-3: #cfdae6;
   --text: var(--palette-navy);
   --muted: #4b6177;
-  --muted-2: #536a82;
+  --muted-2: #4a6078;
   --border: #b7c7d7;
   --accent: var(--palette-blue);
   --accent-soft: #dce8fc;
@@ -92,7 +92,7 @@ body {
 .career-nav-menu a { display: block; padding: 10px 11px; border-radius: 7px; color: var(--muted); font-size: 13px; font-weight: 700; }
 .career-nav-menu a:hover, .career-nav-menu a:focus-visible { background: var(--accent-soft); color: var(--accent); }
 .header-cta { padding: 11px 15px; border-radius: 10px; font-size: 13px; }
-.icon-button { width: 42px; height: 42px; border-radius: 12px; }
+.icon-button { width: 44px; height: 44px; border-radius: 12px; }
 .mobile-nav a { padding-block: 15px; font-size: 15px; }
 .mobile-nav-parent { display: flex; width: 100%; justify-content: space-between; align-items: center; padding: 15px 4px; border: 0; border-bottom: 1px solid var(--border); background: transparent; color: var(--muted); font-size: 15px; font-weight: 700; text-align: left; cursor: pointer; }
 .mobile-nav-parent[aria-expanded="true"] { color: var(--accent); }
@@ -427,7 +427,7 @@ body {
 .resource-directory-grid { gap: 16px; }
 .resource-directory-card { min-height: 300px; padding: 22px; border-radius: 16px; }
 .resource-directory-top { font-size: 12px; }
-.resource-directory-card h2 { font-size: 19px; }
+.resource-directory-card h3 { font-size: 19px; }
 .resource-directory-card > p { font-size: 14px; line-height: 1.75; }
 .resource-start { padding: 13px; border-radius: 10px; }
 .resource-start strong { font-size: 12px; }
@@ -671,7 +671,7 @@ body {
   .resource-library-stats span { font-size: 12px; }
   .resource-directory-grid, .technology-card-grid { grid-template-columns: 1fr; }
   .resource-directory-card { min-height: 0; padding: 19px; }
-  .resource-directory-card h2, .technology-card h3 { font-size: 18px; }
+  .resource-directory-card h3, .technology-card h3 { font-size: 18px; }
   .resource-directory-card > p, .technology-card > p { font-size: 14px; }
   .schedule-hero { padding-top: 20px; }
   .schedule-progress-card { padding: 22px; }
@@ -811,4 +811,24 @@ main :is(article, [class*="-card"]) h3 { font-size: var(--type-card-title) !impo
 .closing-orb, .closing-inner .eyebrow { color: var(--accent-on-dark); }
 .footer-links a:hover, .footer-bottom a:hover { color: var(--accent-on-dark); }
 .site-footer { background: var(--palette-navy); }
+
+/* Accessibility: larger hit areas without changing the layout.
+   Standalone links were 21-23px tall. An invisible ::after extends each clickable area
+   above the 24px WCAG 2.5.8 minimum; the visible size and surrounding spacing do not change. */
+.desktop-nav > a { padding-block: 10px; }
+:is(.breadcrumbs a, .footer-links a, .footer-bottom a, .hero-bottom a, .sidebar-all-link, .previous-stage-link,
+  .technology-sidebar-all, .technology-library-links a, .technology-bottom-links a,
+  .technology-detail-pagination a, .schedule-bottom-links a, .schedule-stage-reference a,
+  .status-page-back) { position: relative; }
+:is(.breadcrumbs a, .footer-links a, .footer-bottom a, .hero-bottom a, .sidebar-all-link, .previous-stage-link,
+  .technology-sidebar-all, .technology-library-links a, .technology-bottom-links a,
+  .technology-detail-pagination a, .schedule-bottom-links a, .schedule-stage-reference a,
+  .status-page-back)::after { content: ""; position: absolute; inset: -7px 0; }
+@media (max-width: 700px) {
+  .level-filters button, .technology-category-filters button, .career-track-filters button,
+  .interview-category-filters button, .schedule-filter button { min-height: 44px; }
+}
+
+/* The footer stays dark in both themes, so its wordmark dot needs the on-dark accent */
+.site-footer .brand-name span { color: var(--accent-on-dark); }
 }
