@@ -23,6 +23,7 @@ const iconMap: Record<string, LucideIcon> = {
   cloud: Cloud
 };
 
+const practicalLabCount = technologies.reduce((total, technology) => total + technology.labs.length, 0);
 const categories = ["All technologies", ...Array.from(new Set(technologies.map((technology) => technology.category)))];
 
 export function TechnologyDirectory() {
@@ -53,7 +54,7 @@ export function TechnologyDirectory() {
             <div className="technology-hero-stats">
               <div><strong>{technologies.length}</strong><span>TECHNOLOGY GUIDES</span></div>
               <div><strong>{categories.length - 1}</strong><span>TECHNICAL AREAS</span></div>
-              <div><strong>100%</strong><span>PRACTICE-ORIENTED</span></div>
+              <div><strong>{practicalLabCount}</strong><span>PRACTICAL LABS</span></div>
             </div>
           </div>
           <div className="technology-hero-panel">
