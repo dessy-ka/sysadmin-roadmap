@@ -42,11 +42,12 @@ export function ResourcesDirectory() {
           <SelectDropdown className="resource-select" value={category} options={resourceCategories} onChange={setCategory} ariaLabel="Filter by category" icon={SlidersHorizontal} />
           <SelectDropdown className="resource-select" value={cost} options={["All access types", "Free", "Mixed", "Paid"]} onChange={setCost} ariaLabel="Filter by access type" />
         </div>
+        <h2 className="sr-only">Resource results</h2>
         <div className="resource-results-bar"><span>{filtered.length} resources found</span><span>Access labels describe the linked learning resource; related exams or cloud services may cost extra.</span></div>
         <div className="resource-directory-grid">
           {filtered.map((resource, index) => <motion.article key={resource.id} className="resource-directory-card" initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.35, delay: (index % 8) * 0.025 }}>
             <div className="resource-directory-top"><span>{resource.category}</span><span className={`resource-access access-${resource.cost.toLowerCase().replace(/[^a-z]+/g, "-")}`}>{resource.cost}</span></div>
-            <h2>{resource.name}</h2><p>{resource.description}</p>
+            <h3>{resource.name}</h3><p>{resource.description}</p>
             <div className="resource-start"><strong>Recommended starting point</strong><span>{resource.startHere}</span></div>
             <div className="resource-stage-tags">{resource.stages.filter((stage) => stagePaths[stage]).map((stage) => <Link href={`/roadmap/${stagePaths[stage]}`} key={stage}>Stage {stage.padStart(2, "0")}</Link>)}</div>
             <a className="resource-directory-link" href={resource.url} target="_blank" rel="noopener noreferrer">Open resource <ExternalLink size={14} /></a>

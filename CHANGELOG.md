@@ -5,6 +5,11 @@
 - The 404 page no longer emits conflicting robots tags (`noindex` together with the site-wide `index, follow`); it is now `noindex, follow`.
 - The social preview wordmark no longer has a gap before the blue dot.
 
+### Accessibility
+- Light theme contrast: darkened the teal (`--palette-teal`) and muted grey (`--muted-2`) so the "Free"/"Beginner" tags and small grey tags meet 4.5:1 on their backgrounds, and lightened the footer copyright text. The footer wordmark dot is now visible in the light theme.
+- Heading structure: resource card titles are now `h3` under a visually hidden "Resource results" `h2` instead of 45 sibling `h2`s. They now use the standard card-title size like every other card.
+- Click and tap targets: header nav links, breadcrumbs, footer links and standalone text links (sidebar, pagination, "Back to top" and similar) now have a hit area of at least 24px without changing the layout. Header icon buttons are 44px, and filter buttons are 44px tall on mobile.
+
 ### Changed
 - Visual hierarchy: the header "View roadmap" button is hidden on the home page and on `/roadmap`, where it duplicated the hero action or linked to the page itself.
 - Certifications: the section heading no longer repeats the page summary. It now reads "10 credentials across 5 tracks" (computed from the data), which replaces the separate "reference paths" count. The "up to three" guidance moved into the compare bar.
