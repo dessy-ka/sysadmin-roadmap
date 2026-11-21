@@ -1,12 +1,19 @@
 # Changelog
 ## [Unreleased]
 
-### Security
-- Added a Content-Security-Policy in report-only mode (same-origin for scripts, styles, images, fonts, fetches and form posts; no plugins). Switch `cspMode` to `"enforce"` in `next.config.ts` once the browser console shows no `[Report Only]` messages. See `DEPLOYMENT.md` section 6.
+### Fixed
+- The 404 page no longer emits conflicting robots tags (`noindex` together with the site-wide `index, follow`); it is now `noindex, follow`.
+- The social preview wordmark no longer has a gap before the blue dot.
 
 ### Changed
+- Per-page Open Graph and Twitter images now use a versioned URL (`/opengraph-image?v=2`) so link-preview caches pick up new artwork. Bump `SOCIAL_IMAGE_VERSION` in `lib/page-metadata.ts` when the image changes.
+- Removed the duplicate `/twitter-image` route; Twitter cards use the Open Graph image.
+- Reworded the CSP comment in `next.config.ts` to describe the nonce and SRI alternatives accurately.
 - All stylesheets now sit in named CSS cascade layers (`base`, `roadmap`, `schedule`, `technologies`, `career`, `a11y`, `refresh`, `overrides`), declared once at the top of `app/globals.css`. A later layer now beats an earlier one regardless of selector specificity, so the visual refresh no longer relies on being loaded last. Rendering is unchanged: computed styles were compared against the previous build across every page, three viewport widths, both themes, and click, hover and keyboard-focus states.
 - Added `app/styles/overrides.css` for the four rules that used to win on specificity over a generic `visual-refresh.css` rule. Each is commented with the rule it beats.
+
+### Security
+- Added a Content-Security-Policy in report-only mode (same-origin for scripts, styles, images, fonts, fetches and form posts; no plugins). Switch `cspMode` to `"enforce"` in `next.config.ts` once the browser console shows no `[Report Only]` messages. See `DEPLOYMENT.md` section 6.
 
 ## [0.2.4] - 2026-11-19
 
