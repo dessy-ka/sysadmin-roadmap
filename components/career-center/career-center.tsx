@@ -105,8 +105,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
         </section>
         {section === "certifications" && <section id="certifications" className="career-content-section" aria-labelledby="certification-heading">
           <div className="career-section-heading">
-            <div><h2 id="certification-heading">Choose a credential that supports your direction.</h2><p>Compare the purpose and exam focus of recognised infrastructure certifications. Select up to three to view them side by side.</p></div>
-            <div className="career-section-count"><strong>{certifications.length.toString().padStart(2, "0")}</strong><span>REFERENCE PATHS</span></div>
+            <div><h2 id="certification-heading">{certifications.length} credentials across {tracks.length - 1} tracks.</h2></div>
           </div>
 
           <div className="certification-guidance">
@@ -122,7 +121,7 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
           </div>
 
           <div className="certification-compare-bar">
-            <div><strong>{selectedCertIds.length} / 3 selected for comparison</strong><span>{selectedCertIds.length < 2 ? "Select at least two certifications to compare." : "Your comparison is ready."}</span></div>
+            <div><strong>{selectedCertIds.length} / 3 selected for comparison</strong><span>{selectedCertIds.length < 2 ? "Select two or three certifications to compare them side by side." : "Your comparison is ready."}</span></div>
             <div className="certification-compare-actions">
               <button type="button" className="career-text-button" onClick={() => { setSelectedCertIds([]); setShowComparison(false); }}>Clear selection</button>
               <button type="button" className="button button-primary" disabled={selectedCertIds.length < 2} onClick={() => setShowComparison((current) => !current)}>{showComparison ? "Hide comparison" : "Compare selected"} <ArrowRight size={15} /></button>
