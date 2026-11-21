@@ -18,3 +18,63 @@
   /* beats `.inner-page p { line-height: 1.8 }` in visual-refresh.css */
   .schedule-week-heading > div:first-child > p { line-height: 1.75; }
 }
+
+/* Header: the desktop nav + actions overflow between ~700 and ~800px,
+   so the burger menu takes over up to 860px. Labels never wrap. */
+@media (max-width: 860px) {
+  .desktop-nav { display: none; }
+  .mobile-menu-button { display: grid; }
+}
+.desktop-nav a, .desktop-nav button { white-space: nowrap; }
+
+/* Hero diagram: absolute positioning only works when the card is wide
+   enough. Below 980px it becomes a simple grid so nothing can overlap. */
+@media (max-width: 980px) {
+  .network-visual {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas: "core core" "cloud network" "identity monitor";
+    gap: 12px;
+    padding: 18px;
+    min-height: 0;
+  }
+  .network-visual .network-lines { display: none; }
+  .network-visual .infra-core,
+  .network-visual .infra-node {
+    position: relative;
+    inset: auto;
+    transform: none;
+    width: auto;
+    min-height: 0;
+    padding: 14px 10px;
+  }
+  .network-visual .infra-core { grid-area: core; padding: 16px; }
+  .network-visual .node-cloud { grid-area: cloud; }
+  .network-visual .node-network { grid-area: network; }
+  .network-visual .node-identity { grid-area: identity; }
+  .network-visual .node-monitor { grid-area: monitor; }
+}
+
+/* Mobile stage rows: number, icon and arrow share a top line so the
+   text gets the full card width instead of a ~190px column. */
+@media (max-width: 700px) {
+  .roadmap-stage-row {
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-areas: "num icon . open" "content content content content";
+    align-items: center;
+    row-gap: 14px;
+  }
+  .roadmap-stage-number { grid-area: num; }
+  .roadmap-stage-icon { grid-area: icon; }
+  .roadmap-stage-content { grid-area: content; }
+  .roadmap-stage-open { grid-area: open; }
+  .technology-hero-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 12px; }
+  .technology-hero-stats span { letter-spacing: .04em; }
+}
+
+/* Headline/closing copy: balance wrapping, avoid one-word orphans. */
+.hero-copy h1, .closing-inner h2 { text-wrap: balance; }
+.hero-copy p, .closing-inner p { text-wrap: pretty; }
+@media (min-width: 981px) {
+  .hero-copy h1 { max-width: 720px; font-size: clamp(44px, 4vw, 56px); }
+}
