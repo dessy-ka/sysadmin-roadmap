@@ -1,6 +1,13 @@
 # Changelog
 ## [Unreleased]
 
+### Layout
+- Header: burger menu now takes over up to 860px (desktop nav + actions overflowed 700–800px, causing horizontal scroll); nav labels no longer wrap.
+- Home hero diagram becomes a grid below 980px, fixing overlapping nodes at 390px and 768px.
+- Mobile roadmap stage cards stack content under a number/icon/arrow line (text column ~190px to ~326px).
+- Technologies hero stats use a three-column grid on mobile.
+- Hero headline resized and text wrapping balanced; stage-detail pages align with the header width.
+
 ### Fixed
 - The 404 page no longer emits conflicting robots tags (`noindex` together with the site-wide `index, follow`); it is now `noindex, follow`.
 - The social preview wordmark no longer has a gap before the blue dot.
