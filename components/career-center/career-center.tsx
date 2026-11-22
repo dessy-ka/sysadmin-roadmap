@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import type { LucideIcon } from "lucide-react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowRight, Award, BookOpen, CheckCircle2, ChevronDown, Cloud, ExternalLink, GraduationCap, Network, Search, ShieldCheck, Terminal, X } from "lucide-react";
 import {
   careerPaths, certifications, interviewQuestions, portfolioProjects,
@@ -49,7 +50,6 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
   const [selectedCertIds, setSelectedCertIds] = useState<string[]>([]);
   const [showComparison, setShowComparison] = useState(false);
   const [expandedCertId, setExpandedCertId] = useState<string | null>(null);
-  const objectiveDialogRef = useRef<HTMLDialogElement>(null);
   const [questionQuery, setQuestionQuery] = useState("");
   const [questionCategory, setQuestionCategory] = useState<(typeof questionCategories)[number]>("All questions");
   const [expandedQuestionIds, setExpandedQuestionIds] = useState<string[]>([]);
@@ -69,14 +69,6 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
 
   const selectedCertifications = certifications.filter((certification) => selectedCertIds.includes(certification.id));
   const expandedCertification = certifications.find((certification) => certification.id === expandedCertId) ?? null;
-
-  useEffect(() => {
-    const dialog = objectiveDialogRef.current;
-    if (!dialog) return;
-
-    if (expandedCertId && !dialog.open) dialog.showModal();
-    if (!expandedCertId && dialog.open) dialog.close();
-  }, [expandedCertId]);
 
   const filteredQuestions = useMemo(() => {
     const normalized = questionQuery.trim().toLowerCase();
@@ -162,30 +154,42 @@ export function CareerCenter({ section }: { section: CareerCenterSection }) {
               </article>;
             })}
           </div> : <div className="career-empty-state">No certifications match that search. Try another keyword or select a different track.</div>}
-          <dialog
-            ref={objectiveDialogRef}
-            id="certification-objective-dialog"
-            className="certification-objective-dialog"
-            aria-label="Certification objective map"
-            onCancel={() => setExpandedCertId(null)}
-            onClose={() => setExpandedCertId(null)}
-            onClick={(event) => { if (event.target === objectiveDialogRef.current) setExpandedCertId(null); }}
-          >
-            {expandedCertification && <div className="certification-objective-dialog-content">
-              <header className="certification-objective-dialog-header">
-                <div><span>{expandedCertification.track} · {expandedCertification.level}</span><h2 id="certification-objective-heading">{expandedCertification.name} objective map</h2></div>
-                <button type="button" className="icon-button" aria-label="Close objective map" onClick={() => setExpandedCertId(null)}><X size={18} /></button>
-              </header>
-              <div className="certification-expanded">
-                <div className="certification-exam-note"><strong>Version note</strong><p>{expandedCertification.versionNote}</p></div>
-                <div className="certification-detail-block"><strong>Recommended starting point</strong><p>{expandedCertification.prerequisites}</p><p className="certification-format"><b>Exam format:</b> {expandedCertification.format}</p></div>
-                <div className="certification-objectives"><strong>Exam objective areas</strong>{expandedCertification.domains.map((domain) => <div key={domain.title}><span>{domain.title}{domain.weight ? <b>{domain.weight}</b> : null}</span><p>{domain.detail}</p></div>)}</div>
-                <div className="certification-proof"><strong>Practical evidence to build</strong>{expandedCertification.practicalProof.map((item) => <p key={item}><CheckCircle2 size={14} />{item}</p>)}</div>
-                <div className="certification-official-links"><a href={expandedCertification.officialUrl} target="_blank" rel="noopener noreferrer">Vendor certification page <ExternalLink size={13} /></a><a href={expandedCertification.objectivesUrl} target="_blank" rel="noopener noreferrer">Exam objectives / study guide <ExternalLink size={13} /></a></div>
-                <div className="certification-stage-links"><span>RELATED ROADMAP STAGES</span>{expandedCertification.roadmapStages.map((slug) => { const stage = roadmapStages.find((item) => item.slug === slug); return stage ? <Link key={slug} href={`/roadmap/${slug}`}>{stage.shortTitle}<ArrowRight size={11} /></Link> : null; })}</div>
-              </div>
-            </div>}
-          </dialog>
+          <Dialog.Root open={Boolean(expandedCertId)} onOpenChange={(open) => { if (!open) setExpandedCertId(null); }}>
+            <Dialog.Portal>
+              <Dialog.Overlay className="dialog-overlay" />
+              <Dialog.Content
+                id="certification-objective-dialog"
+                className="certification-objective-dialog dialog-content"
+                aria-describedby={undefined}
+              >
+                {expandedCertification && (
+                  <div className="certification-objective-dialog-content">
+                    <header className="certification-objective-dialog-header">
+                      <div>
+                        <span>{expandedCertification.track} · {expandedCertification.level}</span>
+                        <Dialog.Title asChild>
+                          <h2 id="certification-objective-heading">{expandedCertification.name} objective map</h2>
+                        </Dialog.Title>
+                      </div>
+                      <Dialog.Close asChild>
+                        <button type="button" className="icon-button" aria-label="Close objective map">
+                          <X size={18} />
+                        </button>
+                      </Dialog.Close>
+                    </header>
+                    <div className="certification-expanded">
+                      <div className="certification-exam-note"><strong>Version note</strong><p>{expandedCertification.versionNote}</p></div>
+                      <div className="certification-detail-block"><strong>Recommended starting point</strong><p>{expandedCertification.prerequisites}</p><p className="certification-format"><b>Exam format:</b> {expandedCertification.format}</p></div>
+                      <div className="certification-objectives"><strong>Exam objective areas</strong>{expandedCertification.domains.map((domain) => <div key={domain.title}><span>{domain.title}{domain.weight ? <b>{domain.weight}</b> : null}</span><p>{domain.detail}</p></div>)}</div>
+                      <div className="certification-proof"><strong>Practical evidence to build</strong>{expandedCertification.practicalProof.map((item) => <p key={item}><CheckCircle2 size={14} />{item}</p>)}</div>
+                      <div className="certification-official-links"><a href={expandedCertification.officialUrl} target="_blank" rel="noopener noreferrer">Vendor certification page <ExternalLink size={13} /></a><a href={expandedCertification.objectivesUrl} target="_blank" rel="noopener noreferrer">Exam objectives / study guide <ExternalLink size={13} /></a></div>
+                      <div className="certification-stage-links"><span>RELATED ROADMAP STAGES</span>{expandedCertification.roadmapStages.map((slug) => { const stage = roadmapStages.find((item) => item.slug === slug); return stage ? <Link key={slug} href={`/roadmap/${slug}`}>{stage.shortTitle}<ArrowRight size={11} /></Link> : null; })}</div>
+                    </div>
+                  </div>
+                )}
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
           <p className="career-content-disclaimer">Exam codes, objectives, prices, languages and retirement dates can change. This directory intentionally avoids fixed exam fees because local pricing and taxes vary. Always confirm the live details with the issuing organisation before paying for an exam.</p>
         </section>}
 

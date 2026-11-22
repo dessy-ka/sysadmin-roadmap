@@ -51,16 +51,36 @@ function InfrastructureGraphic() {
         <circle cx="310" cy="95" r="4" /><circle cx="145" cy="180" r="4" /><circle cx="475" cy="180" r="4" />
         <circle cx="145" cy="275" r="4" /><circle cx="475" cy="275" r="4" /><circle cx="310" cy="350" r="4" />
       </svg>
-      <div className="infra-node node-cloud"><Cloud size={21} /><span>Cloud</span><small>Public / Private</small></div>
-      <div className="infra-node node-network"><Network size={21} /><span>Network</span><small>Routing · DNS</small></div>
-      <div className="infra-node node-identity"><ShieldCheck size={21} /><span>Identity</span><small>Access · Policies</small></div>
+      <div className="infra-node node-cloud">
+        <span className="node-ping" aria-hidden="true" />
+        <Cloud size={21} />
+        <span>Cloud</span>
+        <small>Public / Private</small>
+      </div>
+      <div className="infra-node node-network">
+        <span className="node-ping" aria-hidden="true" />
+        <Network size={21} />
+        <span>Network</span>
+        <small>Routing · DNS</small>
+      </div>
+      <div className="infra-node node-identity">
+        <span className="node-ping" aria-hidden="true" />
+        <ShieldCheck size={21} />
+        <span>Identity</span>
+        <small>Access · Policies</small>
+      </div>
       <div className="infra-core">
         <div className="core-icon"><Server size={27} /></div>
         <strong>Core infrastructure</strong>
         <span>Compute · Storage · Services</span>
         <div className="core-status"><i /> ALL SYSTEMS CONNECTED</div>
       </div>
-      <div className="infra-node node-monitor"><Activity size={21} /><span>Monitoring</span><small>Logs · Metrics</small></div>
+      <div className="infra-node node-monitor">
+        <span className="node-ping" aria-hidden="true" />
+        <Activity size={21} />
+        <span>Monitoring</span>
+        <small>Logs · Metrics</small>
+      </div>
     </div>
   );
 }
@@ -97,7 +117,7 @@ export default function HomePage() {
                 const Icon = stage.icon;
                 return (
                   <motion.article key={stage.n} className="stage-card" variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.12 }} transition={{ delay: index * 0.035 }}>
-                    <div className="stage-card-top"><span className="stage-number">{stage.n}</span><span className="stage-level">{stage.level}</span></div>
+                    <div className="stage-card-top"><span className="stage-number">{stage.n}</span><span className={`stage-level stage-level-badge ${stage.n === "01" ? "level-beginner" : "level-intermediate"}`}>{stage.level}</span></div>
                     <div className="stage-icon"><Icon size={21} /></div>
                     <h3>{stage.title}</h3>
                     <p>{stage.desc}</p>

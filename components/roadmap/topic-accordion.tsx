@@ -1,16 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ChevronDown, Circle, ClipboardCheck, TerminalSquare } from "lucide-react";
+import { Check, ChevronDown, Circle, ClipboardCheck, Copy } from "lucide-react";
 import type { RoadmapTopic } from "@/data/roadmap";
 import { useRoadmapProgress } from "@/components/roadmap/use-roadmap-progress";
 
 export function TopicAccordion({ topics }: { topics: RoadmapTopic[] }) {
   const [expanded, setExpanded] = useState<string[]>([]);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
   const { isComplete, toggleTopic } = useRoadmapProgress();
 
   const toggleExpanded = (id: string) => {
     setExpanded((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+  };
+
+  const handleCopy = (id: string, text: string) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopiedId(id);
+        setTimeout(() => setCopiedId((current) => (current === id ? null : current)), 2000);
+      }).catch(() => { });
+    }
   };
 
   if (!topics.length) return <div className="topic-empty">No topics match this search. Try another keyword.</div>;
@@ -40,7 +50,30 @@ export function TopicAccordion({ topics }: { topics: RoadmapTopic[] }) {
                 <ul>{topic.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                 {topic.commandExample && (
                   <div className="topic-command-wrap">
-                    <div className="topic-expanded-label"><TerminalSquare size={14} /> COMMAND EXAMPLE</div>
+                    <div className="terminal-header">
+                      <div className="terminal-dots" aria-hidden="true">
+                        <span className="terminal-dot terminal-dot-red" />
+                        <span className="terminal-dot terminal-dot-yellow" />
+                        <span className="terminal-dot terminal-dot-green" />
+                      </div>
+                      <span className="terminal-title">Terminal</span>
+                      <button
+                        type="button"
+                        className="terminal-copy-btn"
+                        onClick={() => handleCopy(topic.id, topic.commandExample!)}
+                        aria-label={copiedId === topic.id ? "Command copied" : "Copy command to clipboard"}
+                      >
+                        {copiedId === topic.id ? (
+                          <>
+                            <Check size={13} /> <span>Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={13} /> <span>Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
                     <pre><code>{topic.commandExample}</code></pre>
                   </div>
                 )}

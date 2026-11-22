@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { BrandMark } from "@/components/brand-mark";
 
@@ -24,26 +25,14 @@ const careerLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [careerOpen, setCareerOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   // The button points at /roadmap, so it is redundant on the home page (its hero has the same action) and on /roadmap itself.
   const showRoadmapCta = pathname !== "/" && pathname !== "/roadmap";
 
-  useEffect(() => {
-    if (!careerOpen) return;
-    const closeOnOutsideClick = (event: PointerEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) setCareerOpen(false);
-    };
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setCareerOpen(false);
-    };
-    document.addEventListener("pointerdown", closeOnOutsideClick);
-    document.addEventListener("keydown", closeOnEscape);
-    return () => {
-      document.removeEventListener("pointerdown", closeOnOutsideClick);
-      document.removeEventListener("keydown", closeOnEscape);
-    };
-  }, [careerOpen]);
+  const isLinkActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   const closeMenus = () => {
     setOpen(false);
@@ -51,18 +40,48 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="site-header" ref={headerRef}>
+    <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" onClick={closeMenus} aria-label="SysAdmin Roadmap home">
           <span className="brand-mark"><BrandMark /></span><span className="brand-name">SYSADMIN<span>.</span></span>
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
-          {links.slice(0, 3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}
+          {links.slice(0, 3).map((link) => (
+            <Link key={link.href} href={link.href} onClick={closeMenus} className={isLinkActive(link.href) ? "is-active" : ""}>
+              {link.label}
+            </Link>
+          ))}
           <div className="career-nav-dropdown">
-            <button type="button" className="career-nav-trigger" aria-haspopup="true" aria-expanded={careerOpen} aria-controls="career-nav-menu" onClick={() => setCareerOpen((value) => !value)}>Career Centre <ChevronDown size={14} /></button>
-            {careerOpen && <div id="career-nav-menu" className="career-nav-menu">{careerLinks.map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}</div>}
+            <DropdownMenu.Root open={careerOpen} onOpenChange={setCareerOpen}>
+              <DropdownMenu.Trigger asChild>
+                <button
+                  type="button"
+                  className={`career-nav-trigger ${pathname.startsWith("/career-center") ? "is-active" : ""}`}
+                  aria-haspopup="true"
+                  aria-expanded={careerOpen}
+                  aria-controls="career-nav-menu"
+                >
+                  Career Centre <ChevronDown size={14} />
+                </button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content id="career-nav-menu" className="career-nav-menu" sideOffset={12} align="center">
+                  {careerLinks.map((link) => (
+                    <DropdownMenu.Item key={link.href} asChild>
+                      <Link href={link.href} onClick={closeMenus} className={pathname === link.href ? "is-active" : ""}>
+                        {link.label}
+                      </Link>
+                    </DropdownMenu.Item>
+                  ))}
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu.Root>
           </div>
-          {links.slice(3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}
+          {links.slice(3).map((link) => (
+            <Link key={link.href} href={link.href} onClick={closeMenus} className={isLinkActive(link.href) ? "is-active" : ""}>
+              {link.label}
+            </Link>
+          ))}
         </nav>
         <div className="header-actions">
           {showRoadmapCta && <Link className="header-cta" href="/roadmap">View roadmap <ArrowRight size={15} /></Link>}
@@ -71,10 +90,10 @@ export function SiteHeader() {
         </div>
       </div>
       <nav id="mobile-navigation" className="mobile-nav" aria-label="Mobile navigation" hidden={!open}>
-        {links.slice(0, 3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}
-        <button type="button" className="mobile-nav-parent" aria-expanded={careerOpen} aria-controls="mobile-career-subnav" onClick={() => setCareerOpen((value) => !value)}>Career Centre <ChevronDown size={16} /></button>
-        {careerOpen && <div id="mobile-career-subnav" className="mobile-career-subnav">{careerLinks.map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}</div>}
-        {links.slice(3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus}>{link.label}</Link>)}
+        {links.slice(0, 3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus} className={isLinkActive(link.href) ? "is-active" : ""}>{link.label}</Link>)}
+        <button type="button" className={`mobile-nav-parent ${pathname.startsWith("/career-center") ? "is-active" : ""}`} aria-expanded={careerOpen} aria-controls="mobile-career-subnav" onClick={() => setCareerOpen((value) => !value)}>Career Centre <ChevronDown size={16} /></button>
+        {careerOpen && <div id="mobile-career-subnav" className="mobile-career-subnav">{careerLinks.map((link) => <Link key={link.href} href={link.href} onClick={closeMenus} className={pathname === link.href ? "is-active" : ""}>{link.label}</Link>)}</div>}
+        {links.slice(3).map((link) => <Link key={link.href} href={link.href} onClick={closeMenus} className={isLinkActive(link.href) ? "is-active" : ""}>{link.label}</Link>)}
         <Link href="/roadmap#stages" onClick={closeMenus}>Labs &amp; projects</Link>
       </nav>
     </header>
