@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, ChevronRight, Clock3, ExternalLink, Flag, ListChecks, Search, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Check, CheckCircle2, ChevronRight, Clock3, Copy, ExternalLink, Flag, ListChecks, Search, ShieldCheck, Wrench } from "lucide-react";
 import type { RoadmapStage } from "@/data/roadmap";
 import { resources } from "@/data/resources";
 import { useRoadmapProgress } from "@/components/roadmap/use-roadmap-progress";
@@ -22,6 +22,16 @@ export function StageDetail({ stage, previous, next }: { stage: RoadmapStage; pr
   const query = selectionIsCurrent ? selection.query : "";
   const selectedContent = selectionIsCurrent ? selection.content : firstTopicId;
   const { isComplete, toggleTopic } = useRoadmapProgress();
+  const [copiedCommand, setCopiedCommand] = useState(false);
+
+  const handleCopyCommand = (text: string) => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopiedCommand(true);
+        setTimeout(() => setCopiedCommand(false), 2000);
+      }).catch(() => {});
+    }
+  };
 
   const selectContent = (content: string) => {
     setSelection({ stageSlug: stage.slug, content, query: "" });
@@ -98,7 +108,35 @@ export function StageDetail({ stage, previous, next }: { stage: RoadmapStage; pr
                   <h3>What to understand</h3>
                   <ul>{selectedTopic.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
                 </div>
-                {selectedTopic.commandExample && <div className="selected-topic-command"><h3>Command example</h3><pre><code>{selectedTopic.commandExample}</code></pre></div>}
+                {selectedTopic.commandExample && (
+                  <div className="selected-topic-command">
+                    <div className="terminal-header">
+                      <div className="terminal-dots" aria-hidden="true">
+                        <span className="terminal-dot terminal-dot-red" />
+                        <span className="terminal-dot terminal-dot-yellow" />
+                        <span className="terminal-dot terminal-dot-green" />
+                      </div>
+                      <span className="terminal-title">Command example</span>
+                      <button
+                        type="button"
+                        className="terminal-copy-btn"
+                        onClick={() => handleCopyCommand(selectedTopic.commandExample!)}
+                        aria-label={copiedCommand ? "Command copied" : "Copy command to clipboard"}
+                      >
+                        {copiedCommand ? (
+                          <>
+                            <Check size={13} /> <span>Copied!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={13} /> <span>Copy</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                    <pre><code>{selectedTopic.commandExample}</code></pre>
+                  </div>
+                )}
                 {selectedTopic.task && <div className="selected-topic-task"><strong>Try it</strong><p>{selectedTopic.task}</p></div>}
                 <div className="selected-topic-pagination">
                   {stageTopics.findIndex((topic) => topic.id === selectedTopic.id) > 0 && <button type="button" onClick={() => selectContent(stageTopics[stageTopics.findIndex((topic) => topic.id === selectedTopic.id) - 1].id)}><ArrowLeft size={15} /> Previous topic</button>}

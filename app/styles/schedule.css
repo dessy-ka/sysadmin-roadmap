@@ -16,7 +16,7 @@
 .schedule-progress-number { margin: 14px 0 10px; font-size: 57px; font-weight: 800; letter-spacing: -.07em; line-height: 1; }
 .schedule-progress-number .schedule-progress-unit { margin-left: 3px; color: var(--accent); font-size: 23px; }
 .schedule-progress-track, .schedule-month-progress { display: block; height: 6px; overflow: hidden; border-radius: 10px; background: var(--border); }
-.schedule-progress-track span, .schedule-month-progress i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--button-primary), var(--accent)); transition: width .35s ease; }
+.schedule-progress-track span, .schedule-month-progress i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--button-primary), var(--accent)); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 40%, transparent); transition: width .35s ease; }
 .schedule-progress-bottom { display: flex; justify-content: space-between; gap: 10px; margin-top: 9px; color: var(--muted-2); font-size: 12px; }
 .schedule-progress-divider { height: 1px; margin: 21px 0 17px; background: var(--border); }
 .study-hours-control { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--muted); font-size: 12px; }

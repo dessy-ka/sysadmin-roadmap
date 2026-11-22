@@ -10,65 +10,82 @@
   --type-card-title: clamp(1.0625rem, 1.35vw, 1.25rem);
   --type-page-title: clamp(2.625rem, 5.1vw, 4rem);
   color-scheme: light;
-  --palette-navy: #172a3f;
-  --palette-blue: #245fc7;
-  --palette-teal: #06706a;
-  --palette-amber: #875b10;
-  --bg: #e9eef4;
-  --surface: #f4f6f8;
-  --surface-2: #dde6ef;
-  --surface-3: #cfdae6;
-  --text: var(--palette-navy);
-  --muted: #4b6177;
-  --muted-2: #4a6078;
-  --border: #b7c7d7;
+  --palette-navy: #0f172a;
+  --palette-blue: #2563eb;
+  --palette-teal: #0d9488;
+  --palette-amber: #d97706;
+  --palette-emerald: #059669;
+  --palette-violet: #7c3aed;
+  --palette-rose: #e11d48;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --surface-3: #e2e8f0;
+  --text: #0f172a;
+  --muted: #334155;
+  --muted-2: #64748b;
+  --border: #e2e8f0;
+  --border-subtle: #f1f5f9;
   --accent: var(--palette-blue);
-  --accent-soft: #dce8fc;
-  --green: var(--palette-teal);
-  --green-contrast: #f4f6f8;
+  --accent-2: #3b82f6;
+  --accent-soft: #eff6ff;
+  --green: var(--palette-emerald);
+  --green-contrast: #ffffff;
   --amber: var(--palette-amber);
-  --amber-soft: #f6e8c8;
-  --accent-on-dark: #83b9ff;
-  --button-primary: #245fc7;
-  --button-primary-hover: #1c4ca3;
-  --button-primary-text: #f4f6f8;
-  --shadow: 0 12px 34px rgba(22, 41, 66, .1);
-  --header: rgba(244, 247, 250, .97);
+  --amber-soft: #fef3c7;
+  --violet: var(--palette-violet);
+  --violet-soft: #f5f3ff;
+  --accent-on-dark: #60a5fa;
+  --button-primary: #2563eb;
+  --button-primary-hover: #1d4ed8;
+  --button-primary-text: #ffffff;
+  --shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --header: rgba(248, 250, 252, 0.88);
 }
 .dark {
   color-scheme: dark;
-  --palette-navy: #0b1421;
-  --palette-blue: #83b9ff;
-  --palette-teal: #62d2c2;
-  --palette-amber: #f1bf67;
-  --bg: #0b1421;
-  --surface: #121f2e;
-  --surface-2: #1c2b3c;
-  --surface-3: #293a4e;
-  --text: #e7eef6;
-  --muted: #bac7d5;
-  --muted-2: #91a5ba;
-  --border: #364b61;
+  --palette-navy: #090d16;
+  --palette-blue: #3b82f6;
+  --palette-teal: #14b8a6;
+  --palette-amber: #f59e0b;
+  --palette-emerald: #10b981;
+  --palette-violet: #a78bfa;
+  --palette-rose: #fb7185;
+  --bg: #090d16;
+  --surface: #111827;
+  --surface-2: #1e293b;
+  --surface-3: #334155;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --muted-2: #94a3b8;
+  --border: #1e293b;
+  --border-subtle: #172033;
   --accent: var(--palette-blue);
-  --accent-soft: #203b5b;
-  --green: var(--palette-teal);
-  --green-contrast: #0b1421;
+  --accent-2: #60a5fa;
+  --accent-soft: rgba(59, 130, 246, 0.14);
+  --green: var(--palette-emerald);
+  --green-contrast: #090d16;
   --amber: var(--palette-amber);
-  --amber-soft: #4a371d;
-  --accent-on-dark: #83b9ff;
-  --button-primary: #245fc7;
-  --button-primary-hover: #1c4ca3;
-  --button-primary-text: #f4f6f8;
-  --shadow: 0 16px 42px rgba(0, 0, 0, .32);
-  --header: rgba(11, 20, 33, .96);
+  --amber-soft: rgba(245, 158, 11, 0.15);
+  --violet: var(--palette-violet);
+  --violet-soft: rgba(167, 139, 250, 0.15);
+  --accent-on-dark: #60a5fa;
+  --button-primary: #2563eb;
+  --button-primary-hover: #1d4ed8;
+  --button-primary-text: #f8fafc;
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --header: rgba(9, 13, 22, 0.88);
 }
 
 html { scroll-padding-top: 104px; }
 body {
   font-size: var(--type-body);
-  line-height: 1.65;
-  letter-spacing: -.008em;
+  line-height: 1.7;
+  letter-spacing: -.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
@@ -82,7 +99,8 @@ body {
 .brand-mark img { display: block; width: 44px; height: 44px; object-fit: contain; }
 .brand-name { font-size: 17px; letter-spacing: .055em; }
 .desktop-nav { gap: clamp(15px, 1.8vw, 25px); }
-.desktop-nav a { font-size: 13px; font-weight: 700; }
+.desktop-nav a { font-size: 13px; font-weight: 700; transition: color .18s ease; }
+.desktop-nav a.is-active, .career-nav-trigger.is-active, .mobile-nav a.is-active, .mobile-nav-parent.is-active { color: var(--accent); }
 .career-nav-dropdown { position: relative; }
 .career-nav-trigger { display: inline-flex; align-items: center; gap: 5px; padding: 0; border: 0; background: transparent; color: var(--muted); font-size: 13px; font-weight: 700; cursor: pointer; }
 .career-nav-trigger:hover, .career-nav-trigger[aria-expanded="true"] { color: var(--accent); }
@@ -782,7 +800,6 @@ main :is(article, [class*="-card"]) h3 { font-size: var(--type-card-title) !impo
 /* Keep decorative icons visible without a boxed background. */
 .core-icon,
 .closing-orb,
-.infra-node,
 .stage-icon,
 .discipline-icon,
 .project-icon,
@@ -800,6 +817,36 @@ main :is(article, [class*="-card"]) h3 { font-size: var(--type-card-title) !impo
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
+}
+
+.infra-node {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.infra-node:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: var(--shadow-lg);
+}
+.node-ping {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 40%, transparent);
+  animation: node-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+@keyframes node-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 70%, transparent); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px transparent; }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 transparent; }
 }
 
 /* Keep shared accents consistent with the four-color palette. */
